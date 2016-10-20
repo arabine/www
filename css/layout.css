@@ -1,6 +1,13 @@
+/************************************************
+ * My resume style, mix of:
+ * 3ColorResume Author: office@kamsolutions.pl
+ * and
+ * Sarah Schattschneider https://github.com/sschatts
+ ************************************************/
+
 body {
 	background-color: #FFF;
-	font-family: "Quicksand", georgia, times, serif;
+	font-family: "Roboto", arial, sans-serif;
 	padding-top: 1rem;
 }
 
@@ -11,9 +18,9 @@ h1 {
 }
 
 h2 {
-	font-size: 1.625rem;
+	font-size: 1.4rem;
 	color: rgb(40, 40, 40);
-	font-family: "Quicksand", arial, sans-serif;
+	font-family: "Roboto", arial, sans-serif;
 }
 
 h3 {
@@ -82,31 +89,90 @@ a {
 	color: #000;
 }
 
-.contactInfo{
-	display: inline;
-	list-style: none;
-	text-align: right;
+
+/************************************************
+ * DEFAULT BOX
+ ************************************************/
+.box{
+  margin-bottom: 15px;
+}
+.box h2{
+  color: #EC7263;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.box h2:before{
+  content: '//';
+  margin-right: 5px;
+}
+.box p{
+/*  font-size: 1.3em; */
+  line-height: 1.5em;
 }
 
-.contact{
-	margin:30px 0px 10px 0px;
+/************************************************
+ * CONTACT BOX
+ ************************************************/
+.contact-item{
+  width: 100%;
+  float: left;
+}
+.contact-item .icon{
+  padding: 10px;
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  opacity: 0.2;
+}
+.contact-item:last-child .icon{
+  border-bottom: none;
+}
+.contact-item .fa{
+  /*font-size: 2em; */
+}
+.contact-item .title{
+  width: 80%;
+  width: calc(100% - 55px);
+ /*  font-size: 1.5em; */
+  font-weight: 700;
+  opacity: 0.9;
+}
+.contact-item .title.only{
+  margin-top: 10px;
+}
+.contact-item .description{
+  width: 80%;
+  width: calc(100% - 55px);
+  font-size: 0.8em;
+  opacity: 0.7;
 }
 
-.top_contact{
-	margin-top: 40px;
+/************************************************
+ * EXPERIENCES
+ ************************************************/
+.exp {
+  margin-bottom: 15px;
+}
+.exp .where{
+ /* font-size: 1.4em; */
+  font-weight: bold;
+}
+.exp .year{
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+.exp .profession{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.exp .description{
+ /* font-size: 1.2em; */
+  line-height: 1.5em;
 }
 
-ul{
-	margin: 2px 2px 15px 2px;
-}
 
-.address{
-	margin: 2px 0px 0px 0px;
-}
+/************************************/
 
-.address_top{
-	margin-top: 22px;
-}
 
 .small_section{
 	display: block;
@@ -130,7 +196,7 @@ ul{
 }
 
 .right_side{
-	border-left: 2px dashed rgb(140, 140, 140);
+	border-left: 2px solid rgb(140, 140, 140);
 	padding-left: 14px;
 }
 
@@ -138,19 +204,4 @@ ul{
 	padding-right: 4px;
 }
 
-/*overall padding on the icons in the contact section*/
-.icon{
-	display: inline-block;
-	vertical-align: bottom;
-	padding-right: 132px;
-}
 
-/*padding for the git icon*/
-.git{
-	padding-right: 92px;
-}
-
-/*the specific padding for the mail icon*/
-.mail{
-	padding-right: 118px;
-}
