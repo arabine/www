@@ -5,72 +5,80 @@
 		<meta name="description" content="Curriculum vit&aelig; for Anthony Rabine.">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     	<meta name="author" content="Anthony Rabine">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/normalize.css"> 
 		<link rel="stylesheet" href="css/skeleton.css">
-		<link rel="stylesheet" href="css/layout.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
-		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/style.css">
+		
 	</head>
 
 	<body>
-		<!-- Using the Skeleton.css to make two columns on my resume
-				the first column is about 30% of the page, while the second
-				column is about 70% of the page
-			  Sixteen columns take up the whole page-->
+		<page size="A4">
 		<div class="container sixteen columns">
 
-			<!--The left column - five columns of the total 16 (31% of the page)-->
-			<div class="five columns">
-				<div class="circle">
-					<p class="big_letter">S</p>
-				</div> <!-- circle -->
-			</div>
-			<div class="eleven columns">
+			<!-- HEADER LINE: photo + name + title -->
+	
+				<div class="five columns">
+					<!-- PHOTO (AVATAR) -->
+		            <div class="photo">
+		              <a href='#'><img src="img/avatar.png" alt="avatar" onClick="toggle('hideme')" /></a>
+		            </div>
+				</div>
 
-				<h1 class="top_page">Anthony Rabine</h1>
-				<h2>Développeur expérimenté firmware/software</h2>
-			</div>
+				<div class="eleven columns">
+					<h1>Anthony Rabine</h1>
+					<h2>Développeur freelance firmware/software expérimenté</h2>
+				</div>
+	
+			<!-- Presentation -->
+	
+				<div class="sixteen columns" id='hideme'>
+					<!-- ABOUT ME -->
+				      <div class="box">
+				        <h2>Présentation</h2>
+				        <p>Je suis développeur firmware depuis 2004 et passionné de programmation. Mes expériences 
+				        professionnelles et personnelles m'ont amenées à développer différents types d'applications, du pilote de 
+				        périphérique bas niveau sur microcontrôleur à de la programmation serveur back-end/front-end. Je suis également à même de concevoir une architecture firmware statique et dynamique complète et gérer techniquement une équipe de développeurs.</p>
+				        <p>Depuis 2016 je suis Freelance, je peux vous aider dans vos développement firmware sur cible temps réelle ou pour la création d'outils PC.</p>
+				      </div> 
+				</div>
 
-			<div class="sixteen columns">
-				<!-- ABOUT ME -->
-			      <div class="box">
-			        <h2>Présentation</h2>
-			        <p>Je suis développeur firmware depuis 2004 et passionné de programmation. Mes expériences 
-			        professionnelles et personnelles m'ont amenées à développer différents types d'application, du pilote de 
-			        périphérique bas niveau sur microcontrôleur à de la programmation serveur back-end/front-end.</p>
-			        <p>Depuis 2016 je suis également Freelance, je peux vous aider dans vos développement firmware sur cible temps réelle ou pour la création d'outils PC.</p>
-			      </div> 
+			<div class="sixteen columns horizontal-line">
 			</div>
+		
 
-			<!--The left column - five columns of the total 16 (31% of the page)-->
+
 			<div class="five columns left_side">
 
-			<!-- CONTACT BOX -->
-          <div class="box clearfix">
-            <h2>Contact</h2>
-            <div class="contact-item">
-              <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-              <div class="title only pull-right">500 345 242</div>
-            </div>
-            <div class="contact-item">
-              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-              <div class="title only pull-right">office@kamsolutions.pl</div>
-            </div>
-            <div class="contact-item">
-              <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
-              <div class="title pull-right">Twitter</div>
-              <div class="description pull-right">https://twitter.com/WordPress</div>
-            </div>
-            <div class="contact-item">
-              <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
-              <div class="title pull-right">Facebook</div>
-              <div class="description pull-right">https://www.facebook.com/facebook</div>
-            </div>
-            <div class="contact-item">
-              <div class="icon pull-left text-center"><span class="fa fa-skype fa-fw"></span></div>
-              <div class="title pull-right">Skype</div>
-              <div class="description pull-right">kamsolutions.pl</div>
-            </div>
-          </div>
+				<!-- CONTACT BOX -->
+	          <div class="box clearfix">
+	            <h2>Contact</h2>
+	            <div class="contact-item">
+	              <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+	              <div class="title only pull-right">500 345 242</div>
+	            </div>
+	            <div class="contact-item">
+	              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+	              <div class="title only pull-right">office@kamsolutions.pl</div>
+	            </div>
+	            <div class="contact-item">
+	              <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
+	              <div class="title pull-right">Twitter</div>
+	              <div class="description pull-right">https://twitter.com/WordPress</div>
+	            </div>
+	            <div class="contact-item">
+	              <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
+	              <div class="title pull-right">Facebook</div>
+	              <div class="description pull-right">https://www.facebook.com/facebook</div>
+	            </div>
+	            <div class="contact-item">
+	              <div class="icon pull-left text-center"><span class="fa fa-skype fa-fw"></span></div>
+	              <div class="title pull-right">Skype</div>
+	              <div class="description pull-right">kamsolutions.pl</div>
+	            </div>
+	          </div>
 
 
 				<div>
@@ -105,98 +113,82 @@
 			<!--This column is for my experience and jobs -->
 			<div class="eleven columns right_side">
 
+				<!-- Expérience -->
+	          <div class="box">
+	            <h2>Expérience professionnelle</h2>
+	            <ul class="job">
+	              <li>
+	                <div class="year">1990</div>
+	                <div class="description">
+	                  <h3>I was born in Katowice</h3>
+	                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, exercitationem, totam, dolores iste dolore est aut modi.</p>
+	                </div>
+	              </li>
+	              <li>
+	                <div class="year">2005</div>
+	                <div class="description">
+	                  <h3>Secondary school specializing in artistic</h3>
+	                  <p>Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.</p>
+	                </div>
+	              </li>
+	              <li>
+	                <div class="year">2009</div>
+	                <div class="description">
+	                  <h3>First level graduation in Graphic Design</h3>
+	                  <p>Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.</p>
+	                </div>
+	              </li>
+	              <li>
+	                <div class="year">2012</div>
+	                <div class="description">
+	                  <h3>Second level graduation in Graphic Design</h3>
+	                  <p>Ducimus, aliquam tempore autem itaque et accusantium!</p>
+	                </div>
+	              </li>
+	            </ul>
+	          </div>
 
+				<div class="box">
+					<h2>Formation</h2>
+					<div class="exp ">
+					  <div class="two columns">
+					  <!--  <div class="where">Parcours Universitaire</div> -->
+					    <div class="year">1998 - 2003</div>
+					  </div>
+					  
+					  <div class="nine columns">
+					    <div class="profession">Une formation Universitaire professionnalisée et cohérente</div>
+					    <div class="description">
+						    <ul class="fa-ul">
+						    	<li><i class="fa-li fa fa-chevron-right"></i>DESS Systèmes Électroniques (Orsay Paris-Sud)</li>
+								<li><i class="fa-li fa fa-chevron-right"></i>Maîtrise Génie Électrique et Informatique Industrielle (IUP de Cachan)</li>
+								<li><i class="fa-li fa fa-chevron-right"></i>DUT Génie Électrique et Informatique Industrielle (IUT de Nantes)</li>
+							</ul>
+						</div>
 
-				<div class="top">
-					<h3>EXPERIENCE</h3>
-					<div>
-						<span class="where">Software Developer Intern</span>
-						<span> Time Inc. </span>
-						<span class="when">June 2015 - August 2015</span>
-						<ul>
-							<li>Revenue & Data Engineering, worked in an agile environment to
-								co-develop the Digital Asset Management system for the Customer
-								Service Portal; created JSON schemas and catalogs from metadata
-								specified by cross-departmental teams.</li>
-							<li>Implemented and designed a responsive web application for the
-								user to update JSON catalogs. It dynamically generates input
-								forms based on selected JSON schemas. </li>
-							<li>Designed the Data Architecture of the system.</li>
-							<li>Implemented clickable prototypes for the GUI while conceptualizing.</li>
-						</ul>
-					</div> <!-- job -->
-
-					<div>
-						<span class="where">Rensselaer Center for Open Source Software (RCOS)</span>
-						<span class="when">Jan 2015 - present</span>
-						<ul>
-							<li>Contributed to Sign Me Up, a website to help volunteers sign up
-								more easily at the soup kitchen. Coded in Angular JavaScript and HTML.</li>
-						</ul>
-					</div> <!-- job -->
-
-					<div>
-						<span class="where">Intern with Improve, LLC</span>
-						<span>Chappaqua, NY</span>
-						<span class="when">May - June 2013</span>
-						<ul>
-							<li>Researched and surveyed high school student body about 21st century
-									learning modalities to improve learning spaces.</li>
-						</ul>
-					</div> <!-- job -->
-
-					<div>
-						<span class="where">Library Re-Design Project</span>
-						<span>RPI</span>
-						<span class="when">Jan 2014 - present</span>
-						<ul>
-							<li>Redesigned the basement of the RPI Folsom library to encourage student
-									collaboration. Iterated design based on student feedback. Received
-									funding through campus capital improvement portfolio.</li>
-						</ul>
-					</div> <!-- job -->
-
-					<div>
-						<span class="where">Chappaqua Summer Scholarship Program</span>
-						<span class="when">Summer 2012 - 2014</span>
-						<span class="no_space_bottom">Teaching Assistant - Introduction to Computer Science</span>
-						<ul>
-							<li>Taught twenty New York City high school students to use Scratch and
-									program Boe-Bots robots to complete mazes using a variety of sensors.</li>
-						</ul>
-					</div> <!-- job -->
-
-				</div> <!-- end top section -->
-
-
-				
-			<!-- FORMATION -->
-
-			<div class="box">
-				<h2>Formation</h2>
-				<div class="exp clearfix">
-				  <div class="two columns">
-				  <!--  <div class="where">Parcours Universitaire</div> -->
-				    <div class="year">1998 - 2003</div>
-				  </div>
-				  
-				  <div class="nine columns">
-				    <div class="profession">Une formation Universitaire professionnalisée et cohérente</div>
-				    <div class="description">
-					    <ul class="fa-ul">
-					    	<li><i class="fa-li fa fa-chevron-right"></i>DESS Systèmes Électroniques (Orsay Paris-Sud)</li>
-							<li><i class="fa-li fa fa-chevron-right"></i>Maîtrise Génie Électrique et Informatique Industrielle (IUP de Cachan)</li>
-							<li><i class="fa-li fa fa-chevron-right"></i>DUT Génie Électrique et Informatique Industrielle (IUT de Nantes)</li>
-						</ul>
+					  </div>
 					</div>
-
-				  </div>
 				</div>
-			</div>
 
-      </div> <!--right_side-->
+				</div>
 
 		</div> <!-- container -->
 
+		</page> <!-- page -->
+
+
+		<script language="javascript">
+			var visible = true;
+			function toggle(obj) {
+			    var el = document.getElementById(obj);
+			    if (visible) {
+			        el.style.display = 'none';
+			        visible = false;
+			    } else {
+			    	el.style.display = 'initial';
+			        visible = true;
+			    }
+			}
+		</script>
 	</body>
 </html>

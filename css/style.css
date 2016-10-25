@@ -1,0 +1,336 @@
+/************************************************
+ * My resume style, mix of:
+ * 3ColorResume Author: office@kamsolutions.pl
+ * and
+ * Sarah Schattschneider https://github.com/sschatts
+ ************************************************/
+
+/************************************************
+ * GENERAL PAGE CONFIGURATION
+ ************************************************/
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,600,700,800);
+
+/*  21cm 29.7cm;*/
+ /* change the margins as you want them to be. */
+ /*
+@page {
+    size: A4; 
+    margin: 30mm 45mm 30mm 45mm;
+}
+
+@media print {
+
+  html, body {
+    width: 550px;
+  }
+  body {
+    margin: 0 auto;
+  }
+
+}
+*/
+
+/*******************************************
+BODY
+*******************************************/
+
+body {
+  background: rgb(204,204,204);
+  font-family: "Roboto", Arial, sans-serif;
+
+}
+
+
+/*
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+page[size="A4"][layout="portrait"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+page[size="A3"] {
+  width: 29.7cm;
+  height: 42cm;
+}
+page[size="A3"][layout="portrait"] {
+  width: 42cm;
+  height: 29.7cm;  
+}
+page[size="A5"] {
+  width: 14.8cm;
+  height: 21cm;
+}
+page[size="A5"][layout="portrait"] {
+  width: 21cm;
+  height: 14.8cm;  
+}
+
+*/
+
+@media print {
+  body, page {
+    margin: 0;
+    
+  }
+
+   .container {
+        width: auto !important;
+        min-width:21cm;
+        box-shadow: 0;
+    }
+
+}
+
+
+
+/*******************************************
+CONTAINER
+*******************************************/
+.container{
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+ /*  max-width: 21cm; */
+}
+
+
+/*******************************************
+PHOTO (AVATAR)
+*******************************************/
+.photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 5px;
+  background: #ededed;
+  display: block;
+  margin: 0 auto;
+}
+
+.photo img {
+    margin: 5px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+}
+
+/************************************************
+ * HORIZONTAL LINE
+ ************************************************/
+.horizontal-line {
+  width: 100%;
+  height: 3px;
+  background: url(../img/line.png);
+  margin-top: 15px;
+  content: '';
+  display: block;
+}
+
+/************************************************
+ * DEFAULT BOX
+ ************************************************/
+.box{
+  margin-bottom: 10px;
+}
+.box h2{
+  color: #457EA1;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.box h2:before{
+    font-family: FontAwesome;
+  content: '\f0c8';
+  margin-right: 5px;
+}
+
+.box p{
+/*  font-size: 1.3em; */
+  line-height: 1.5em;
+}
+
+/************************************************
+ * JOB EXPERIENCE
+************************************************/
+.job{
+  margin-top: 10px;
+  position: relative;
+  padding: 1em;
+  list-style: none; 
+}
+
+.job li{
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  float: left;
+}
+
+.job li:not(:last-child):before {
+    /* this is the vertical line */
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  content: '';
+  background: #457EA1;  
+  z-index: -1;
+}
+
+.job .year{
+  width: 10%;
+  background: #fff;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.job .description{
+  width: 90%;
+  float: right;
+  display: inline-block;
+  background: #eee;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 10px 0px 0 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.job .description:after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: 0;
+  left: -20px;
+  height: 0;
+  width: 0;
+  border: solid transparent;
+  border-right-color: #eee;
+  border-width: 10px;
+  pointer-events: none;
+}
+
+.job .description h3{
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+.job .description p{
+  margin-top: 5px;
+  padding: 0;
+}
+
+
+/*
+@media (min-width: 500px) {
+  .job .description{
+    width: 85%;
+  }
+}
+@media (min-width: 768px) {
+  .job .description{
+    width: 85%;
+  }
+}
+@media (min-width: 992px) {
+  .job .description{
+    width: 87%;
+  }
+}
+@media (min-width: 1200px) {
+  .job .description{
+    width: 90%;
+  }
+}
+
+*/
+
+/************************************************
+ * CONTACT BOX
+ ************************************************/
+.contact-item{
+  width: 100%;
+  float: left;
+}
+.contact-item .icon{
+  padding: 10px;
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  opacity: 0.2;
+}
+.contact-item:last-child .icon{
+  border-bottom: none;
+}
+.contact-item .fa{
+  /*font-size: 2em; */
+}
+.contact-item .title{
+  width: 80%;
+  width: calc(100% - 55px);
+ /*  font-size: 1.5em; */
+  font-weight: 700;
+  opacity: 0.9;
+}
+.contact-item .title.only{
+  margin-top: 10px;
+}
+.contact-item .description{
+  width: 80%;
+  width: calc(100% - 55px);
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/************************************************
+ * EXPERIENCES
+ ************************************************/
+.exp {
+  margin-bottom: 15px;
+}
+.exp .where{
+ /* font-size: 1.4em; */
+  font-weight: bold;
+}
+.exp .year{
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+.exp .profession{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.exp .description{
+ /* font-size: 1.2em; */
+  line-height: 1.5em;
+}
+
+
+/************************************/
+
+.right_side{
+    border-left: 2px solid rgb(140, 140, 140);
+    padding-left: 10px;
+}
+
+.left_side{
+    padding-right: 4px;
+}
+
+
