@@ -7,7 +7,7 @@
     	<meta name="author" content="Anthony Rabine">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css/normalize.css"> 
+	<!-- 	<link rel="stylesheet" href="css/normalize.css">  -->
 		<link rel="stylesheet" href="css/skeleton.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -15,40 +15,39 @@
 	</head>
 
 	<body>
-		<page size="A4">
+		<!-- <page size="A4"> -->
 		<div class="container sixteen columns">
 
 			<!-- HEADER LINE: photo + name + title -->
 	
-				<div class="five columns">
-					<!-- PHOTO (AVATAR) -->
-		            <div class="photo">
-		              <a href='#'><img src="img/avatar.png" alt="avatar" onClick="toggle('hideme')" /></a>
-		            </div>
-				</div>
+			<div class="five columns">
+				<!-- PHOTO (AVATAR) -->
+	            <div class="photo">
+	              <a href='#'><img src="img/avatar.png" alt="avatar" onClick="toggle('hideme')" /></a>
+	            </div>
+			</div>
 
-				<div class="eleven columns">
-					<h1>Anthony Rabine</h1>
-					<h2>Développeur freelance firmware/software expérimenté</h2>
-				</div>
-	
-			<!-- Presentation -->
-	
-				<div class="sixteen columns" id='hideme'>
-					<!-- ABOUT ME -->
-				      <div class="box">
-				        <h2>Présentation</h2>
-				        <p>Je suis développeur firmware depuis 2004 et passionné de programmation. Mes expériences 
-				        professionnelles et personnelles m'ont amenées à développer différents types d'applications, du pilote de 
-				        périphérique bas niveau sur microcontrôleur à de la programmation serveur back-end/front-end. Je suis également à même de concevoir une architecture firmware statique et dynamique complète et gérer techniquement une équipe de développeurs.</p>
-				        <p>Depuis 2016 je suis Freelance, je peux vous aider dans vos développement firmware sur cible temps réelle ou pour la création d'outils PC.</p>
-				      </div> 
-				</div>
+			<div class="eleven columns">
+				<h1>Anthony Rabine</h1>
+				<h2>Développeur freelance firmware/software expérimenté</h2>
+			</div>
+
+		<!-- Presentation -->
+
+			<div class="sixteen columns" id='hideme'>
+				<!-- ABOUT ME -->
+			      <div class="box">
+			        <h2>Présentation</h2>
+			        <p>Je suis développeur firmware depuis 2004 et passionné de programmation. Mes expériences 
+			        professionnelles et personnelles m'ont amenées à développer différents types d'applications, du pilote de 
+			        périphérique bas niveau sur microcontrôleur à de la programmation serveur back-end/front-end.</p>
+			        <p>Je suis également à même de concevoir une architecture firmware statique et dynamique complète et gérer techniquement une équipe de développeurs.</p>
+			        <p>Depuis 2016 je suis Freelance, je peux vous aider dans vos développement firmware sur cible temps réelle ou pour la création d'outils PC.</p>
+			      </div>
+			</div>
 
 			<div class="sixteen columns horizontal-line">
 			</div>
-		
-
 
 			<div class="five columns left_side">
 
@@ -80,32 +79,66 @@
 	            </div>
 	          </div>
 
+	          <!-- SKILLS -->
+	          <div class="box competences">
+	            <h2>Skills</h2>
 
-				<div>
-					<h4>TECHNICAL SKILLS</h4>
-					<!--spilt this into two columns to have the skills listed out
-							To fit within the five columns the columns have to be 2 and
-						  3 columns (using the skeleton)-->
-					<div class="two columns">
-						<ul class="skills">
-							<li>C++</li>
-							<li>Python</li>
-							<li>HTML/CSS</li>
-							<li>JavaScript</li>
-							<li>JSON</li>
-							<li>Java</li>
-						</ul>
-					</div> <!--two columns-->
-					<div class="three columns">
-						<ul class="skills">
-							<li>Github</li>
-							<li>Adobe Illistrator</li>
-							<li>Adobe Photoshop</li>
-							<li>Microsoft Office</li>
-							<li>Jira</li>
-						</ul>
-					</div> <!--three columns-->
-				</div> <!--small_section-->
+
+
+				<ul class="barres">
+					<li data-skills="80">Compétences 1<span style="width: 80%;"></span></li>
+					<li data-skills="60">Compétences 2<span style="width: 60%;"></span></li>
+					<li data-skills="75">Compétences 3<span style="width: 75%;"></span></li>
+					<li data-skills="40">Compétences 4<span style="width: 40%;"></span></li>
+					<li data-skills="95">Compétences 5<span style="width: 95%;"></span></li>
+				</ul>
+
+
+	            <!--
+	            <div class="skills">
+	              <div class="item-skills master">C/C++</div>
+	              <div class="item-skills proficient">CSS</div>
+	              <div class="item-skills">jQuery</div>
+	              <div class="item-skills">PHP</div>
+	              <div class="item-skills proficient">Javascript/HTML</div>
+	              <div class="skills-legend">
+	                <div class="legend-left legend">Beginner</div>
+	                <div class="legend-left legend"><span>Proficient</span></div>
+	                <div class="legend-right legend"><span>Expert</span></div>
+	                <div class="legend-right legend">Master</div>
+	              </div>
+	            </div>
+-->
+
+	          </div>
+
+
+			  <!-- LANGUAGES -->
+	          <div class="box">
+	            <h2>Langues</h2>
+	            <div id="language-skills">
+	              <div class="skill">Anglais <div class="icons pull-right">
+
+					<div class="rating pull-right">★★★<div class="bg pull-right">★★</div></div>
+
+	              </div>
+	              </div>
+		              <div class="skill">Espagnol <div class="icons pull-right">
+							<div class="rating pull-right">★<div class="bg pull-right">★★★★</div></div>              	
+	              	</div>
+	              </div>
+	            </div>
+	          </div>
+
+	          <!-- HOBBIES -->
+	          <div class="box">
+	            <h2>Loisirs</h2>
+	            <div class="hobby">&nbsp;Lecture SF</div>
+	            <div class="hobby">&nbsp;Plongée</div>
+	            <div class="hobby">&nbsp;Pétanque</div>
+	            <div class="hobby">&nbsp;OpenSource</div>
+	          </div>
+
 
 			</div> <!-- left_side -->
 
@@ -114,50 +147,44 @@
 			<div class="eleven columns right_side">
 
 				<!-- Expérience -->
-	          <div class="box">
+	          <div class="box clearfix">
 	            <h2>Expérience professionnelle</h2>
-	            <ul class="job">
-	              <li>
+	            <list class="job">
+	              <item>
 	                <div class="year">1990</div>
 	                <div class="description">
 	                  <h3>I was born in Katowice</h3>
 	                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, exercitationem, totam, dolores iste dolore est aut modi.</p>
 	                </div>
-	              </li>
-	              <li>
+	              </item>
+	              <item>
 	                <div class="year">2005</div>
 	                <div class="description">
 	                  <h3>Secondary school specializing in artistic</h3>
 	                  <p>Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.</p>
 	                </div>
-	              </li>
-	              <li>
+	              </item>
+	              <item>
 	                <div class="year">2009</div>
 	                <div class="description">
 	                  <h3>First level graduation in Graphic Design</h3>
 	                  <p>Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.</p>
 	                </div>
-	              </li>
-	              <li>
+	              </item>
+	              <item>
 	                <div class="year">2012</div>
 	                <div class="description">
 	                  <h3>Second level graduation in Graphic Design</h3>
 	                  <p>Ducimus, aliquam tempore autem itaque et accusantium!</p>
 	                </div>
-	              </li>
-	            </ul>
+	              </item>
+	            </list>
 	          </div>
 
-				<div class="box">
+				<div class="box clearfix">
 					<h2>Formation</h2>
 					<div class="exp ">
-					  <div class="two columns">
-					  <!--  <div class="where">Parcours Universitaire</div> -->
-					    <div class="year">1998 - 2003</div>
-					  </div>
-					  
-					  <div class="nine columns">
-					    <div class="profession">Une formation Universitaire professionnalisée et cohérente</div>
+					    <div class="profession">Une formation Universitaire professionnalisée et cohérente (1998-2003)</div>
 					    <div class="description">
 						    <ul class="fa-ul">
 						    	<li><i class="fa-li fa fa-chevron-right"></i>DESS Systèmes Électroniques (Orsay Paris-Sud)</li>
@@ -165,17 +192,12 @@
 								<li><i class="fa-li fa fa-chevron-right"></i>DUT Génie Électrique et Informatique Industrielle (IUT de Nantes)</li>
 							</ul>
 						</div>
-
-					  </div>
 					</div>
 				</div>
 
-				</div>
+			</div>
 
 		</div> <!-- container -->
-
-		</page> <!-- page -->
-
 
 		<script language="javascript">
 			var visible = true;

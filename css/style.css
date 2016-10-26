@@ -12,7 +12,7 @@
 
 /*  21cm 29.7cm;*/
  /* change the margins as you want them to be. */
- /*
+/* 
 @page {
     size: A4; 
     margin: 30mm 45mm 30mm 45mm;
@@ -35,8 +35,8 @@ BODY
 *******************************************/
 
 body {
-  background: rgb(204,204,204);
-  font-family: "Roboto", Arial, sans-serif;
+    background: rgb(204,204,204);
+    font-family: "Roboto", Arial, sans-serif;
 
 }
 
@@ -85,7 +85,7 @@ page[size="A5"][layout="portrait"] {
    .container {
         width: auto !important;
         min-width:21cm;
-        box-shadow: 0;
+        box-shadow: none;
     }
 
 }
@@ -109,22 +109,21 @@ CONTAINER
 PHOTO (AVATAR)
 *******************************************/
 .photo {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-  padding: 5px;
-  background: #ededed;
-  display: block;
-  margin: 0 auto;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 5px;
+    background: #ededed;
+    display: block;
+    margin: 0 auto;
 }
 
 .photo img {
     margin: 5px;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 /************************************************
@@ -144,6 +143,7 @@ PHOTO (AVATAR)
  ************************************************/
 .box{
   margin-bottom: 10px;
+ /* border: 1px solid rgb(140, 140, 140); */  /* Debug line to see box borders */
 }
 .box h2{
   color: #457EA1;
@@ -154,33 +154,33 @@ PHOTO (AVATAR)
 
 .box h2:before{
     font-family: FontAwesome;
-  content: '\f0c8';
-  margin-right: 5px;
+    content: '\f0c8';
+    margin-right: 5px;
 }
 
 .box p{
 /*  font-size: 1.3em; */
-  line-height: 1.5em;
+  /* line-height: 1.5em; */
 }
 
 /************************************************
  * JOB EXPERIENCE
 ************************************************/
 .job{
-  margin-top: 10px;
-  position: relative;
-  padding: 1em;
-  list-style: none; 
+    margin-top: 10px;
+    margin-right: 10px;
+    position: relative;
+    list-style: none; 
 }
 
-.job li{
+.job item{
   width: 100%;
   z-index: 2;
   position: relative;
   float: left;
 }
 
-.job li:not(:last-child):before {
+.job item:not(:last-child):before {
     /* this is the vertical line */
   width: 5px;
   height: 100%;
@@ -202,7 +202,7 @@ PHOTO (AVATAR)
 }
 
 .job .description{
-  width: 90%;
+  width: 85%;
   float: right;
   display: inline-block;
   background: #eee;
@@ -237,30 +237,61 @@ PHOTO (AVATAR)
   padding: 0;
 }
 
+@media only screen and (min-width: 700px) {
+    .right_side{
+        border-left: 2px solid rgb(140, 140, 140);
+        padding-left: 4px;
+
+    }
+
+}
 
 /*
-@media (min-width: 500px) {
-  .job .description{
-    width: 85%;
-  }
-}
-@media (min-width: 768px) {
-  .job .description{
-    width: 85%;
-  }
-}
-@media (min-width: 992px) {
-  .job .description{
-    width: 87%;
-  }
-}
-@media (min-width: 1200px) {
-  .job .description{
-    width: 90%;
-  }
-}
+  color: #fff;
+overflow: hidden;
+  text-overflow: ellipsis;
 
 */
+
+/************************************************
+ * SKILLS
+ ************************************************/
+
+
+.competences ul {
+
+    list-style: none; 
+}
+
+    .competences .barres li {
+        margin-bottom: 21px;
+        position: relative;
+    }
+    
+    .competences .barres li:after {
+        background: #e1e1e1;
+        bottom: -4px;
+        content: ' ';
+        display: block;
+        height: 5px;
+        position: absolute;
+        width:100%;
+    }
+    
+    .competences .barres li span {
+        background: #33a4c9;
+        bottom: -4px;
+        content: ' ';
+        display: block;
+        height: 5px;
+        left: 0;
+        position: absolute;
+        width: inherit;
+        z-index: 1;
+    }
+    
+
+
 
 /************************************************
  * CONTACT BOX
@@ -299,18 +330,68 @@ PHOTO (AVATAR)
 }
 
 /************************************************
+ * LANGUAGES
+ ************************************************/
+#language-skills .skill{
+  font-size: 1.3em;
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+#language-skills .skill .icons{
+  width: 111px;
+  height: 14px;
+/*  background: url(../img/star-grey.png) no-repeat; */>
+}
+#language-skills .skill .icons-red{
+  background: url(../img/star-red.png) no-repeat;
+}
+
+
+.rating {
+    color: #e7711b;
+    font-size: 1.2em;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
+} 
+
+.rating .bg {
+    color: #c5c5c5;
+}
+
+
+/************************************************
+ * HOBBIES
+ ************************************************/
+.hobby{
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 5px 5px 25px;
+    background: #A75265;
+    position: relative;
+    font-size: 1.2em;
+}
+
+.hobby:before{
+    content: "\f004";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    position: absolute;
+    top: 6px;
+    left: 7px;
+}
+
+
+/************************************************
  * EXPERIENCES
  ************************************************/
 .exp {
   margin-bottom: 15px;
-}
-.exp .where{
- /* font-size: 1.4em; */
-  font-weight: bold;
-}
-.exp .year{
-  font-size: 0.8em;
-  opacity: 0.7;
 }
 .exp .profession{
   font-size: 1.2em;
@@ -325,12 +406,15 @@ PHOTO (AVATAR)
 /************************************/
 
 .right_side{
+    /*
     border-left: 2px solid rgb(140, 140, 140);
-    padding-left: 10px;
+    padding-left: 4px;
+
+    */
 }
 
 .left_side{
-    padding-right: 4px;
+    padding-right: 0px;
 }
 
 

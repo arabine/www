@@ -229,9 +229,7 @@
     .row:after,
     .clearfix:after {
       clear: both; }
-    .row,
-    .clearfix {
-      zoom: 1; }
+    .row
 
     /* You can also use a <br class="clear" /> to clear columns */
     .clear {
