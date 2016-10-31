@@ -7,14 +7,13 @@
     	<meta name="author" content="Anthony Rabine">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- 	<link rel="stylesheet" href="css/normalize.css">  -->
 		<link rel="stylesheet" href="css/skeleton.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
 		<link rel="stylesheet" href="css/style.css">
 		
 	</head>
 
-	<body>
+	<body  onload="init()">
 		<!-- <page size="A4"> -->
 		<div class="container sixteen columns">
 
@@ -56,12 +55,13 @@
 	            <h2>Contact</h2>
 	            <div class="contact-item">
 	              <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
-	              <div class="title only pull-right">500 345 242</div>
+	              <div class="title only pull-right" id="tel"></div>
 	            </div>
 	            <div class="contact-item">
 	              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
-	              <div class="title only pull-right">office@kamsolutions.pl</div>
+	              <div class="title only pull-right">anthony@rabine.fr</div>
 	            </div>
+	            <!--
 	            <div class="contact-item">
 	              <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
 	              <div class="title pull-right">Twitter</div>
@@ -72,46 +72,23 @@
 	              <div class="title pull-right">Facebook</div>
 	              <div class="description pull-right">https://www.facebook.com/facebook</div>
 	            </div>
+	            -->
 	            <div class="contact-item">
 	              <div class="icon pull-left text-center"><span class="fa fa-skype fa-fw"></span></div>
 	              <div class="title pull-right">Skype</div>
-	              <div class="description pull-right">kamsolutions.pl</div>
+	              <div class="description pull-right">anthony@rabine.fr</div>
 	            </div>
 	          </div>
 
-	          <!-- SKILLS -->
+	          <!-- PROGRAMMATION -->
 	          <div class="box competences">
-	            <h2>Skills</h2>
-
-
-
+	            <h2>Programmation</h2>
 				<ul class="barres">
-					<li data-skills="80">Compétences 1<span style="width: 80%;"></span></li>
-					<li data-skills="60">Compétences 2<span style="width: 60%;"></span></li>
-					<li data-skills="75">Compétences 3<span style="width: 75%;"></span></li>
-					<li data-skills="40">Compétences 4<span style="width: 40%;"></span></li>
-					<li data-skills="95">Compétences 5<span style="width: 95%;"></span></li>
+					<li>C/C++<span style="width: 80%;"></span></li>
+					<li>Lua/Perl<span style="width: 60%;"></span></li>
+					<li>Javascript/CSS/HTML<span style="width: 30%;"></span></li>
 				</ul>
-
-
-	            <!--
-	            <div class="skills">
-	              <div class="item-skills master">C/C++</div>
-	              <div class="item-skills proficient">CSS</div>
-	              <div class="item-skills">jQuery</div>
-	              <div class="item-skills">PHP</div>
-	              <div class="item-skills proficient">Javascript/HTML</div>
-	              <div class="skills-legend">
-	                <div class="legend-left legend">Beginner</div>
-	                <div class="legend-left legend"><span>Proficient</span></div>
-	                <div class="legend-right legend"><span>Expert</span></div>
-	                <div class="legend-right legend">Master</div>
-	              </div>
-	            </div>
--->
-
 	          </div>
-
 
 			  <!-- LANGUAGES -->
 	          <div class="box">
@@ -181,6 +158,41 @@
 	            </list>
 	          </div>
 
+	          	<!-- SAVOIR -->
+	          <div class="box clearfix">
+	            <h2>Domaines de compétences</h2>
+	            <list class="job">
+	              <item>
+	                <div class="year">1990</div>
+	                <div class="description">
+	                  <h3>I was born in Katowice</h3>
+	                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, exercitationem, totam, dolores iste dolore est aut modi.</p>
+	                </div>
+	              </item>
+	              <item>
+	                <div class="year">2005</div>
+	                <div class="description">
+	                  <h3>Secondary school specializing in artistic</h3>
+	                  <p>Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.</p>
+	                </div>
+	              </item>
+	              <item>
+	                <div class="year">2009</div>
+	                <div class="description">
+	                  <h3>First level graduation in Graphic Design</h3>
+	                  <p>Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.</p>
+	                </div>
+	              </item>
+	              <item>
+	                <div class="year">2012</div>
+	                <div class="description">
+	                  <h3>Second level graduation in Graphic Design</h3>
+	                  <p>Ducimus, aliquam tempore autem itaque et accusantium!</p>
+	                </div>
+	              </item>
+	            </list>
+	          </div>
+
 				<div class="box clearfix">
 					<h2>Formation</h2>
 					<div class="exp ">
@@ -199,16 +211,35 @@
 
 		</div> <!-- container -->
 
+
+
+		<script language="javascript" src="js/aes128.js"></script>
+
 		<script language="javascript">
 			var visible = true;
+			var telPlain = "+33 (0) X XX XX XX XX";
+			var telCiph = "QwPcnPNiE1hhVYlUmujQgsDKJ/JMtnEedV5Oc3M=";
+
+			function init() {
+				document.getElementById("tel").innerHTML = telPlain;
+				 
+			}
+
 			function toggle(obj) {
 			    var el = document.getElementById(obj);
 			    if (visible) {
+			    	// Prepare for export or printing
 			        el.style.display = 'none';
 			        visible = false;
+
+			        document.getElementById("tel").innerHTML = Aes.Ctr.decrypt(telCiph, "+683Hd%¨s7hf", 256);
+
 			    } else {
+			    	// Initial full and ofuscated version.
 			    	el.style.display = 'initial';
 			        visible = true;
+
+			        init();
 			    }
 			}
 		</script>

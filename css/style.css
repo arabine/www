@@ -4,14 +4,13 @@
  * and
  * Sarah Schattschneider https://github.com/sschatts
  ************************************************/
-
 /************************************************
  * GENERAL PAGE CONFIGURATION
  ************************************************/
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,600,700,800);
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 /*  21cm 29.7cm;*/
- /* change the margins as you want them to be. */
+/* change the margins as you want them to be. */
 /* 
 @page {
     size: A4; 
@@ -30,84 +29,58 @@
 }
 */
 
-/*******************************************
-BODY
-*******************************************/
-
-body {
-    background: rgb(204,204,204);
-    font-family: "Roboto", Arial, sans-serif;
-
-}
-
-
-/*
-page {
-  background: white;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 0.5cm;
-  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-}
-page[size="A4"] {  
-  width: 21cm;
-  height: 29.7cm; 
-}
-page[size="A4"][layout="portrait"] {
-  width: 29.7cm;
-  height: 21cm;  
-}
-page[size="A3"] {
-  width: 29.7cm;
-  height: 42cm;
-}
-page[size="A3"][layout="portrait"] {
-  width: 42cm;
-  height: 29.7cm;  
-}
-page[size="A5"] {
-  width: 14.8cm;
-  height: 21cm;
-}
-page[size="A5"][layout="portrait"] {
-  width: 21cm;
-  height: 14.8cm;  
-}
-
-*/
-
 @media print {
-  body, page {
-    margin: 0;
-    
-  }
-
-   .container {
+    body {
+        margin: 0;
+    }
+    .container {
         width: auto !important;
-        min-width:21cm;
+      /*  min-width: 21cm; */
         box-shadow: none;
     }
+}
+
+@media screen {
+
+    body {
+        background: rgb(204, 204, 204);
+        font-family: "Roboto", Arial, sans-serif;
+    }
+
+    .container {
+        margin-top: 10px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        background: #fff;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+        /*  max-width: 21cm; */
+    }
+
 
 }
 
-
-
-/*******************************************
-CONTAINER
-*******************************************/
-.container{
-  margin-top: 10px;
-  padding-top: 10px;
-  margin-bottom: 10px;
-  background: #fff;
-  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
- /*  max-width: 21cm; */
+@media screen and (min-width: 700px) {
+    .right_side {
+        border-left: 2px solid rgb(140, 140, 140);
+        padding-left: 4px;
+    }
 }
 
+.right_side {
+    /*
+    border-left: 2px solid rgb(140, 140, 140);
+    padding-left: 4px;
 
-/*******************************************
-PHOTO (AVATAR)
-*******************************************/
+    */
+}
+.left_side {
+    padding-right: 0px;
+}
+
+/************************************************
+ * PHOTO (AVATAR)
+ ************************************************/
+
 .photo {
     width: 160px;
     height: 160px;
@@ -118,235 +91,202 @@ PHOTO (AVATAR)
     display: block;
     margin: 0 auto;
 }
-
 .photo img {
     margin: 5px;
     width: 150px;
     height: 150px;
     border-radius: 50%;
 }
-
 /************************************************
  * HORIZONTAL LINE
  ************************************************/
-.horizontal-line {
-  width: 100%;
-  height: 3px;
-  background: url(../img/line.png);
-  margin-top: 15px;
-  content: '';
-  display: block;
-}
 
+.horizontal-line {
+    width: 100%;
+    height: 3px;
+    background: url(../img/line.png);
+    margin-top: 15px;
+    content: '';
+    display: block;
+}
 /************************************************
  * DEFAULT BOX
  ************************************************/
-.box{
-  margin-bottom: 10px;
- /* border: 1px solid rgb(140, 140, 140); */  /* Debug line to see box borders */
-}
-.box h2{
-  color: #457EA1;
-  font-size: 1.5em;
-  font-weight: 700;
-  text-transform: uppercase;
-}
 
-.box h2:before{
+.box {
+    margin-bottom: 10px;
+    /* border: 1px solid rgb(140, 140, 140); */
+    /* Debug line to see box borders */
+}
+.box h2 {
+    color: #457EA1;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.box h2:before {
     font-family: FontAwesome;
     content: '\f0c8';
     margin-right: 5px;
 }
-
-.box p{
-/*  font-size: 1.3em; */
-  /* line-height: 1.5em; */
+.box p {
+    /*  font-size: 1.3em; */
+    /* line-height: 1.5em; */
 }
-
 /************************************************
  * JOB EXPERIENCE
-************************************************/
-.job{
+ ************************************************/
+
+.job {
     margin-top: 10px;
     margin-right: 10px;
     position: relative;
-    list-style: none; 
+    list-style: none;
 }
-
-.job item{
-  width: 100%;
-  z-index: 2;
-  position: relative;
-  float: left;
+.job item {
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    float: left;
 }
-
 .job item:not(:last-child):before {
     /* this is the vertical line */
-  width: 5px;
-  height: 100%;
-  position: absolute;
-  left: 30px;
-  top: 0;
-  content: '';
-  background: #457EA1;  
-  z-index: -1;
+    
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    left: 30px;
+    top: 0;
+    content: '';
+    background: #457EA1;
+    z-index: -1;
 }
-
-.job .year{
-  width: 10%;
-  background: #fff;
-  padding: 10px;
-  font-size: 1.2em;
-  font-weight: 700;
-  display: inline-block;
+.job .year {
+    width: 10%;
+    background: #fff;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    display: inline-block;
 }
-
-.job .description{
-  width: 85%;
-  float: right;
-  display: inline-block;
-  background: #eee;
-  margin-bottom: 10px;
-  position: relative;
-  padding: 10px 0px 0 10px;
-  border-bottom: 1px solid #ddd;
+.job .description {
+    width: 85%;
+    float: right;
+    display: inline-block;
+    background: #eee;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 10px 0px 0 10px;
+    border-bottom: 1px solid #ddd;
 }
-
 .job .description:after {
-  content: '';
-  position: absolute;
-  top: 15px;
-  right: 0;
-  left: -20px;
-  height: 0;
-  width: 0;
-  border: solid transparent;
-  border-right-color: #eee;
-  border-width: 10px;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 0;
+    left: -20px;
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    border-right-color: #eee;
+    border-width: 10px;
+    pointer-events: none;
 }
-
-.job .description h3{
-  font-size: 1.2em;
-  margin: 0;
-  padding: 0;
-  font-weight: 700;
+.job .description h3 {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
 }
-.job .description p{
-  margin-top: 5px;
-  padding: 0;
+.job .description p {
+    margin-top: 5px;
+    padding: 0;
 }
-
-@media only screen and (min-width: 700px) {
-    .right_side{
-        border-left: 2px solid rgb(140, 140, 140);
-        padding-left: 4px;
-
-    }
-
-}
-
-/*
-  color: #fff;
-overflow: hidden;
-  text-overflow: ellipsis;
-
-*/
 
 /************************************************
- * SKILLS
+ * LANGAGES DE PROGRAMMATION
  ************************************************/
 
-
 .competences ul {
-
-    list-style: none; 
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
-
-    .competences .barres li {
-        margin-bottom: 21px;
-        position: relative;
-    }
-    
-    .competences .barres li:after {
-        background: #e1e1e1;
-        bottom: -4px;
-        content: ' ';
-        display: block;
-        height: 5px;
-        position: absolute;
-        width:100%;
-    }
-    
-    .competences .barres li span {
-        background: #33a4c9;
-        bottom: -4px;
-        content: ' ';
-        display: block;
-        height: 5px;
-        left: 0;
-        position: absolute;
-        width: inherit;
-        z-index: 1;
-    }
-    
-
-
-
+.competences .barres li {
+    margin-bottom: 21px;
+    position: relative;
+}
+.competences .barres li:after {
+    box-shadow: inset 0 0 0 1000px #e1e1e1; /* hack instead of background to force display the bar when printing */
+    bottom: -10px;
+    content: ' ';
+    display: block;
+    height: 10px;
+    position: absolute;
+    width: 100%;
+}
+.competences .barres li span {
+    box-shadow: inset 0 0 0 1000px #33A4C9; /* hack instead of background to force display the bar when printing */
+    bottom: -10px;
+    content: ' ';
+    display: block;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    width: inherit;
+    z-index: 1;
+}
 /************************************************
  * CONTACT BOX
  ************************************************/
-.contact-item{
-  width: 100%;
-  float: left;
-}
-.contact-item .icon{
-  padding: 10px;
-  border-right: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
-  opacity: 0.2;
-}
-.contact-item:last-child .icon{
-  border-bottom: none;
-}
-.contact-item .fa{
-  /*font-size: 2em; */
-}
-.contact-item .title{
-  width: 80%;
-  width: calc(100% - 55px);
- /*  font-size: 1.5em; */
-  font-weight: 700;
-  opacity: 0.9;
-}
-.contact-item .title.only{
-  margin-top: 10px;
-}
-.contact-item .description{
-  width: 80%;
-  width: calc(100% - 55px);
-  font-size: 0.8em;
-  opacity: 0.7;
-}
 
+.contact-item {
+    width: 100%;
+    float: left;
+}
+.contact-item .icon {
+    padding: 10px;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    opacity: 0.2;
+}
+.contact-item:last-child .icon {
+    border-bottom: none;
+}
+.contact-item .fa {
+    /*font-size: 2em; */
+}
+.contact-item .title {
+    width: 80%;
+    width: calc(100% - 55px);
+    /*  font-size: 1.5em; */
+    
+    font-weight: 700;
+    opacity: 0.9;
+}
+.contact-item .title.only {
+    margin-top: 10px;
+}
+.contact-item .description {
+    width: 80%;
+    width: calc(100% - 55px);
+    font-size: 0.8em;
+    opacity: 0.7;
+}
 /************************************************
  * LANGUAGES
  ************************************************/
-#language-skills .skill{
-  font-size: 1.3em;
-  margin: 10px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-#language-skills .skill .icons{
-  width: 111px;
-  height: 14px;
-/*  background: url(../img/star-grey.png) no-repeat; */>
-}
-#language-skills .skill .icons-red{
-  background: url(../img/star-red.png) no-repeat;
-}
 
+#language-skills .skill {
+    font-size: 1.1em;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+#language-skills .skill .icons {
+    width: 111px;
+    height: 14px;
+}
 
 .rating {
     color: #e7711b;
@@ -355,17 +295,15 @@ overflow: hidden;
     position: relative;
     padding: 0;
     text-shadow: 0px 1px 0 #a2a2a2;
-} 
-
+}
 .rating .bg {
     color: #c5c5c5;
 }
-
-
 /************************************************
  * HOBBIES
  ************************************************/
-.hobby{
+
+.hobby {
     color: #fff;
     display: inline-block;
     margin-right: 5px;
@@ -375,8 +313,7 @@ overflow: hidden;
     position: relative;
     font-size: 1.2em;
 }
-
-.hobby:before{
+.hobby:before {
     content: "\f004";
     font-family: FontAwesome;
     font-style: normal;
@@ -385,36 +322,19 @@ overflow: hidden;
     top: 6px;
     left: 7px;
 }
-
-
 /************************************************
  * EXPERIENCES
  ************************************************/
+
 .exp {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
-.exp .profession{
-  font-size: 1.2em;
-  font-weight: bold;
+.exp .profession {
+    font-size: 1.2em;
+    font-weight: bold;
 }
-.exp .description{
- /* font-size: 1.2em; */
-  line-height: 1.5em;
+.exp .description {
+    /* font-size: 1.2em; */
+    
+    line-height: 1.5em;
 }
-
-
-/************************************/
-
-.right_side{
-    /*
-    border-left: 2px solid rgb(140, 140, 140);
-    padding-left: 4px;
-
-    */
-}
-
-.left_side{
-    padding-right: 0px;
-}
-
-
