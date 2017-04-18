@@ -1,0 +1,64 @@
+﻿(((Magazine: PC Team 83)))
+(((Rubrique : Team Pratik)))
+(((Sous Rubrique : électronique)))
+
+(((titre))) Récepteur infrarouge (1/2)
+
+(((chapo)))
+Nous vous avions présenté il y a plus d'un an un petit module récepteur infrarouge. Le fonctionnement de celui-ci était malheureusement caché, mais nous possédons maintenant les connaissances suffisantes pour développer notre version 
+de A à Z.
+
+(((texte)))
+L'électronique parait souvent magique lorsque l'on ne comprend pas son fonctionnement. Ce sentiment est d'autant plus marqué avec les systèmes à base de microcontrôleurs. Ces petits processeurs sont programmables et leur code source est souvent la clé du système. Nous allons essayer de démystifier cela en tentant de développer par nous même une application qui existe déjà mais dont le code source est non accessible. C'est ce que l'on nomme le reverse engineering : à partir de tests et d'observations seulement (le code source n'est pas accessible) il faut reproduire le même fonctionnement. Notre cas est un peu spécial car il est possible de récupérer le code objet du logiciel embarqué puis de le désassembler pour récupérer un code lisible. Néanmoins, nous nous intéresserons surtout aux techniques employées sans oublier tout ce que l'on apprendra techniquement, sur l'infrarouge par exemple. Ce mois-ci, nous allons présenter l'application et programmer le port série. Le mois prochain sera consacré à l'infrarouge proprement dit. Le module récepteur infrarouge se présente sous la forme d'un petit circuit électronique se branchant sur le port série du PC. Il possède un microcontrôleur entouré de quelques composants classiques et du récepteur infrarouge. Ce module est sensible à toute source infrarouge en provenance des télécommandes du commerce, celle d'une télévision, d'un magnétoscope ou d'une chaîne Hi-Fi, sous réserve qu'elles soient compatibles avec le protocole RC5. L'information fournie par une télécommande se verra alors envoyée au PC via le port série, sous la forme d'une série d'octets.
+ 
+(((inter))) Protocole RS232 
+Notre module va communiquer avec le PC via le port série et le protocole RS232. Tôt ou tard, nous devrons bien développer ce protocole et le mieux est de le développer en premier. En effet, cela permettra de tester facilement le décodage du signal RC5. Le cœur du module est un microcontrôleur de la famille PIC, le 16F84A, dans sa version à 20MHz. Notez qu'avec quelques modifications, le code source fonctionnera sans problème sur un autre processeur comme le 12C509. (plus petit et beaucoup moins cher) Tout d'abord, nous allons procéder à un petit rappel sur le protocole RS232. Ce protocole transmet les informations en série, donc sur un seul fil plus la masse pour la référence de tension. Pour effectuer un dialogue dans les deux sens, il faut rajouter un troisième fil. Ainsi, un fil sera consacré à l'émission de données et l'autre à la réception. Au niveau des niveaux de tension, un '1' logique sera représenté par un –12V et un '0' logique par un +12V. Ce niveau de tension a l'avantage de résister assez bien aux perturbations électriques. Au repos, c'est à dire lorsque aucune donnée n'est véhiculée, le fil est au niveau '1'. Les données sont transmises sur le fil de façon asynchrone, ce qui signifie qu'il n'y a aucune horloge transmise pour rythmer le débit des échanges. Un bit échangé dure un temps bit, c'est à dire une période de l'horloge de synchronisation. Si cette horloge est fixée à 1KHz, alors le débit sera de 1000 bits/seconde, soit 1000 bauds. (1 baud = 1 bit/seconde dans notre cas) Vu que le débit est fixe, les deux côtés (l'émetteur et le récepteur) doivent posséder une horloge de même fréquence. La trame, visible sur le schéma ci-contre, est constituée d'un bit de start, signe du début de l'émission de données, de 5 à 8 bits de données (bit de poids faible en premier), d'un bit de parité (optionnel) et enfin un, un et demi ou deux bits de stop. Cette trame est envoyée par l'élément émetteur. Le récepteur quant à lui procède de la façon suivante : il surveille la ligne de transmission et recherche un front descendant. Dès que ce front est détecté (c'est le bit de start), la logique de réception réalise un retard de un demi-temps bit. On se trouve alors au milieu du bit de start. En échantillonnant alors huit fois de un temps bit à chaque fois, on est capable de lire le niveau de tous les bits de données. Charge à la logique de vérifier la présence du bit de stop. L'ordinateur est équipé d'un composant proche du 68901, un UART (Universal Synchronous Asynchronous Receiver Transmitter) qui s'occupe de tout le décodage de la trame, dans le sens réception et émission. Il possède également tous les bons registres de façon à pouvoir paramétrer complètement la forme de la transmission : nombre de bits de données, vitesse en bauds, nombre de bits de stop et type de parité.
+
+(((inter))) Spy Game
+Amusons nous maintenant à observer la communication qui existe entre le récepteur et le PC. Pour cela, nous allons utiliser un programme appelé "snifer" qui va nous afficher les données véhiculées par le port série. Les utilisateurs de Windows 9x ou Dos peuvent utiliser Serial Watcher disponible sur le CD-Pro, il fonctionne parfaitement bien. Pour les autres, nous allons en fabriquer une version en Visual basic. Elle évoluera peu à peu afin d'intégrer de nouvelles possibilités. Notons qu'il est possible de programmer ce petit logiciel dans tout autre langage, sous réserve de ne pas accéder aux ports d'entrées sorties directement car les systèmes NT ne l'autorisent pas. Sous Linux, il faut disposer des droits du Root. Nous allons utiliser le contrôle MSComm qui fournit une gestion haut niveau du port série. Pour utiliser cette fonctionnalité, il est nécessaire de l'ajouter au projet en accédant au menu "Projet" puis "Composants". Ce programme aura pour but d'initialiser le port série et le module récepteur (voir l'encart) puis lire en permanence le port série et d'afficher la donnée qui s'y trouve. La capture d'écran ci-contre montre notre programme en pleine action. Nous voyons la réponse "OK" qui montre que le module a été convenablement initialisé. Chaque ligne suivante correspond à une touche unique d'une télécommande, le code d'identification pouvant varier d'une télécommande à l'autre. Notre programme est au point, abordons maintenant la programmation du microcontrôleur.
+
+(((inter))) Émulation du RS232
+Notre module s'appuiera sur un microcontrôleur de type 16F84 que nous avons eu l'opportunité de découvrir durant les précédents numéros.. Ce type de microcontrôleur bon marché n'est pas équipé de port série compatible RS232. Qu'à cela ne tienne, nous allons l'émuler par logiciel. Pour éviter d'être trop compliqué, nous allons limiter ses performances en fixant sa configuration à celle indiqué en encart. Il faut générer une communication à 9600 bauds, soit 9600Hz. Le temps bit sera donc de 104µs. Comme nous l'avons dit précédemment, nous allons en fait créer une routine d'attente d'une durée moitié du temps bit, soit 52µs. La boucle d'attente se matérialisera par une simple variable que l'on décomptera. La valeur initiale de cette variable est à choisir en procédant à des simulations avec MPLAB, l'environnement de développement pour notre microcontrôleur. La seconde routine à développer est la fonction d'envoi d'un caractère. Le listing de cette fonction est fournit ci-contre. Le caractère à envoyer est passé en paramètre à travers la variable TXBUF. Chaque bit de cette variable est extrait, en commençant par le bit de poids faible, puis est envoyé sur la ligne RxD du port série de l'ordinateur. Chaque DELAY dure exactement 52µs afin de respecter le temps bit à 9600 bauds.
+
+(((listing)))
+PUTCHAR:
+	movlw	0x08
+	movwf	Cmpt
+	bsf	TX	; start bit
+putc1:	
+	call	DELAY	; temps bit
+	call	DELAY	
+	rrf	TXBUF,1
+	btfsc	STATUS,0
+	goto	Un
+Zero:
+	bsf	TX
+	goto Suite
+Un:
+	bcf	TX
+Suite:
+	decfsz	Cmpt,1
+	goto	putc1
+	call	DELAY
+	call	DELAY
+	bcf	TX	; stop bit
+	call	DELAY
+	call	DELAY
+	return
+
+(((texte)))
+Au final, nous possédons une émulation complète du port série. Le code source complet ainsi que diverses ressources se situent sur le CD Pro. Le mois prochain, nous verrons comment implanter le décodage du protocole RC5 ce qui mettra fin à la fabrication de notre module.
+
+(((signature)))
+Anthony Rabine - arabine@programmationworld.com
+
+(((images)))
+elec1.tif : Notre système repose sur un principe simple et performant.
+elec2.tif : Le microcontrôleur communique avec l'ordinateur via le protocole RS232.
+elec3.tif : La trame complète du protocole RS232.
+elec4.tif : Quelques lignes de code suffisent pour communiquer avec le module infrarouge.
+
+(((encart)))
+(((titre))) Paramètres du récepteur
+Voici le résumé des paramètres du récepteur infrarouge : 9600 bauds, pas de parité, 1 bit de stop et pas de contrôle de flux. L'alimentation se fait par les broches RTS et DTR (12V). Pour l'initialiser : envoyer "IR" et attendre la réponse "OK". (caractères ASCII en majuscules)
+

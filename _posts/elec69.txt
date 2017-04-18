@@ -1,0 +1,52 @@
+﻿(((Magazine : PC Team 69)))
+(((Rubrique: Team pratik)))
+(((Sous Rubrique: électronique)))
+
+(((titre))) Domotique 2/2 : les actionneurs
+
+(((chapo)))
+Nous avons vu le mois dernier qu'il était possible de mesurer beaucoup de paramètres météorologiques. Maintenant, nous allons nous attaquer aux actionneurs, c'est à dire à la possibilité de démarrer des appareils !
+
+(((texte)))
+Dans le dernier article nous nous étions concentrés sur les capteurs météorologiques. Pour des raisons de place, nous avons passé sous silence les capteurs de position ou d'évènements tels que des barrières infrarouges ou de simples contacts secs. Cependant, ceux ci fonctionnant en tout ou rien, l'interfaçage avec un port quelconque du PC est vraiment très simple à faire. Abordons donc sans plus tarder le sujet des actionneurs qui va nous permettre de nous initier, une fois n'est pas coutume, au domaine de l'électrotechnique. On entend par actionneur tout procédé qui permet de réaliser une tache mécanique ou électromécanique afin de changer l'état d'un récepteur. L'actionneur est en quelque sorte le lien entre la partie commande, matérialisée ici par un PC,  En effet, prenons l'exemple simple (mais non moins intéressant) de la fameuse cafetière qui se mettra à préparer le café sitôt le réveil enclenché. Celui-ci est branché sur le secteur (230V) et la manière la plus simple pour démarrer la cafetière est de réaliser un petit interrupteur sur l'alimentation. C'est la solution la plus basique mais pourquoi faire plus compliquer… En revanche, comme nous le verrons dans la deuxième partie de l'article, il sera possible avec quelques composants supplémentaires de faire varier la tension du secteur.
+
+(((inter))) Café-O-Matic
+L'électrotechnique est une matière bien à part. L'électronique se préoccupe peu du courant et seule la tension intéresse : on cherche à véhiculer des informations. En électrotechnique, on transporte ou on modifie des grandeurs électriques (puissance, courant, tension) : il est donc important de pouvoir les quantifier. Prenons l'exemple d'une simple machine à café de 650 W qui est dotée d'une résistance chauffante. Ce récepteur, complètement résistif, absorbera une certaine quantité de courant. La relation entre ces grandeurs est donnée par la formule suivante :
+
+(((listing)))
+P = Ueff * Ieff
+Puissance active = Tension efficace * Intensité efficace
+Watts = Volts * Ampères
+
+(((texte)))
+La puissance active (ou puissance moyenne) calculée ici correspond à la puissance de notre machine à café. Celle-ci étant branchée sur le secteur monophasé de 230V efficaces, cela nous donne un courant efficace de :
+
+(((listing)))
+Ieff = P / Ueff
+Ieff = 650 / 230 = 2,83 A
+
+(((texte)))
+Nous obtenons un courant efficace de près de 3A, ce qui va nous aider à dimensionner tous les éléments de puissance. Et souvenez-vous bien qu'un courant efficace de 2,83A signifie un courant crête de 4 A (voir encart) qui a son importance. En effet, nous ne décidons pas à quel instant nous commutons le récepteur. Cela peut se passer sur le zéro ou sur le sommet de la sinusoïde : il n'y a donc pas le même courant à commuter. Le même calcul peut donc se répéter avec n'importe quelle charge résistive : un radiateur, une ampoule incandescente etc. Attention, évitez les ampoules à économie d'énergie qui possèdent un fonctionnement particulier et ne sont pas du tout résistives, au grand dam d'EDF…. Un circuit électronique emmagasine l'énergie lorsqu'elle est plus importante (au sommet de la sinusoïde) et s'en sert comme source le reste du temps. Malheureusement, cela à tendance à dégrader la qualité du réseau électrique.
+Passons à la réalisation de notre interface de puissance. Nous allons utiliser le port parallèle, très facile à mettre en œuvre. Le schéma ci-contre est suffisamment clair et ne possède que très peut de composants. La charge, une lampe par exemple, doit être connectée sur l'interrupteur du relais. Libre à vous d'utiliser l'une ou l'autre sortie selon la logique que vous souhaitez avoir. L'élément principal est le relais, à choisir en fonction du courant à commuter, du courant efficace en fonctionnement nominal et de la tension efficace de la charge. Nous allons prendre un relais très classique, supportant 16A sous 400V, de marque Finder. Le relais isole complètement la partie puissance de la partie commande car il n'y a aucune liaison électrique entre les deux mais une liaison mécanique. Point de danger pour notre port parallèle. Pour encore plus de sécurité, nous n'allons pas polariser directement la bobine par une broche du port parallèle mais par l'intermédiaire d'un transistor bipolaire classique et d'une alimentation externe. Soudez le tout sur une plaque à bande cuivrée, si toutefois la charge ne demande pas trop d'intensité. Dans le cas contraire, le mieux est de réaliser une plaque de cuivre avec une épaisseur de piste conséquente. Il existe d'ailleurs des tables pour connaître l'épaisseur minimale selon la puissance véhiculée. La procédure de test est simple mais doit être rigoureuse : ne branchez pas tout de suite la charge et vérifiez que la partie commande obéit bien à vos ordres, et que le relais commute bien. Les relais, du fait de leur fonctionnement mécanique, produisent un petit "clac!" lorsqu'ils fonctionnent, ce qui est pratique pour vérifier le bon fonctionnement de l'ensemble. Déconnectez ensuite la partie commande de l'ordinateur et connectez la partie puissance au réseau. Vérifiez qu'il n'y a aucun court circuit et si vous possédez un voltmètre vérifiez les tensions. Au niveau de la programmation, reportez-vous aux articles des mois précédents et notamment celui de décembre 2000 qui montre comment gérer le port parallèle en C et en Visual Basic. Sur le CD Pro, vous retrouverez les documentations des composants ainsi que le programme de test du port parallèle. Pour vos essais, utilisez une lampe de 40W par exemple, c'est ce qu'il y a de plus pratique pour voir si votre montage fonctionne.
+
+(((inter))) Varions les plaisirs
+Démarrer un appareil à l'aide du PC est déjà très amusant, mais il y a moyen de faire encore mieux. En effet, nous allons maintenant "découper" la tension réseau qui attaque notre charge. Ainsi, nous serons capables de faire varier la tension efficace. Dans le cas d'une lampe comme charge, cela revient à diminuer l'intensité lumineuse de l'ampoule. Pour cela, nous allons faire appel à un triac. Le triac est en somme deux thyristors tête-bêche qui ont en commun leur gâchette. Le courant peut passer dans les deux sens, mais seulement et seulement si une tension positive est présente sur la gâchette. Le triac est alors passant et joue dans ce cas le rôle d'un fil. Encore une fois, il n'est pas question ici d'utiliser directement une broche du port parallèle pour actionner la gâchette. On utilise alors un opto-coupleur photo triac qui assure une isolation galvanique entre la commande et la puissance. Il n'y a pas de liaison physique électrique mais l'information est passée en interne par un signal optique. L'avantage indéniable de ce montage est son absence totale de bruit comparé au montage à relais et permet de faire varier la tension du réseau à volonté. Cependant, un ordinateur est assez mal adapté pour ce type d'utilisation. En effet, les ports du PC et Windows ne sont pas prévus pour une commutation rapide et précise. Rappelons que l'on souhaite découper le réseau qui est à 50Hz, soit une période de 20ms. On peut espérer avoir un résultat satisfaisant si la précision est de 1ms au maximum. Oubliez donc Visual Basic, et préférer des langages plus rigoureux tels que Delphi ou le C. L'API Windows fourni quelques fonctions qui permettent d'obtenir des timers d'une précision de l'ordre de quelques centaines de microsecondes, en théorie. 
+
+(((inter))) Conclusion
+Ce deuxième et dernier article consacré à la domotique prend fin. Nous espérons qu'il vous aura familiarisé avec  quelques notions d'électricité, que nous ne manquerons pas de compléter dans les mois qui suivent. Nous vous encourageons à consulter le CD Pro qui contient les documentations des composants utilisés, ce qui vous évitera de les chercher sur Internet. Enfin, n'hésitez pas à nous envoyer des photos ou des schémas de vos réalisations pour les faire figurer sur le CD.
+
+(((signature)))
+Anthony Rabine - arabine@programmationworld.com
+
+(((images)))
+elec1.tif : Un relais est puissant et facile à utiliser.
+elec2.tif : Pratique, pour faire varier l'intensité d'une lampe.
+elec3.tif : Le brochage de l'opto-coupleur MOC 3041.
+
+(((encadré)))
+(((titre))) Attention !
+L'article de ce mois-ci met en œuvre des appareils électroménagers branchés sur le secteur (230V). Nous vous prévenons donc qu'il existe un danger mortel si quelques précautions ne sont pas prises. Tout d'abord veillez bien à ne travailler que sur des appareils débranchés ce qui est le minimum au point de vue sécurité. Vérifiez qu'aucun objet inflammable est proche de votre montage lorsque vous l'essayez et enfin n'hésitez pas à demander l'aide d'un adulte ou d'une personne avertie si vous n'êtes pas sûr de vous. Ceci reste un hobby, nous ne tenons pas à perdre nos lecteurs ;-)
+
+(((encadré)))
+(((titre))) Rappels d'électricité
+La tension secteur, dont l'aspect est représenté, ci-contre est de type sinusoïdal. Dans le cas d'une sinusoïde pure, nous pouvons déterminer les caractéristiques du signal à l'aide de trois grandeurs : La tension efficace, la fréquence et la valeur moyenne. Dans le cas du réseau EDF typique, la tension efficace est de 230V (elle n'est plus à 220V depuis plusieurs années), la fréquence est de 50Hz et la valeur moyenne nulle (la sinusoïde est centrée sur le 0V). Précisons également qu'il existe une relation entre la valeur efficace et la valeur maximale (ou valeur crête) de la sinusoïde : Umax = Ueff * sqrt(2) (soit 230 * sqrt(2) = 325Vmax !). La tension EDF disponible sur nos prises aura donc la formule mathématique suivante : u(t) = Umax * Ieff * sin (wt). 'w' (prononcez oméga), est appelée la pulsation électrique : elle est égale à : w = 2 * PI * f avec f la fréquence du réseau. Enfin, pour tout récepteur résistif exclusivement, le courant aura la même allure que la tension, à R près (souvenez-vous, u(t) = R * i(t), R étant une constante). Voilà quelques bases d'électrotechnique qui, bien que (très) succinctes, vous auront donné quelques notions. N'hésitez pas à consulter les manuels scolaires pour en apprendre plus.

@@ -1,0 +1,74 @@
+﻿(((Magazine : PC Team 70)))
+(((Rubrique: Team pratik)))
+(((Sous Rubrique: électronique)))
+
+(((titre))) Les cartes à puce
+
+(((chapo)))
+Intéressons-nous ce mois ci aux cartes à puce, un sujet encore sous les feux de l'actualité il y a peu. Nous n'avons pas la prétention de faire de vous des petits Humpich mais de vous familiariser avec ces cartes aux possibilités très intéressantes.
+
+(((texte)))
+La carte à puce est une invention du français Roland Moreno qui continue encore aujourd'hui à améliorer son invention. Elle a avantageusement remplacé les cartes magnétiques dans de nombreux domaines comme la téléphonie et le système bancaire. Depuis le temps qu'elles existent, les puces n'ont pas vraiment évoluées. Il existe beaucoup de formats propriétaires et le coût des terminaux de paiement limite la rapidité des évolutions. Cela se voit encore aujourd'hui avec le problème du numéro de carte qui apparaît sur les reçus. Cependant, il est possible de s'amuser avec peu de composants et de quelques lignes de code. 
+
+(((inter))) Les différentes cartes
+Il existe, au risque de simplifier les choses, trois types de cartes : les cartes à mémoire programmable (D2000 par exemple, disponible auprès des magasins d'électronique), les cartes à mémoire protégée (les cartes de téléphone par exemple, du moins pour une certaine partie), et les cartes à microprocesseur. Ce dernier type constitue ce qui se fait de mieux à l'heure actuelle ; ces puces sont de véritables petits systèmes embarqués comprenant le cœur du processeur, de la mémoire de type EEPROM (reprogrammable) et de la RAM. Certaines personnes s'en sont d'ailleurs servies pour simuler, illégalement bien entendu, des cartes de téléphone entres autres. On peut ainsi trouver des cartes à puce contenant des microcontrôleurs assez puissant comme le 16F84, ou un un processeur Atmel comme dans les Basic Card. Aujourd'hui, les cartes téléphoniques en sont à leur deuxième génération. On peut le voir grâce à la mention "T2G" (télécarte deuxième génération)  à côté du nombre de tirage de la carte. En ce qui concerne la position de la puce, deux formats existent : la position Afnor et ISO (les cartes téléphoniques).  Remarquez sur le schéma ci-contre la différence de la position de la puce ainsi que son orientation. Nous allons utiliser dans cet article une carte ISO. La capacité mémoire de la puce est très réduite : 256*1 bits pour les cartes T1G et 512*1 bits pour les cartes T2G. Sans entrer dans les détails, sachez que cette zone mémoire est séparée en deux grandes parties : la première contient toutes les informations relatives à la carte (nombre d'unités, type, numéro de série etc.), elle est différente pour chaque carte et n'est accessible qu'en lecture. La deuxième contient le nombre d'unités restantes dans la carte, chaque 0 représente une unité non consommée et chaque 1 représente une unité dépensée. Bien sûr, cette zone est protégée :-). Enfin, il existe quelques parties libres d'accès en écriture.
+
+(((inter))) Le montage
+Le montage est vraiment très simple et nous donnera accès à la carte en lecture seulement. Nos outils seront Visual Basic (ou tout autre langage) et un récepteur de carte à puce qui permet de placer des contacts sur la puce, ce qui est bien pratique. Le port parallèle sera parfait pour y câbler notre connecteur. Ce récepteur pour carte ne coûte que quelques dizaines de francs et est disponible dans tout bon magasin d'électronique. Notez que si vous souhaitez écrire dans le circuit, il vous faudra posséder une tension de 21V à l'aide de quelques composants supplémentaires. A part cela, une alimentation externe de 5V sera parfaite, bien qu'il soit possible d'alimenter la carte à l'aide des broches du port parallèle car une carte à puce ne consomme pas beaucoup (5mA environ). En ce qui concerne les signaux, la puce est compatible TTL ce qui rend le schéma exempt de composants supplémentaires. Si vous avez des problèmes de lecture, vous pouvez essayer de filtrer l'alimentation à l'aide de condensateurs adéquats.
+
+(((inter))) La programmation
+Comme nous en avons l'habitude dans cette rubrique depuis quelques temps, nous allons créer notre propre  logiciel. Bien sûr, celui-ci reste très simpliste mais il ne demande qu'à être améliorer pas vos soins. Nous allons utiliser Visual Basic qui se trouve être l'outil parfait pour cette application. N'oublions pas la dll inpout.dll qui nous est maintenant familière. En regardant les broches de la puce, nous voyons qu'il y a trois signaux d'entrée de contrôle :
+- Read/Write : indique à la puce si l'on souhaite lire sa mémoire ou y écrire des données
+- Horloge : sert à faire avancer le compteur d'adresse
+- Reset : son nom est assez explicite :)
+
+A cela s'ajoute bien sûr la broche de données qui, en cas de mode lecture, contient la donnée située à l'adresse mémoire courante. Le principe, est le suivant : après une initialisation, nous allons faire défiler un à un les bits de la mémoire en incrémentant l'adresse. Reportez-vous au chronogramme ci-contre. Voici l'algorithme qui permet de lire ces 512 bits :
+
+(((listing)))
+Do
+        Buffer = Buffer & Int(Inp(STATUS) And &H40) / 64 ' On lit et on stocke la valeur
+        Delay (20)
+        Out BASEPORT, Inp(BASEPORT) Or &H4 ' Horloge = 1 le compteur d'adresse est incrémenté
+        Delay (20)
+        Out BASEPORT, Inp(BASEPORT) And &HFB ' Horloge = 0, la donnée est présente sur la ligne
+        Delay (20)
+        i = i + 1
+Loop While i < 512
+
+(((texte)))
+C'est aussi simple que cela. Après coup, il est plus simple de regrouper ces bits par octets comme dans notre application (voir la capture ci-contre), et pourquoi pas les afficher en hexadécimal, plus simple à lire. Nous voici maintenant en possession du contenu de la mémoire de la puce, qui contient des informations très intéressantes.
+
+(((inter))) Les informations de la carte
+Les cartes T2G sont un peu plus compliquées que leurs aînées car elles contiennent des informations plus complètes, notamment sur le cryptage de certaines informations. Il y a beaucoup de bits sans signification et de place libre. Néanmoins, nous pouvons voir les détails suivants. Les deux premiers octets (octets 0 et 1) nous indiquent le type de carte : nous avons 0x8140, ce qui correspond à une carte T2G. Les bits de poids faible de l'octet 6 ainsi que l'octet 7 nous donnent le nombre d'unités de la carte : nous avons ici 0x005 soit 50 unités. De même, l'octet 12 vaut 0x7F quand la carte n'est pas vide et 0xFF lorsque celle ci est vide. Enfin, intéressons-nous au nombre d'unités restantes sur cette carte : pour une T2G de France Télécom, cette information se lit dans les octets 8 à 11. Le procédé de lecture est un peu particulier. Il s'agit d'un calcul en octal, les octets 8, 9, 10, 11 ont respectivement les poids 512, 64, 8, 1. Le nombre de 1 dans chaque octet représente le multiple de ces poids. Ainsi, nous avons pour cette carte : 0*512 + 0*64 + 7*8 + 1*1 = 57 unités de consommées. Or, le total n'est en réalité pas 50 comme on pourrait le croire, mais 59. En fait, France Télécom rajoute 9 unités à la fabrication de la puce pour réaliser des tests en usine. Au final, il nous reste donc 59-57 = 2 unités ! Beaucoup d'autres choses peuvent encore être décodées et nous vous renvoyons vers les bookmarks et une documentation située sur le CD Pro.
+
+(((inter))) Conclusion
+Nous espérons que cette petite introduction aux cartes à puce vous a intéressé, n'hésitez pas à surfer sur Internet en quêtes de montage et d'informations supplémentaires. Nous vous dirigeons vers des livres de référence comme "PC et cartes à puce" et "Cartes à puces, initiation et applications" aux éditions ETSF qui vous permettra de construire des montages plus évolués. Bien sûr, nous attendons avec impatience vos réalisations ou vos idées sur ce sujet pour les faire figurer sur le CD Pro.
+
+(((signature)))
+Anthony Rabine - arabine@programmationworld.com
+
+(((images)))
+elec1.tif : Une carte ISO à gauche et une carte Afnor à droite.
+elec2.tif : Le schéma est très simple pour lire la mémoire de la puce.
+elec3.tif : Les chronogrammes pour une lecture de la mémoire.
+elec4.tif : Les 512 bits d'une puce téléphonique.
+
+(((encadré)))
+(((titre))) Brochage de la puce
+1 : Vcc = 5V (alimentation)
+2 : R/W (lecture/écriture)
+3 : Horloge
+4 : Reset/Up
+5 : Masse
+6 : Vpp = 21V (tension de programmation)
+7 : E/S (données)
+8 : Fusible
+
+(((encadré)))
+(((titre))) Bookmark et références
+http://parodie.com/humpich/
+http://www.basiccard.com
+http://www.epanorama.net/smartcards.html
+http://www.hut.fi/Misc/Electronics/docs/smartcard/how_chips_work.txt
+http://perso.wanadoo.fr/telecard/html/an_t2g.htm
+http://www.elec.fr.st/
