@@ -3,6 +3,8 @@ layout: post
 title: "New website"
 date: 2017-02-10 16:25:06 -0700
 comments: false
+category: 
+- blog
 ---
 
 Welcome to my new personal website.

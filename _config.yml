@@ -1,39 +1,78 @@
-# Jekyll configuration
+# General Settings
+name: Anthony Rabine
+job_title: Firmware/Qt freelancer
+email: anthony@rabine.fr
+description: I am an embedded specialist and firmware architect. I also love building tools and games using Qt. Contact me!
+avatar: /cv/img/me.jpg
+favicon: /favicon.png
+# twitter_handler: your_handler
+# analytics_code: UA-XXXXXXX-2
+# disqus: your_disqus_site
 
-name: A. Rabine blog
-description: Self website and articles
+# Social Accounts
+social_networks:
+-  { name: facebook, url: '' }
+-  { name: twitter, url: '' }
+-  { name: instagram, url: '' }
+-  { name: google-plus, url: '' }
+-  { name: linkedin, url: 'https://www.linkedin.com/in/anthony-rabine-3470b8100/' }
+-  { name: skype, url: 'arabine' }
+-  { name: github, url: 'http://github.com/arabine' }
+-  { name: codepen, url: '' }
+-  { name: stack-overflow, url: '' }
+-  { name: dribbble, url: '' }
+-  { name: behance, url: '' }
+-  { name: pinterest, url: '' }
+-  { name: tumblr, url: '' }
+-  { name: youtube, url: '' }
+-  { name: vimeo, url: '' }
+-  { name: vine, url: '' }
+-  { name: 500px, url: '' }
+-  { name: flickr, url: '' }
+-  { name: spotify, url: '' }
+-  { name: steam, url: '' }
+-  { name: wordpress, url: '' }
+-  { name: xing, url: '' }
+-  { name: bitcoin, url: '' }
 
-# url is currently only used only for the RSS feed in feed.xml
-url: http://rabine.fr
+# Modules Settings
+show_categories: 1
+show_tags: 1
+show_email: 1
+show_rss: 1
+show_comments: 1
+show_menu: 1
+fixed_sidebar: 1
 
-# baseurl will often be '', but for a project page on gh-pages, it needs to
-# be the project name.
-# *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
-#     run it like so: jekyll serve --baseurl=''
-baseurl: 'arabine.github.io'
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: "false"
 
-# This can be '' to hide the Github nav button
-github: 'arabine'
+# Serving
+url: ""
+baseurl: ""
 
-# Set this to your UA-# value, or '' to disable the block completely
-gaaccount: ''
+# Includes
+include: ["_pages"]
 
-# The 'comments' setting enables comments. You'll need to select either
-# disqus or isso below to choose a comment system. Individual posts can
-# override 'comments' to disable on a post-by-post basis.
-comments: true
+# Outputting
+permalink: /:categories/:title.html
+category_dir: categories
 
-# Set this to your public isso URL to enable comments via isso. Set to '' to disable isso.
-isso: ''
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
 
-# Set this to your disqus shortname to enable comments via disqus. Set to '' to disable disqus.
-disqus: ''
-
-permalink: /:year/:month/:title
-paginate: 5
-
-highlighter: rouge
+# Conversion
 markdown: kramdown
-gems: ['jekyll-paginate', 'jekyll-sitemap']
+excerpt_separator: <!--more-->
 
-exclude: ['README.md', 'LICENSE']
+# Assets Settings
+sass:
+  sass_dir: assets/partials
+  style: compressed
