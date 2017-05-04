@@ -71,6 +71,7 @@ paginate_path: "/page:num/"
 # Conversion
 markdown: kramdown
 excerpt_separator: <!--more-->
+highlighter: rouge # or pygments or null
 
 # Assets Settings
 sass:
