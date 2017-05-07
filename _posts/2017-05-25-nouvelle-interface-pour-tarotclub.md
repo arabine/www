@@ -8,12 +8,12 @@ category:
 ---
 
 > Je développe depuis quelques années un jeu de tarot libre appelé TarotClub, créé à l'origine pour combler le manque de jeux de cartes sur Linux. Il est pour le moment 
-disponible uniquement sur les trois grands systèmes d'exploitation du monde PC. Cette série d'article expliquera le cheminement, j'espère logique, du portage du jeu sur 
+disponible uniquement sur les trois grands systèmes d'exploitation du monde PC. Cette série d'articles expliquera le cheminement, j'espère logique, du portage du jeu sur 
 mobile mais également jouable sur une page Web.
 
 # Sous le capot
 
-Attardons nous dans un premier temps sur l'aspect technique du logiciel existant. Ce bilan va nous aider dans les choix techniques pour les plateformes web et mobiles.
+Attardons nous dans un premier temps sur l'aspect technique du logiciel existant. Ce bilan va nous aider dans les choix technologiques pour les plateformes web et mobiles.
 
 ## Etat actuel
 
