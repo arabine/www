@@ -65,7 +65,7 @@ permalink: /:categories/:title.html
 category_dir: categories
 
 # Pagination
-paginate: 10
+paginate: 3
 paginate_path: "/page:num/"
 
 # Conversion
