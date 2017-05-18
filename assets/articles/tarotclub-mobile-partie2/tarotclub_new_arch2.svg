@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100.16862mm"
+   height="147.28059mm"
+   viewBox="0 0 354.9282 521.86037"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="tarotclub_new_arch2.svg"
+   inkscape:export-filename="U:\arabine.github.io\assets\articles\tarotclub-mobile-partie2\tarotclub_new_arch2.png"
+   inkscape:export-xdpi="70"
+   inkscape:export-ydpi="70">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="-279.79988"
+     inkscape:cy="301.27005"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-132.22501,-326.27772)">
+    <g
+       id="g9990">
+      <rect
+         ry="3.241509"
+         y="648.40167"
+         x="132.83998"
+         height="199.12141"
+         width="353.69824"
+         id="rect4136"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.22993553;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4189"
+         y="667.32794"
+         x="139.89084"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="667.32794"
+           x="139.89084"
+           id="tspan4191"
+           sodipodi:role="line"
+           style="font-size:17.5px;line-height:1.25">TarotClub Engine (C++)</tspan></text>
+      <g
+         transform="translate(47.544642,161.38393)"
+         id="g5055">
+        <rect
+           style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-0-5-5-8"
+           width="131.15585"
+           height="62.000004"
+           x="112.65807"
+           y="607.43237"
+           ry="1.0093017" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="177.396"
+           y="643.55988"
+           id="text4189-0-2-9-6"><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="179.4126"
+             y="643.55988"
+             id="tspan4371-2">ICL (utilities) </tspan></text>
+      </g>
+      <g
+         transform="translate(57.589285,115.84821)"
+         id="g5061">
+        <rect
+           style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-0-5-5-8-1"
+           width="131.15585"
+           height="62.000004"
+           x="273.87"
+           y="652.37708"
+           ry="1.0093017" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="339.44955"
+           y="677.04205"
+           id="text4189-0-2-9-6-7"><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="339.44955"
+             y="677.04205"
+             id="tspan4371-2-8">TarotCore</tspan><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="339.44955"
+             y="698.91705"
+             id="tspan5012">(base classes)</tspan></text>
+      </g>
+      <g
+         transform="translate(-164.73214,91.741069)"
+         id="g5066">
+        <rect
+           style="fill:#ffccaa;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-0-5-5-8-1-8"
+           width="131.15585"
+           height="62.000004"
+           x="413.3277"
+           y="596.04846"
+           ry="1.0093017" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="478.66171"
+           y="632.30719"
+           id="text4189-0-2-9-6-7-9"><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="478.66171"
+             y="632.30719"
+             id="tspan5012-9">TarotServer</tspan></text>
+      </g>
+      <g
+         transform="translate(2.3004029)"
+         id="g5396">
+        <rect
+           style="fill:#dde9af;fill-opacity:1;stroke:#000000;stroke-width:1.63686931;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-8"
+           width="149.17517"
+           height="72.679497"
+           x="219.41698"
+           y="475.14835"
+           ry="1.1831537" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="293.34067"
+           y="523.03058"
+           id="text4189-3-3-4-0-9-1-5"><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="293.34067"
+             y="523.03058"
+             id="tspan5135">Navigateur</tspan></text>
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.16456401px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M 238.07598,476.01921 V 401.91205"
+           id="path5439-6-4"
+           inkscape:connector-curvature="0" />
+        <rect
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.31572092;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:7.8943254, 7.8943254;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136-5"
+           width="329.50537"
+           height="244.57141"
+           x="142.636"
+           y="326.93558"
+           ry="3.9813921" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="148.33386"
+           y="345.63232"
+           id="text4189-1"><tspan
+             style="font-size:17.5px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             id="tspan4191-7"
+             x="148.33386"
+             y="345.63232">Solution 1</tspan></text>
+        <g
+           id="g5318"
+           transform="translate(291.68154,16.941154)">
+          <rect
+             ry="0.81615418"
+             y="334.89105"
+             x="-96.807594"
+             height="50.13522"
+             width="86.404076"
+             id="rect4136-9-5"
+             style="fill:#aaccff;fill-opacity:1;stroke:#000000;stroke-width:1.4230926;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text4189-3-3-4-0-9-1-5-2-0"
+             y="365.21741"
+             x="-53.253914"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               id="tspan5135-3-9"
+               y="365.21741"
+               x="-53.253914"
+               sodipodi:role="line"
+               style="font-size:17.50000191px;line-height:1.25;stroke-width:1px">GUI</tspan></text>
+        </g>
+        <g
+           id="g5323"
+           transform="translate(291.68154,18.94036)">
+          <rect
+             ry="0.81615418"
+             y="332.89185"
+             x="23.397968"
+             height="50.13522"
+             width="86.404076"
+             id="rect4136-9-5-4"
+             style="fill:#aaccff;fill-opacity:1;stroke:#000000;stroke-width:1.4230926;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <text
+             id="text4189-3-3-4-0-9-1-5-2-0-2"
+             y="362.85947"
+             x="66.779243"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               id="tspan5135-3-9-7"
+               y="362.85947"
+               x="66.779243"
+               sodipodi:role="line"
+               style="font-size:17.50000191px;line-height:1.25;stroke-width:1px">TCP/IP</tspan></text>
+        </g>
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.16456401px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M 358.28155,476.61149 V 402.50433"
+           id="path5439-6-4-2"
+           inkscape:connector-curvature="0" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="406.48471"
+           y="447.29898"
+           id="text4189-3-3-8-4"><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="406.48471"
+             y="447.29898"
+             id="tspan5531-76-3">WebSocket</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="286.62231"
+           y="446.2887"
+           id="text4189-3-3-8-4-1"><tspan
+             style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
+             sodipodi:role="line"
+             x="286.62231"
+             y="446.2887"
+             id="tspan5531-76-3-5">DOM/CSS/JS</tspan></text>
+      </g>
+      <rect
+         ry="0.60977811"
+         y="590.31885"
+         x="132.58276"
+         height="37.457825"
+         width="353.95544"
+         id="rect4136-0-5-5-8-1-8-9"
+         style="fill:#ffaaee;fill-opacity:1;stroke:#000000;stroke-width:0.97269201;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         id="text4189-0-2-9-6-7-9-4"
+         y="613.94775"
+         x="309.73972"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan5012-9-5"
+           y="613.94775"
+           x="309.73972"
+           sodipodi:role="line"
+           style="font-size:17.50000191px;line-height:1.25;stroke-width:1px">TCP/IP</tspan></text>
+    </g>
+  </g>
+</svg>
