@@ -33,18 +33,185 @@ y a alors deux méthodes pour la création des rencontres :
 
 Bien entendu, pour complexifier l'affaire, il faut prendre en compte la règle suivante : deux équipes ne peuvent pas se rencontrer plus d'une fois.
 
+Autre règle : en cas de nombre d'équipes impair, une équipe tirée aléatoirement est forfaitaire pour ce tour (elle ne joue pas). Une équipe ne peut être forfaitaire qu'une seule fois
+bien entendu ! Ceci est à prendre en compte lors de la création des rencontres.
+
 ## Système Suisse
 
 Le Système Suisse permet donc à tous les participants de jouer un nombre égal de parties mais tout en étant plus "juste" que le format "toutes rondes". L'inconvénient avec la méthode
-"toutes rondes" est qu'on peut se retrouver avec des rencontres injustes pour tout le monde.
+"toutes rondes" est qu'on peut se retrouver avec des rencontres injustes pour tout le monde : l'équipe la plus forte peut ne tomber que sur des rencontres faciles et inversement. D'une part,
+ce n'est drôle pour personne, d'autre part cela ne donne pas une bonne image du concours.
+
+## Classement des équipes
+
+Avant de parler de la méthode appariement, voyons comment réaliser un classement. On n'invente rien, le classement est réalisé selon le nombre de matches gagnés puis, en cas
+d'ex-aequos, on regarde le nombre de points marqués et encaissés. Cela donne, dans l'ordre :
+
+  1. Nombre de matches gagnés
+  2. Différence de la somme des points marqués avec la somme des points encaissés
+  3. Buchholz : la somme des points des adversaires recontrés
+
+Cette dernière méthode de départage permet de favoriser l'équipe ayant eu comme adversaire des équipes plus fortes.
+
+Abréviations utilisées :
+
+ * P: Games played (matches joués)
+ * W: Games won (matches gagnés)
+ * D: Games drawn (matches nuls)
+ * L: Games lost (matches perdus)
+ * PS: Points scored (points marqués)
+ * PA: Points against (points encaissés)
+ * +/-: goal difference (ie goals scored minus goals against) (points marqués moins les points encaissés)
+ * Pts: Points
+ * Bz: Buchholtz
 
 ## Appariement naïf
 
+Imaginons huit équipes, numérotées de 1 à 8. Pour la première manche, il n'y a pas le choix, toutes les rencontres seront tirées au hasard. Voici ce que cela donne, avec en
+parenthèses le résultat des matches.
+
+```
+3    contre    6   (13-1)
+2    contre    8   (13-11)
+4    contre    1   (8-13)
+7    contre    5   (13-10)
+```
+
+Maintenant, réalisons un classement basé sur la méthode de départage décrite au chapître précédent.
+
+| Equipe | W | L | PS   | PA  | +/- |
+|--------|---|---|------|-----|-----|
+| 3      | 1 | 0 |  13  |   1 |  12 |
+| 1      | 1 | 0 |  13  |   8 |   5 |
+| 7      | 1 | 0 |  13  |  10 |   3 |
+| 2      | 1 | 0 |  13  |  11 |   2 |
+| 8      | 0 | 1 |  11  |  13 |  -2 |
+| 5      | 0 | 1 |  10  |  13 |  -3 |
+| 4      | 0 | 1 |   8  |  13 |  -5 |
+| 6      | 0 | 1 |   1  |  13 | -12 |
+
+Maintenant, créons les rencontres pour la deuxième manche. Pour cela, dans le cas d'un appariement naïf, nous allons créer les couples d'équipes deux à deux en commençant par le
+haut du tableau. On respecte donc notre but initial de faire jouer les équipes en fonction de leur niveau. Il faut également faire attention à ne pas faire jouer les équipes une deuxième fois
+entre elles.
+
+Cela donne les matches suivants, avec le résultat entre parenthèses :
+
+```
+3    contre    1   (13-8)
+7    contre    2   (12-13)
+8    contre    5   (2-13)
+4    contre    6   (13-7)
+```
+
+Le classement intermédiaire devient :
+
+| Equipe | W | L | PS   | PA  | +/- |
+|--------|---|---|------|-----|-----|
+| 3      | 2 | 0 |  26  |   9 |  17 |
+| 2      | 2 | 0 |  26  |  23 |   3 |
+| 5      | 1 | 1 |  23  |  15 |   8 |
+| 7      | 1 | 1 |  25  |  23 |   2 |
+| 4      | 1 | 1 |  21  |  20 |   1 |
+| 1      | 1 | 1 |  21  |  21 |   0 |
+| 8      | 0 | 2 |  13  |  26 | -13 |
+| 6      | 0 | 2 |   8  |  26 | -18 |
+
+On continue pour la troisième manche, même algorithme :
+
+```
+3    contre    2
+5    contre    7
+4    contre    1
+8    contre    6
+```
+
+Aïe, nous avons un problème, l'équipe 5 a déjà joué contre l'équipe 7, de même avec les équipes 4 et 1. Il se peut que la troisième manche tombe bien, mais cela ne fera que repousser
+le problème à la manche 4.
+
+Une méthode semi intelligente consiste à "sauter" l'équipe qui a déjà été jouée ; par exemple ici pour trouver l'adversaire de l'équipe 5, on saute l'équipe 7 et on tombe sur
+l'équipe 4. 7 et 1 joueront donc ensemble, ce qui résoud le problème pour ce tour. Encore une fois, cela ne fait que repousser le problème et il y a for à parier que
+le tour 4 vous jouera des soucis d'appariement ...
+
+Il faut donc trouver un moyen qui nous assure un appariement le plus juste possible tout en respectant la règle de l'unicité des adversaires rencontrés.
+
 ## Littérature sur le sujets
+
+La littérature et les théories abondent sur le sujet, car il n'est pas simple. La théorie qui permet de trouver le couplage idéal se nomme la théorie des graphes. Je ne vais
+pas résumer ce sujet ici, je ferai plus mal que Wikipedia, je vous invite donc à consulter les différents articles à ce sujet.
+
+Autres mots clés pour ceux que cela intéresse : méthode Hongroise, Dutch algorithm, Jack Edmonds, Leaguevine.
+
+La solution adoptée ici s'inspire d'un peu tout cela et surtout du dernier laron : Leaguevine.
 
 # Méthode des matrices
 
-# Nombre idéal de parties
+La méthode que nous allons utiliser, très empirique et ne reposant sur aucune théorie, vise à trouver le couplage parfait entre deux équipes à l'aide de trois outils :
+
+  * La séparation en deux du classement (les "forts" et les "faibles")
+  * L'affectation d'un poids (un nombre) très élevé aux coupages non désirés (typiquement les équipes qui ont déjà jouées ensemble)
+  * Un poids en fonction de la force de chaque rencontre potentielle (basé sur la différence de points)
+
+## Etude d'un cas réel
+
+Prenons un exemple tiré d'un vrai concours. Chaque jeu est enregistré dans une base SQL, les différents identifiants sont à mettre en relation avec d'autres tables de la base (table des joueurs et
+  tables des équipes).
+
+Voici l'extrait de la base, la liste des jeux et leur résultat pour 10 équipes (concours de doublettes, 20 joueurs).
+
+![tanca]({{ site.url }}/assets/articles/tanca-swiss-pairing/turn0_games.png)
+
+Le classement après ce premier tour est le suivant :
+
+| Equipe | W | L | D   | +/- | Bz |
+|--------|---|---|------|-----|-----|
+| 166 | 1 | 0 | 0 | 13 | 0 |
+| 168 | 1 | 0 | 0 | 6 | 7 |
+| 161 | 1 | 0 | 0 | 5 | 8 |
+| 164 | 1 | 0 | 0 | 3 | 10 |
+| 160 | 1 | 0 | 0 | 1 | 12 |
+| 165 | 0 | 1 | 0 | -1 | 13 |
+| 169 | 0 | 1 | 0 | -3 | 13 |
+| 167 | 0 | 1 | 0 | -5 | 13 |
+| 162 | 0 | 1 | 0 | -6 | 13 |
+| 163 | 0 | 1 | 0 | -13 | 13 |
+
+Passons donc le résultat de cette première manche à travers la moulinette de notre algorithme. Dans un premier temps, on coupe le classement en deux : les meilleurs d'un côté, les
+plus mauvais de l'autre.
+
+Intéressons-nous à la liste des meilleurs (on procèdera de la même manière avec la deuxième liste).
+
+dans une matrice:
+
+```
+---------------  WINNERS COST MATRIX -------------------
+	166	168	161	164	160	165
+166 [ 	10000	7	8	10	12	14 ]
+168 [ 	7	10000	1	3	5	7 ]
+161 [ 	8	1	10000	2	4	6 ]
+164 [ 	10	3	2	10000	2	4 ]
+160 [ 	12	5	4	2	10000	1000 ]
+165 [ 	14	7	6	4	1000	10000 ]
+```
+
+Nous pouvons remarquer deux choses :
+
+  1. La matrice est symétrique, inutile donc de s'occuper de toutes les cases
+  2. Le poids élevé (> 1000) pour les équipes s'étant déjà rencontrées.
+
+Les autres points sont l'écart des différences entre les deux équipes. Plus cette valeur est faible, plus les équipes sont sensées être de force équivalente. La prochaine étape est de créer
+les rencontres avec cette matrice. Nous allons donc créer un arbre : l'arbre des rencontres possibles.
+
+Voici ce que cela donne :
+
+
+
+
+## Implémentation
+
+Vous trouverez un exemple d'implémentation dans le logciel "Tanca" dont le code source est disponible sur GitHub. La classe intéressante se nomme "Tournament.cpp", c'est elle
+qui implémente les calculs d'appariement et de classement.
+
+## Nombre idéal de parties
 
 Avec 4 parties jouées, il est possible de tomber sur deux équipes ayant gagnées tous leurs matchs.
 
