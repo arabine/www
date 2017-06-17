@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Tanca - Méthode d'appariement pour un tournoi de type Suisse"
-date: 2017-09-01 18:43:00 -0700
+date: 2017-06-17 20:00:00 -0700
 comments: false
-published: false
+published: true
 category:
 - blog
 - pétanque
@@ -153,8 +153,7 @@ La méthode que nous allons utiliser, très empirique et ne reposant sur aucune 
 
 ## Etude d'un cas réel
 
-Prenons un exemple tiré d'un vrai concours. Chaque jeu est enregistré dans une base SQL, les différents identifiants sont à mettre en relation avec d'autres tables de la base (table des joueurs et
-  tables des équipes).
+Prenons un exemple tiré d'un vrai concours. Chaque jeu est enregistré dans une base SQL, les différents identifiants sont à mettre en relation avec d'autres tables de la base (table des joueurs et   tables des équipes).
 
 Voici l'extrait de la base, la liste des jeux et leur résultat pour 10 équipes (concours de doublettes, 20 joueurs).
 
@@ -175,12 +174,12 @@ Le classement après ce premier tour est le suivant :
 | 162 | 0 | 1 | 0 | -6 | 13 |
 | 163 | 0 | 1 | 0 | -13 | 13 |
 
-Passons donc le résultat de cette première manche à travers la moulinette de notre algorithme. Dans un premier temps, on coupe le classement en deux : les meilleurs d'un côté, les
-plus mauvais de l'autre.
+Passons donc le résultat de cette première manche à travers la moulinette de notre algorithme. Dans un premier temps, on coupe le classement en deux : les meilleurs d'un côté, les plus mauvais de l'autre.
 
-Intéressons-nous à la liste des meilleurs (on procèdera de la même manière avec la deuxième liste).
+Intéressons-nous à la liste des meilleurs (on procèdera de la même manière avec la deuxième liste). Pour cela, nous allons créer une matrice et, pour
+chaque combinaison de rencontre on assigne notre fameux poids.
 
-dans une matrice:
+Voici ce que donne notre matrice:
 
 ```
 ---------------  WINNERS COST MATRIX -------------------
@@ -189,32 +188,103 @@ dans une matrice:
 168 [ 	7	10000	1	3	5	7 ]
 161 [ 	8	1	10000	2	4	6 ]
 164 [ 	10	3	2	10000	2	4 ]
-160 [ 	12	5	4	2	10000	1000 ]
-165 [ 	14	7	6	4	1000	10000 ]
+160 [ 	12	5	4	2	10000	10000 ]
+165 [ 	14	7	6	4	10000	10000 ]
 ```
 
 Nous pouvons remarquer deux choses :
 
   1. La matrice est symétrique, inutile donc de s'occuper de toutes les cases
-  2. Le poids élevé (> 1000) pour les équipes s'étant déjà rencontrées.
+  2. Le poids élevé (>=10000) pour les équipes s'étant déjà rencontrées (c'est le cas ici pour les équipes 165 et 160) ou les paires impossibles (deux équipes identiques)
 
 Les autres points sont l'écart des différences entre les deux équipes. Plus cette valeur est faible, plus les équipes sont sensées être de force équivalente. La prochaine étape est de créer
-les rencontres avec cette matrice. Nous allons donc créer un arbre : l'arbre des rencontres possibles.
+les rencontres avec cette matrice. Nous allons donc créer un arbre: l'arbre des rencontres possibles.
 
-Voici ce que cela donne :
+## Détermination des rencontres possibles
 
+Notre algorithme va chercher, dans la moitié de la matrice uniquement cu qu'elle est symétrique, toutes les
+rencontres possibles. Pour chaque rencontre, on calcule la somme des poids (voir le chapitre précédent). On
+rejette systématiquement les solutions ayant un total supérieur à 10000, notre limite.
 
+Nous obtenons 12 combinaisons possibles :
 
+```
+----------- Solution 1 cost is :15
+168 <--> 166
+160 <--> 161
+165 <--> 164
+
+ ----------- Solution 2 cost is :15
+168 <--> 166
+165 <--> 161
+160 <--> 164
+
+ ----------- Solution 3 cost is :17
+161 <--> 166
+160 <--> 168
+165 <--> 164
+
+ ----------- Solution 4 cost is :17
+161 <--> 166
+165 <--> 168
+160 <--> 164
+
+ ----------- Solution 5 cost is :21
+164 <--> 166
+160 <--> 168
+165 <--> 161
+
+ ----------- Solution 6 cost is :21
+164 <--> 166
+165 <--> 168
+160 <--> 161
+
+ ----------- Solution 7 cost is :17
+160 <--> 166
+161 <--> 168
+165 <--> 164
+
+ ----------- Solution 8 cost is :21
+160 <--> 166
+164 <--> 168
+165 <--> 161
+
+ ----------- Solution 9 cost is :21
+160 <--> 166
+165 <--> 168
+164 <--> 161
+
+ ----------- Solution 10 cost is :17
+165 <--> 166
+161 <--> 168
+160 <--> 164
+
+ ----------- Solution 11 cost is :21
+165 <--> 166
+164 <--> 168
+160 <--> 161
+
+ ----------- Solution 12 cost is :21
+165 <--> 166
+160 <--> 168
+164 <--> 161
+```
+
+Nous vons donc au final deux solutions possibles ayant les plus faibles totaux (15). Nous prenons n'importe laquelle, nous avons réussis à déterminer notre configuration la plus optimale pour des rencontres
+plus intéressantes.
 
 ## Implémentation
 
-Vous trouverez un exemple d'implémentation dans le logciel "Tanca" dont le code source est disponible sur GitHub. La classe intéressante se nomme "Tournament.cpp", c'est elle
-qui implémente les calculs d'appariement et de classement.
+Vous trouverez un exemple d'implémentation dans le logciel "Tanca" dont le code source est disponible sur GitHub. La classe intéressante se nomme "Tournament.cpp", c'est elle qui implémente les calculs d'appariement et de classement. Peut-être que nous y reviendrons plus en détails sur les algorithmes, si j'ai le temps d'approfondir la chose.
 
 ## Nombre idéal de parties
 
-Avec 4 parties jouées, il est possible de tomber sur deux équipes ayant gagnées tous leurs matchs.
+Avec quatre parties jouées, il est possible de tomber sur deux équipes ayant gagnées tous leurs matchs, avec 20 équipes. Bien entendu, nous pouvons les départager à l'aide des autres statistiques (différence des points et le Buchholtz). Idéalement, il faudrait jouer une cinquième partie mais pour un tournoi amateur cela commence à faire beaucoup de matchs.
 
+Je n'ai pas cherché la méthode pour déterminer le nombre idéal de matchs en fonction du nombre d'équipe. Encore quelque chose à creuser, j'éditerai cet article si je parviens à mettre la main sur quelque chose.
 
+Evidemment, au delà de cinq parties pour 20 participants, l'algorithme ne va pas pouvoir trouver de solutions en respectant la règle visant à ne pas rencontrer deux fois le même adversaire.
 
 # Conclusion
+
+Nous voici armé d'un algorithme efficace pour gérer nos tournois de Pétanque, sans stress.
