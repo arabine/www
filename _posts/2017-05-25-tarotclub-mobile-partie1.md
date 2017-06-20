@@ -75,7 +75,7 @@ Enfin, le code réseau (classes utilitaires serveur/client) contient le support 
 nativement dès le départ de façon transparente pour éviter de tout casser par la suite.
 
 
-![tarotclub]({{ site.url }}/assets/articles/tarotclub-mobile-partie1/current_arch.png)
+![tarotclub]({{ site.url }}/assets/articles/tarotclub-mobile-partie1/tarotclub_current_arch.png)
 
 **_L'architecture actuelle de TarotClub, le code GUI est décorellé du moteur de jeu._**
 

@@ -24,6 +24,10 @@ Dans tous les cas, n'hésitez pas à me contacter si vous cherchez quelqu'un pou
   * [Curriculum Vitae simple (EN) - PDF](http://rabine.fr/cv/resume.pdf)
   * [Curriculum Vitae simple (FR) - HTML](http://rabine.fr/cv)
 
+## GitHub
+
+Le code source de tous mes logiciels est disponible sur [Github](http://github.com/arabine).
+
 ## Projets industriels
 
 J'ai participé à la conception de divers produits industriels essentiellement dans le domaine du comptage et du sous-comptage divisionnaire électrique.
@@ -49,15 +53,6 @@ J'ai participé à ces projets dans les domaines suivants:
 Produits Enerdis (Groupe Chauvin-Arnoux) : Transducteur numérique, centrales de mesures, concentrateur d'impulsion
 Produits Itron : différents compteurs tarifaires pour l'international, l'Espagne, l'Arabie Aoudite, la France (Linky)
 
-## Projets communautaires
-
-Au sein d'une start-up, j'ai participé à différents projets communautaires:
-
-  * Participation à la mise en place d'une campagne de financement participatif (rédaction de la page, création de visuels, gestion du projet)
-  * Construction d'une communauté de makers autour des produits (aide à la création d'une librairie Arduino, organisation de Meetup, création mailing list, articles dans les journaux)
-  * Contact de prospects (cannaux de vente, testeurs)
-  * Travail avec des sous-traitants afin de mettre en place une identité visuelle (flyer, kakemono, vidéo)
-
 ## Projets d'écriture technique
 
 Durant mes études j'ai été pigiste au sein du défunt magazine "PC Team". J'y ai écrit pendant près de deux ans une rubrique mensuelle consacrée à l'électronique. J'ai essayé de
@@ -68,4 +63,5 @@ Vous trouverez sur ce site un certain nombre de ces articles, la plupart étant 
 ## Projets personnels
 
 Étant passionné par la programmation, j'ai conçu quelques programmes, utilitaires et jeux pour mon plaisir personnel ou pour combler un manque dans l'offre existante. Je tente de toujours
-mettre mes contributions sous licence GPL ou BSD (OpenSource), histoire de diffuser plus largement possible mon travail.
+mettre mes contributions sous licence GPL ou BSD (OpenSource), histoire de diffuser plus largement possible mon travail. Je maintiens notamment TarotClub, un jeu de Tarot et Tanca, un logiciel
+de gestion de club et de concours de Pétanque.

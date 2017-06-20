@@ -10,13 +10,13 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="100.16862mm"
-   height="136.43941mm"
-   viewBox="0 0 354.92817 483.44672"
+   height="99.01976mm"
+   viewBox="0 0 354.92817 350.85742"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="tarotclub_current_arch.svg"
-   inkscape:export-filename="U:\kickstarter\images\block_diagram.jpg"
+   inkscape:export-filename="/home/anthony/git/arabine.github.io/assets/articles/tarotclub-mobile-partie1/tarotclub_current_arch.png"
    inkscape:export-xdpi="76.152695"
    inkscape:export-ydpi="76.152695">
   <defs
@@ -29,15 +29,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="0.11258429"
-     inkscape:cy="121.99728"
+     inkscape:cx="0.1125818"
+     inkscape:cy="121.99727"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-height="1141"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -59,7 +59,7 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-133.56429,-285.67346)">
+     transform="translate(-133.56429,-418.26276)">
     <g
        id="g9921">
       <rect
@@ -75,7 +75,8 @@
          y="588.31006"
          x="141.23012"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
+         xml:space="preserve"
+         sodipodi:linespacing="0%"><tspan
            y="588.31006"
            x="141.23012"
            id="tspan4191"
@@ -97,7 +98,8 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="177.396"
            y="643.55988"
-           id="text4189-0-2-9-6"><tspan
+           id="text4189-0-2-9-6"
+           sodipodi:linespacing="0%"><tspan
              style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
              sodipodi:role="line"
              x="179.4126"
@@ -120,7 +122,8 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="339.44955"
            y="677.04205"
-           id="text4189-0-2-9-6-7"><tspan
+           id="text4189-0-2-9-6-7"
+           sodipodi:linespacing="0%"><tspan
              style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
              sodipodi:role="line"
              x="339.44955"
@@ -148,7 +151,8 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="478.66171"
            y="632.30719"
-           id="text4189-0-2-9-6-7-9"><tspan
+           id="text4189-0-2-9-6-7-9"
+           sodipodi:linespacing="0%"><tspan
              style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
              sodipodi:role="line"
              x="478.66171"
@@ -156,7 +160,7 @@
              id="tspan5012-9">TarotServer</tspan></text>
       </g>
       <g
-         transform="translate(5.3571548)"
+         transform="translate(5.3571548,0)"
          id="g9150">
         <rect
            style="fill:#aaccff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -171,7 +175,8 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="305.58701"
            y="454.62027"
-           id="text4189-3-3-4-0-9-1-5-2"><tspan
+           id="text4189-3-3-4-0-9-1-5-2"
+           sodipodi:linespacing="0%"><tspan
              style="font-size:17.50000191px;line-height:1.25;stroke-width:1px"
              sodipodi:role="line"
              x="305.58701"
@@ -191,7 +196,8 @@
          y="532.94873"
          x="311.20758"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Aeroportal;-inkscape-font-specification:'Aeroportal, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
+         xml:space="preserve"
+         sodipodi:linespacing="0%"><tspan
            id="tspan5012-9-5"
            y="532.94873"
            x="311.20758"
