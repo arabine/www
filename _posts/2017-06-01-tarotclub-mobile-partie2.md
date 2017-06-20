@@ -144,18 +144,19 @@ Idéalement, il nous faudrait à cet instant un diagramme de déploiement. Cela 
 une connaissance très parcellaire des frameworks, il est difficile d'aller plus loin pour le moment. Nous y repenserons après quelques tests, considérons nous pour le moment en phase de
 faisabilité.
 
-# Essais et échecs
+# Premiers essais (et échecs)
 
 Avant de se lancer à coprs perdu dans le développement de la GUI, lançons quelques tests pour conforter notre choix et
-avoir une meilleur visilité sur les différents écosystèmes (ou framework). La première chose à faire, afin de simplifier nos essais, est de se créer un code d'exemple mimant notre
-architecture.
+avoir une meilleur visilité sur les différents écosystèmes (ou framework).
 
-## Code de test
+## Solutions rejetées
 
-Pour le GUI, réalisons un "Hello, World" classique, l'affichage d'une primitive en WebGL. Nous utilisons la librairie Three.js pour également tenter l'usage d'une librairie tierce.
-Notre moteur se contentera, en langage C, de créer un serveur TCP/IP et attendra la connexion d'un client.
+Commençons tout d'abord par lister ce que l'on ne veut pas.
 
-Cela simule à peut près l'architecture envisagée, mais n'utilisant pas tout le code de TarotClub il se peut que l'on fasse les frais de problèmes d'intégration.
+Certains me lanceront au visage des Godot Engine, des Löve, Haxe ou autres bidules. Je n'en veux pas ! Ou ils ne gèrent pas le Web, ou ils se basent sur un écosystème totalement non-standard. L'argument OpenSource ne tient pas, car tout code peut très bien tomber dans l'oubli par manque de mainteneur. Javascript n'a pas ce problème. Et accessoirement je ne souhaite pas apprendre un
+nouveau langage.
+
+Regardons donc ce que nous fournissent quelques solutions existantes, tout du moins celles qui semblent les plus populaires vu la rapidité des évolutions des frameworks dans le Web.
 
 ## Qt WebEngine
 
@@ -175,22 +176,16 @@ aient une emprunte plus faible car il est possible d'utiliser le moteur WebView 
 
 Pour une application Desktop, cela peut être acceptable vu la taille des disques durs mais cela fait quand même un peu mal pour un simple jeu de cartes. Venant du monde de l'embarqué où une application complète tient dans une centaine de kilo-octets, ça fait drôle.
 
-Demi-échec.
+Demi-échec. il faudrait pouvoir utiliser le navigateur fournit par le système d'exploitation plutôt que d'en embarquer encore un autre.
 
 ## Support de GCC dans Android
 
 GCC va être supprimé du NDK d'Android en faveur de Clang. Donc, notamment sur Windows et Linux, le compilateur fourni dans le NDK est GCC en version 4.9. Malheureusement pour moi,
-cette version ne supporte pas bien la norme C++0x11 et je ne peux pas compiler TarotClub avec
-cette version.
+cette version ne supporte pas bien la norme C++0x11 et je ne peux pas compiler TarotClub avec cette version.
 
 Donc, je ne peux tout simplement pas utiliser Qt pour la version Android ! Impossible de trouver des informations sur l'évolution de Qt au moment d'écrire cet article, mais de toutes façons Qt devra passer ses librairies Android à Clang tôt ou tard.
 
 Nouvel échec.
-
-## Solutions rejetées
-
-Certains me lanceront au visage des Godot Engine, des Löve, Haxe ou autres bidules. Je n'en veux pas ! Ou ils ne gèrent pas le Web, ou ils se basent sur un écosystème totalement non-standard. L'argument OpenSource ne tient pas, car tout code peut très bien tomber dans l'oubli par manque de mainteneur. Javascript n'a pas ce problème. Et accessoirement je ne souhaite pas apprendre un
-nouveau langage.
 
 ## Apache Cordova
 
@@ -205,7 +200,7 @@ Cordova virtualise un système de fichiers ce qui permet de garder le code actue
 Sur le papier ça va, ça a l'air justifié et assez simple.
 
 Sauf que, il va falloir déployer du C++ en plus du GUI. Après un rapide essai non concluant en essayant de débugguer une application du mon téléphone, je commence à le mettre mentalement
-de côté. Il faut que je regarde comment lirer ue librairie C++ et l'appeler, au moins pour démarrer le serveur local, après tout se passe en TCP/IP.
+de côté. Il faut que je regarde comment lier une librairie C++ et l'appeler, au moins pour démarrer le serveur local, après tout se passe en TCP/IP.
 
 Echec partiel.
 
@@ -219,7 +214,6 @@ Quand je suis tombé sur le diagramme d'architecture, j'ai tout de suite pensé 
 
 Sur le papier, ça a l'air parfait. Reste à essayer un exemple simple avec du code C++ pour tester.
 
-
 ## Emscripten
 
 Au lieu de chercher une solution hybride (gérant le C++ et le Javascript), une autre possibilité est de transpiler le C++ en Javascript ce que permet Emscripten. Oubliez l'utilisation sous
@@ -231,6 +225,21 @@ Nouvel échec.
 
 On tient le candidat idéal : à partir de (presque) n'importe quelle source, on compile directement en langage optimisé WebAssembly, un espèce d'assembleur pour navigateur. A l'heure de l'écriture
 de ces lignes, c'est une technologie encore en phase de définition.
+
+# POC (Proof of Concept)
+
+N'étant pas particulièrement enthousiasmé par les solutions existantes, je tente, pour Android tout d'abord, un essai complet. Voici le cadre du POC.
+
+La première chose à faire est de se créer un code d'exemple mimant notre architecture. Pour le GUI, réalisons un "Hello, World" classique, l'affichage d'une primitive en WebGL. Nous utilisons la librairie Three.js pour également tenter l'usage d'une librairie tierce. Notre moteur se contentera, en C++, de créer un serveur TCP/IP et attendra la connexion d'un client en utilisant le protocole WebSocket (encore un truc à tester).
+
+Les données d'entrées sont donc :
+  * Un code d'exmple de développement natif (NDK), appel d'un code C à partir de Java
+  * Un code d'exemple d'utilisation du composant WebView (navigateur embarqué dans les Android)
+  * Un max de forums et autres entrées Stackoverflow pour activer et tweeker notre application (accès à des librairies Javascript, activation du Websocket ....)
+
+## Etape 1: compilation de TarotCore et ICL
+
+Je pars du programme d'exemple du NDK fourni par Google appelé "hello-libs". 
 
 # Conclusion
 
