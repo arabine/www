@@ -35,8 +35,10 @@ Le montage ci-dessous présente quelques produits, cela va de la centrale de mes
 
 J'ai participé à ces projets dans les domaines suivants:
 
-  * Bootloader, mise à jour sur terrain via tête optique/RJ45
+  * Bootloader, mise à jour sur terrain via tête optique/RJ45/Ethernet
+  * Lecteur de mémoire flash USB en FAT32 sur STM32
   * Sécurité (AES128 GCM) et compression d'images firmware
+  * Intégration de TCP/IP et driver MAC+PHY Ethernet (Microchip ENC28J60)
   * Protocoles de communication (DLMS/Cosem, Modbus/RTU, Modbus/TCP, CPL G1 G3, TCP/IP)
   * Affichage LCD: drivers bas niveaux et séquences d'affichages, graphismes LCD Bitmap
   * Beaucoup de pilotes bas niveau (drivers, gestion de la mémoire flash NOR, UART, SPI, I2C, RTC)
@@ -46,7 +48,7 @@ J'ai participé à ces projets dans les domaines suivants:
   * Applicatif comptage (calendrier tarifaire, registres, entrées/sorties impulsions et TOR)
   * Banc de production
   * Scripting Lua et création d'utilitaires de tests automatisés
-  * Architectures dsPIC, AVR ATmega, DSP Texas C5200, ARM Cortex-M4
+  * Architectures dsPIC, AVR ATmega, DSP Texas C5200, ARM9, ARM Cortex-M4 (STM32, SAM4)
 
 ![portfolio]({{ site.url }}/assets/portfolio/mozaic.png)
 
@@ -62,6 +64,25 @@ Vous trouverez sur ce site un certain nombre de ces articles, la plupart étant 
 
 ## Projets personnels
 
-Étant passionné par la programmation, j'ai conçu quelques programmes, utilitaires et jeux pour mon plaisir personnel ou pour combler un manque dans l'offre existante. Je tente de toujours
-mettre mes contributions sous licence GPL ou BSD (OpenSource), histoire de diffuser plus largement possible mon travail. Je maintiens notamment TarotClub, un jeu de Tarot et Tanca, un logiciel
-de gestion de club et de concours de Pétanque.
+Étant passionné par la programmation, j'ai conçu quelques programmes, utilitaires et jeux pour mon plaisir personnel ou pour combler un manque dans l'offre existante.
+
+Je tente de toujours mettre mes contributions sous licence GPL ou BSD ( Mon OpenSource), histoire de diffuser plus largement possible mon travail. Voir mon compte [Github](http://github.com/arabine) pour plus de détails.
+
+### TarotClub
+
+Je maintiens notamment TarotClub, un jeu de Tarot. Les technologies utilisées sont :
+
+  * Framework Qt
+  * Framework en pur C++ créé pour l'occasion, appelé ICL (Independant C++ Library)
+  * Du JSON, du socket réseau TCP/IP multiplateformes
+
+Plus d'information sur le site web de TarotClub [http://www.tarotclub.fr](http://www.tarotclub.fr)
+
+![portfolio]({{ site.url }}/assets/portfolio/windows-game.png)
+
+
+### Tanca
+
+J'ai également développé Tanca, un logiciel de gestion de club et de concours de Pétanque. Il permet de faciliter grandement l'oganisation des concours de Pétanque pour déterminer les rencontres en fonction du classement (développement d'un algorthme d'appariement rapide pour système de type Suisse). Plus d'information sur le site web de Tanca [http://www.tanca.fr](http://www.tanca.fr).
+
+![portfolio]({{ site.url }}/assets/portfolio/tanca.png)
