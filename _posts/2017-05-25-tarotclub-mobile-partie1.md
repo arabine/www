@@ -4,7 +4,7 @@ title: "Version mobile de TarotClub - partie 1"
 date: 2017-05-05 18:43:00 -0700
 comments: false
 category:
-- blog
+- TarotClub
 ---
 
 > Je développe depuis quelques années un jeu de tarot libre appelé TarotClub, créé à l'origine pour combler le manque de jeux de cartes sur Linux. Il est pour le moment

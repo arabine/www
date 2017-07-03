@@ -61,7 +61,7 @@ baseurl: ""
 include: ["_pages"]
 
 # Outputting
-permalink: /:categories/:title.html
+permalink: /:categories/:title/
 category_dir: categories
 
 # Pagination

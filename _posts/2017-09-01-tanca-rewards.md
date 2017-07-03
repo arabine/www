@@ -5,9 +5,7 @@ date: 2017-09-01 18:43:00 -0700
 comments: false
 published: false
 category:
-- blog
-- pétanque
-- tanca
+- Tanca
 ---
 
 > Tanca est le nom d'un logiciel de gestion d'adhérents, de tournois et de championnat conçu pour le Club de Pétanque de ma commune. Nous organisons durant la saison

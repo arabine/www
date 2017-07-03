@@ -5,7 +5,7 @@ date: 2017-06-30 18:43:00 -0700
 comments: false
 published: false
 category:
-- blog
+- TarotClub
 ---
 
 > Je développe depuis quelques années un jeu de tarot libre appelé TarotClub, créé à l'origine pour combler le manque de jeux de cartes sur Linux. Il est pour le moment
@@ -239,7 +239,9 @@ Les données d'entrées sont donc :
 
 ## Etape 1: compilation de TarotCore et ICL
 
-Je pars du programme d'exemple du NDK fourni par Google appelé "hello-libs". 
+Je pars du programme d'exemple du NDK fourni par Google appelé "hello-libs". Après compilation, tout se passe bien j'arrive à lancer l'application sur émulateur. Maintenant, on va essayer d'ajouter le code source d'ICL, la librairie d'utilitaires utilisée par TarotClub.
+
+sourceSets.main.jni.srcDirs = ['../../common/test']
 
 # Conclusion
 

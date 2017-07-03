@@ -5,10 +5,10 @@ date: 2017-06-30 18:43:00 -0700
 comments: false
 published: false
 category:
-- blog
+- TarotClub
 ---
 
-> Je développe depuis quelques années un jeu de tarot libre appelé TarotClub, créé à l'origine pour combler le manque de jeux de cartes sur Linux. Il est pour le moment 
+> Je développe depuis quelques années un jeu de tarot libre appelé TarotClub, créé à l'origine pour combler le manque de jeux de cartes sur Linux. Il est pour le moment
 disponible uniquement sur les trois grands systèmes d'exploitation du monde PC. Cette série d'articles expliquera le cheminement, j'espère logique, du portage du jeu sur
 mobile mais également jouable sur une page Web.
 
