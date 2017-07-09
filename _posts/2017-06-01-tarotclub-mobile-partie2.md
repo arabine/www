@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Version mobile de TarotClub - partie 2"
-date: 2017-06-30 18:43:00 -0700
+date: 2017-07-01 18:43:00 -0700
 comments: false
-published: false
+published: true
 category:
 - TarotClub
 ---
@@ -226,32 +226,12 @@ Nouvel échec.
 On tient le candidat idéal : à partir de (presque) n'importe quelle source, on compile directement en langage optimisé WebAssembly, un espèce d'assembleur pour navigateur. A l'heure de l'écriture
 de ces lignes, c'est une technologie encore en phase de définition.
 
-# POC (Proof of Concept)
-
-N'étant pas particulièrement enthousiasmé par les solutions existantes, je tente, pour Android tout d'abord, un essai complet. Voici le cadre du POC.
-
-La première chose à faire est de se créer un code d'exemple mimant notre architecture. Pour le GUI, réalisons un "Hello, World" classique, l'affichage d'une primitive en WebGL. Nous utilisons la librairie Three.js pour également tenter l'usage d'une librairie tierce. Notre moteur se contentera, en C++, de créer un serveur TCP/IP et attendra la connexion d'un client en utilisant le protocole WebSocket (encore un truc à tester).
-
-Les données d'entrées sont donc :
-  * Un code d'exmple de développement natif (NDK), appel d'un code C à partir de Java
-  * Un code d'exemple d'utilisation du composant WebView (navigateur embarqué dans les Android)
-  * Un max de forums et autres entrées Stackoverflow pour activer et tweeker notre application (accès à des librairies Javascript, activation du Websocket ....)
-
-## Etape 1: compilation de TarotCore et ICL
-
-Je pars du programme d'exemple du NDK fourni par Google appelé "hello-libs". Après compilation, tout se passe bien j'arrive à lancer l'application sur émulateur. Maintenant, on va essayer d'ajouter le code source d'ICL, la librairie d'utilitaires utilisée par TarotClub.
-
-sourceSets.main.jni.srcDirs = ['../../common/test']
 
 # Conclusion
 
-Voici donc, finalement, notre diagramme de déploiement qui indique, pour chaque plateforme, l'architecture utilisée.
+Voici donc, finalement, notre diagramme d'architecture qui indique, pour chaque plateforme, les modules utilisés.
 
 Mon objectif de factoriser le code graphique est partiellement atteint. Je garde une certaine déception n'ayant pas trouvé le candidat idéal. Je vais donc me débrouiller par moi
-même pour déployer le code sur différents systèmes, mon espoir repose toujours sur Qt qui, je pense, est le seul à pouvoir me fournir la solution idéale, simplement, et standard.
+même pour déployer le code sur différents systèmes, mon espoir repose toujours sur Qt qui, à terme, est le seul à pouvoir me fournir la solution idéale, simplement, et standard.
 
-Dans tous les cas la décision est prise et je peux commencer à travailler.
-
-## Liens
-
-  * Programme d'exemple : http://www.osd.net/blog/web-development/3d-board-game-in-a-browser-using-webgl-and-three-js-part-2/
+Dans tous les cas notre architecture est plus claire, je peux commencer à travailler sur un exemple réel.

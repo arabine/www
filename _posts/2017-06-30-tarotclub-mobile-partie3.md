@@ -12,42 +12,91 @@ category:
 disponible uniquement sur les trois grands systèmes d'exploitation du monde PC. Cette série d'articles expliquera le cheminement, j'espère logique, du portage du jeu sur
 mobile mais également jouable sur une page Web.
 
-# Premières modifications
 
-Le deuxième article était consacré au choix de la technologie. Ceci étant fait, commençons à modifier le programme d'exemple que nous avons trouvé. Pour rappel, il s'agit
-d'un exemple de jeu d'échecs dont la jouerie n'a pas été développée. Tant mieux, cela fera moins de choses à supprimer.
+# POC (Proof of Concept)
 
-Ce programme d'exemple affiche le plateau de jeu avec les pièces en place. Chaque pièce peut être sélectionnée et bougée dans les limites du jeu, par contre on ne peut pas
-les déposer, l'exemple se terminant là.
+N'étant pas particulièrement enthousiasmé par les solutions existantes (voir article précédent), je tente, pour Android tout d'abord, un essai complet. Voici le cadre du POC.
 
-## Affichons une carte
+La première chose à faire est de se créer un code d'exemple mimant notre architecture. Pour le GUI, réalisons un "Hello, World" classique, l'affichage d'une primitive en WebGL. Nous utilisons la librairie Three.js pour également tenter l'usage d'une librairie tierce. Notre moteur se contentera, en C++, de créer un serveur TCP/IP et attendra la connexion d'un client en utilisant le protocole WebSocket (encore un truc à tester).
 
-La première étape pour affiche une carte est d'installer Blender, le fameux logiciel libre d'édition 3D. Il nous faut ensuite un modèle de carte à jouer. Difficile de trouver
-une carte directement au format Tarot (61mm x 120mm) ; qu'à cela ne tienne, nous pouvons trouver un modèle Blender de carte classique, merci la mode du Poker. Ouvrons le
-dans blender afin de modifier ses dimensions
+Les données d'entrées sont donc :
+  * Un code d'exemple de développement natif (NDK), appel d'un code C à partir de Java
+  * Un code d'exemple d'utilisation du composant WebView (navigateur embarqué dans les Android)
+  * Un max de forums et autres entrées Stackoverflow pour activer et tweeker notre application (accès à des librairies Javascript, activation du Websocket ....)
 
-![tarotclub]({{ site.url }}/assets/articles/tarotclub-mobile-partie3/card_model.png)
+## Etape 1: compilation de TarotCore et ICL
 
-**_Un modèle récupéré sur Internet qui conviendra à notre base_**
+Je pars du programme d'exemple du NDK fourni par Google appelé "hello-libs". Après compilation, impossible de lancer l'émulateur. Je tente deux choses, je ne sais pas lequel fcontioone mais je l'écris pour l'histoire :
 
-# Premier déploiement sur Android
+{% highlight shell linenos %}
+sudo apt-get install lib64stdc++6:i386
+sudo apt-get install mesa-utils
+{% endhighlight %}
 
-Bon, nous avons une version pour navigateur. Nous avons une bonne base, maintenant assayons de déployer cette version pour Android.
+Puis j'édite le script de lancement de AndroidStudio (~/android-studio/bin/studio.sh) et j'ajoute la ligne suivante avant toute autre instruction :
 
-## Qt is your friend
+{% highlight shell linenos %}
+export LD_PRELOAD='/usr/lib/x86_64-linux-gnu/libstdc++.so.6'
+{% endhighlight %}
 
-En utilisant Qt, nous avons deux options :
+Maintenant tout se passe bien j'arrive à lancer l'application sur émulateur. Maintenant, on va essayer d'ajouter le code source d'ICL, la librairie d'utilitaires utilisée par TarotClub.
 
-  1. Partir du programme d'exemple utilisant une version modifiée de Three.js fonctionnant avec QtQuick/QML
-  2. Utiliser le conteneur Qt QtWebEngine qui embarque le moteur Chromium
+Il y a deux fichiers à modifier : le projet Gradle, essentiellement pour lui dire quelle librairie standard C++ nous allons utiliser et pour passer des paramètres à CMake. Puis, on va modifier CMake pour lui
+indiquer quels codes sources modifier.
+
+Dans le fichier 'build.gradle', on va utiliser la librairie libc++ et le compilateur Clang, tous deux offrent un très bon support de C++0x14 :
+
+```
+cmake {
+                arguments '-DANDROID_PLATFORM=android-21',
+                          '-DANDROID_TOOLCHAIN=clang',
+                          '-DANDROID_STL=c++_shared'
+                // Enables RTTI support.
+                cppFlags "-frtti"
+                // Enables exception-handling support.
+                cppFlags "-fexceptions"
+                // For TarotClub and ICL, specify the target platform
+                cppFlags "-DUSE_UNIX_OS"
+            }
+```
+
+Enfin, notre CMakeLists.txt ressemble à cela, nous avons ajouté ici qu'un seul fichier pour nos tests:
+
+```
+#[[
+ CMake file to build ICL and TarotClub source files on Android
+]]
+
+cmake_minimum_required(VERSION 3.4.1)
+
+# New path definition
+set(ICL_DIR ~/git/tarotclub/lib/icl)
+
+# Switch on the C++0x14 standard for the compiler
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+
+add_library(hello-jnicallback SHARED
+            hello-jnicallback.c)
+
+# Add the ICL library and specify the source files to build
+add_library(icl SHARED ${ICL_DIR}/util/Util.cpp)
 
 
+# Include libraries needed for TarotClub lib
+target_link_libraries(hello-jnicallback
+                      android
+                      icl
+                      log)
+
+# End of Cmake file
+```
+
+Bingo ! Notre code C++ avancé compile et la librairie semble bien liée à l'exécutable. On bouge notre projet dans l'arboresence du dépôt TarotClub et on le renomme proprement. Maintenant, on continue le travail laborieux d'ajout
+ du code source d'ICL et de TarotClub.
 
 
 
 # Conclusion
 
 ## Liens
-
-  * Blender
-  * Programme d'exemple : http://www.osd.net/blog/web-development/3d-board-game-in-a-browser-using-webgl-and-three-js-part-2/
