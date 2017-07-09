@@ -1,8 +1,8 @@
 # General Settings
 name: Anthony Rabine
-job_title: Firmware/Qt freelancer
+job_title: Firmware, Qt, Android freelancer
 email: anthony@rabine.fr
-description: Je suis un spécialiste du développement embarqué et architecte firmware. J'adore créer des outils et des jeux, surtout avec Qt. Je peux travailler pour vous !
+description: Je suis un spécialiste du développement embarqué et architecte firmware. J'adore créer des outils et des jeux, surtout avec Qt sur PC et mobile (Android). Je peux travailler pour vous !
 avatar: /cv/img/me.jpg
 favicon: /favicon.png
 # twitter_handler: your_handler
@@ -43,6 +43,8 @@ show_rss: 1
 show_comments: 0
 show_menu: 1
 fixed_sidebar: 1
+
+plugins: [jekyll-seo-tag]
 
 # Defaults
 defaults:
