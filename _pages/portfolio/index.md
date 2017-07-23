@@ -30,10 +30,9 @@ Le code source de tous mes logiciels est disponible sur [Github](http://github.c
 
 ## Projets industriels
 
-J'ai participé à la conception de divers produits industriels essentiellement dans le domaine du comptage et du sous-comptage divisionnaire électrique.
-Le montage ci-dessous présente quelques produits, cela va de la centrale de mesure au compteur tarifaire industriel en passant par des transducteurs numériques.
+Je possède une expérience de 15 ans dans l'industrie, j'y ai participé à la conception de divers produits essentiellement dans le domaine du comptage et du sous-comptage divisionnaire électrique. L'illustration présente quelques produits, cela va de la centrale de mesure au compteur tarifaire industriel en passant par des transducteurs numériques.
 
-J'ai participé à ces projets dans les domaines suivants:
+Ces projets m'ont fait découvrir les domaines suivants:
 
   * Bootloader, mise à jour sur terrain via tête optique/RJ45/Ethernet
   * Lecteur de mémoire flash USB en FAT32 sur STM32
