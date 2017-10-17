@@ -14,11 +14,17 @@ mobile mais également jouable sur une page Web.
 
 # Premières modifications
 
-Le deuxième article était consacré au choix de la technologie. Ceci étant fait, commençons à modifier le programme d'exemple que nous avons trouvé. Pour rappel, il s'agit
-d'un exemple de jeu d'échecs dont la jouerie n'a pas été développée. Tant mieux, cela fera moins de choses à supprimer.
+Le troisième article était consacré au test de notre choix technologique. Ceci étant fait, commençons à modifier le programme d'exemple.
+Je suis parti d'un exemple de jeu de dames en 3D dont la jouerie n'a pas été développée. Tant mieux, cela fera moins de choses à supprimer.
 
-Ce programme d'exemple affiche le plateau de jeu avec les pièces en place. Chaque pièce peut être sélectionnée et bougée dans les limites du jeu, par contre on ne peut pas
-les déposer, l'exemple se terminant là.
+Ce programme d'exemple affiche le plateau de jeu avec les pièces en place. Chaque pièce peut être sélectionnée et bougée dans les limites du jeu, par contre on ne peut pas les déposer, l'exemple se terminant là.
+
+## Plateau de jeu
+
+Le but est ici de transformer le plateau de dames en table de jeu de cartes. On supprime facilement les cases et on change la couleur
+du plateau par un joli vert, classique pour un tapis de jeu.
+
+
 
 ## Affichons une carte
 
@@ -33,15 +39,6 @@ dans blender afin de modifier ses dimensions
 # Premier déploiement sur Android
 
 Bon, nous avons une version pour navigateur. Nous avons une bonne base, maintenant assayons de déployer cette version pour Android.
-
-## Qt is your friend
-
-En utilisant Qt, nous avons deux options :
-
-  1. Partir du programme d'exemple utilisant une version modifiée de Three.js fonctionnant avec QtQuick/QML
-  2. Utiliser le conteneur Qt QtWebEngine qui embarque le moteur Chromium
-
-
 
 
 
