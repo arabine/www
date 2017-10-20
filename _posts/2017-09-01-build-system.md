@@ -17,16 +17,16 @@ fondamentales désirées.
 
 ## Système modulaire
 
-Votre projet aura tout intérêt à s'architectuer autour d'une organisation de code modulaire, ou par composants. Chaque fonction est ainsi bien
+Votre projet aura tout intérêt à s'architecturer autour d'une organisation de code modulaire, ou par composants. Chaque fonction est ainsi bien
 détourée, indépendante et accessible via des interfaces agnostiques. Il y a plusieurs avantages à cela :
 
-  1. Vos composants seront ré-utilisables
+  1. Vos composants seront réutilisables
   2. Les changements seront moins lourds et potentiellement moins invasifs (pas de code spaghettis)
   3. Il est plus facile de tester un module indépendant, surtout avec des outils automatisés
 
-Bien entenu cela est de la théorie, en pratiques certains composants sont très fortement liés entre eux et il est facile, au cours d'un gros développement, de "casser" cette belle architecture. Il faudra donc prévoir beaucoup de tests et de revue de code pour éviter cet écueuil.
+Bien entendu cela est de la théorie, en pratique certains composants sont très fortement liés entre eux et il est facile, au cours d'un gros développement, de "casser" cette belle architecture. Il faudra donc prévoir beaucoup de tests et de revue de code pour éviter cet écueil.
 
-Notre architecture logicielle par composant se matérialisera par un répertoire pour chaque module logiciel. Ce répertoire doit pouvoir être relocalisable, c'est-à-dir qu'il doit pouvoir se
+Notre architecture logicielle par composant se matérialisera par un répertoire pour chaque module logiciel. Ce répertoire doit pouvoir être délocalisable, c'est-à-dire qu'il doit pouvoir se
 trouver à n'importe quel endroit d'une arborescence sans le modifier, notamment les chemins où se trouvent les fichiers sources.
 
 ## Multi-cibles
@@ -39,7 +39,7 @@ Un projet logiciel aura très souvent besoin de générer plusieurs fichiers de 
   * Un exécutable pour les tests automatisés (Jenkins ...)
   * Un exécutable de simulation (BSP simulée ou fonctionnant sur ordinateur hôte)
 
-Dès lors, vu que les cibles vont partager beaucoup de code en commun, il faudra un sysème de construction lui aussi modulaire capable de récupérer différents modules logiciels pour une cible donnée.
+Dès lors, vu que les cibles vont partager beaucoup de code en commun, il faudra un système de construction lui aussi modulaire capable de récupérer différents modules logiciels pour une cible donnée.
 
 ## Outils et systèmes variés
 
@@ -53,7 +53,7 @@ Si cela fonctionne, alors vous avez parfaitement "wrappé" vos interfaces systè
 
 Enfin, et ce n'est pas un moindre argument, gardons un système de construction simple ! Les systèmes à base de Makefile peuvent finir en véritable monstre impossible à maintenir. Pour y parvenir, ne tentons pas de résoudre tous les problèmes, surtout ceux liés à l'environnement du produit. S'il y a des spécificités, alors celles-ci seront gérées au niveau projet, pas au niveau du moteur.
 
-Ajoutons des surcouches, et évitons d'ajouter des fonctions que très rarement utilisées qui n'apportent finalement pas grand chose. C'est là un bon exercice également, le développeur doit faire l'effort de distingurer, à tout moment :
+Ajoutons des surcouches, et évitons d'ajouter des fonctions que très rarement utilisées qui n'apportent finalement pas grand chose. C'est là un bon exercice également, le développeur doit faire l'effort de distinguer, à tout moment :
 
   * Si la fonction est générique, alors mettons la en standard, sous une forme agnostique (nommage, define ou option générique)
   * Si la fonction est spécifique, la placer dans des fichiers propres au projet
@@ -66,7 +66,7 @@ Enfin, nous voulons également avoir une certaine simplicité dans l'écriture d
 
 Il existe deux grandes familles de moteur de construction basé sur Make :
 
-  * Les récurcifs : Un makefile principal lance des sous makefile, un process est créé à chaque fois. Avantage: les sous modules peuvent être construits indépendamment, inconvénient: les variables ne peuvent pas être transmises du Makefile enfant au parent
+  * Les récursifs : Un makefile principal lance des sous makefile, un process est créé à chaque fois. Avantage: les sous modules peuvent être construits indépendamment, inconvénient: les variables ne peuvent pas être transmises du Makefile enfant au parent
   * Les non-récursifs : le makefile principal inclue tous les sous makefile avant exécution
 
 Nous allons nous orienter vers la deuxième famille de makefile, les non-récursifs. Ayant une petite expérience avec la première famille, il s'avère que les avantages sont peu nombreux par rapport à la complexité générale, un peu plus importante qu'avec les non-récursifs.
@@ -78,7 +78,7 @@ Voici ce que cela donne, en image :
 ![tarotclub]({{ site.url }}/assets/articles/build-system/arch.png)
 
 
-Chaque module, ou composant, est un répertoire. Celui-ci peut être organisé comme il veut à l'intérieur (avec des sous répertoires), même si le mieux est de respecter un certain standard au sein de votre projet (répertoire inc, src, doc etc.). A la racine de celui-ci se trouve notre fichier Makefile inclu par le moteur. Il ne se nomme pas "Makefile" pour ne pas confondre avec le fichier racine du projet, mais "Module.mk".
+Chaque module, ou composant, est un répertoire. Celui-ci peut être organisé comme il veut à l'intérieur (avec des sous répertoires), même si le mieux est de respecter un certain standard au sein de votre projet (répertoire inc, src, doc etc.). A la racine de celui-ci se trouve notre fichier Makefile inclut par le moteur. Il ne se nomme pas "Makefile" pour ne pas confondre avec le fichier racine du projet, mais "Module.mk".
 
 Le répertoire "build" à la racine du dépôt contient le build system proprement dit et sera l'emplacement des fichiers de sorties (objets, exécutables, map ...).
 
@@ -87,7 +87,7 @@ Le Makefile chapeau est donc situé à la racine. Il faut garder en tête certai
 
 ## Fichier module
 
-Intéressons nous au fichier make de chaque module. Comme on le souhaite, il se veut minimaliste afin de faciliter l'ajout de modules à un projet existant. La première chose à faire est
+Intéressons-nous au fichier make de chaque module. Comme on le souhaite, il se veut minimaliste afin de faciliter l'ajout de modules à un projet existant. La première chose à faire est
 de détecter dans quel chemin nous sommes. Pour cette fonctionnalité, nous avons piqué le code au projet Google Android qui a la même problématique que nous (en plus compliqué).
 
 {% highlight makefile linenos %}
@@ -103,7 +103,7 @@ Nous avons rempli notre cahier des charges au niveau de la simplicité, de la mo
 
 Si le module possède des sous répertoires, il suffit de les ajouter dans la variable 'INCLUDES' pour que les fichiers d'en-tête puissent être trouvés. Par défaut, le moteur ajoute chaque module
 d'un projet comme répertoire d'inclusion à la compilation ce qui permet d'utiliser des fichiers d'un autre module même si cela doit être utilisé avec parcimonie. En effet, il faut à tout pris
-casser le plus possible la dépendance entre les modules logiciels, sans ça il sera difficile de ré-utiliser un module sans ses petits copains.
+casser le plus possible la dépendance entre les modules logiciels, sans ça il sera difficile de réutiliser un module sans ses petits copains.
 
 Voici l'exemple avec des sous répertoires :
 
@@ -128,7 +128,7 @@ Le fichier projet se nomme "Makefile" et il est préférable de le placer à la 
 ce fichier. Comme nous l'avons expliqué, ce fichier peut être vu comme le fichier principal de votre projet, celui qui va décrire les cibles à construire à l'aide des différents modules.
 
 Une des premières choses à faire est de déclarer nos modules, ou ensemble de modules si besoin, en fonction de leur emplacement dans l'arborescence. Ici tous les chemins sont relatifs ce qui
-permet de garder une bonne clareté dans le fichier.
+permet de garder une bonne clarté dans le fichier.
 
 {% highlight makefile linenos %}
 LIB_BASE				:= lib/system lib/database lib/application lib/crypto lib/ip
@@ -160,21 +160,23 @@ server: $(OBJECTS)
   $(call linker, $(OBJECTS), $(APP_LIBS), my_app_name)
 {% endhighlight %}
 
-Notez que l'on peut spécifier le nom de l'exécutable final en variable d'appelle de la fonction 'linker'. Le système est vraiment très simple d'écriture et permet de jouer avec les variables
+Notez que l'on peut spécifier le nom de l'exécutable final en variable d'appel de la fonction 'linker'. Le système est vraiment très simple d'écriture et permet de jouer avec les variables
 que vous voulez. Mais il n'est pas encore parfait !
 
 ## Inconvénients
 
 Dans le cadre d'un projet multi-cibles, il peut être intéressant de séparer le Makefile projet en deux sous fichiers. En effet dans l'exemple présenté ici on ne définit pas de cible
-par défaut, le 'make all'. Dans l'idée il s'agit de tout constuire, toutes les cibles, alors qu'ici il faut explicitement écrire quelle cible unique nous voulons générer. Dès lors, le Makefile
-projet principal appelera un autre sous Makefile projet ou l'incluera selon l'astuce trouvée.
+par défaut, le 'make all'. Dans l'idée il s'agit de tout construire, toutes les cibles, alors qu'ici il faut explicitement écrire quelle cible unique nous voulons générer. Dès lors, le Makefile
+projet principal appellera un autre sous Makefile projet ou l'inclura selon l'astuce trouvée.
 
 Notre moteur est également très lié à GCC, il faut donc que l'on définisse un système de variable d'architecture, passée en paramètre, et des fichiers de configuration dédiés à chaque
 compilateur (dans le monde embarqué il en existe plusieurs).
 
 Enfin, on tentera de le faire évoluer pour intégrer Qt, un framework que j'utilise beaucoup mais un peu particulier à compiler.
 
+Mais gardez à l'esprit qu'un moteur de construction, même s'il faut éviter de trop toucher ses entrailles une fois stable, est du aussi du code qu'il faudra maintenir et faire évoluer réguièrement à l'instar de tout autre code source.
+
 # Conclusion
 
-Nous voici donc dotés d'un sytème simple, reproductible et extensible pour nos projets modulaires. Nous l'utiliserons dans le cadre d'un prochain petit projet mixant coode
+Nous voici donc dotés d'un système simple, reproductible et extensible pour nos projets modulaires. Nous l'utiliserons dans le cadre d'un prochain petit projet mixant code
 embarqué et logiciel PC.
