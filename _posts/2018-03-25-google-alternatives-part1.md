@@ -112,4 +112,8 @@ Et voilà, d'un coup on se sent mieux, on a vraiment l'impression de maîtriser 
 
 Côté PC c'est pratique, tout est regroupé sous un même logiciel : Thunderbird.
 
+
+![tarotclub]({{ site.url }}/assets/articles/outils-partie1/thunderbird.png)
+
+
 Finalement, mon compte Google ne me sert plus qu'au Drive et à acheter des applications. Nous verrons dans un prochain billet comment là encore trouver des alternatives.
