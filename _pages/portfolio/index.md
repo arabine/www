@@ -4,25 +4,35 @@ title:  "Portfolio"
 permalink: "/portfolio/"
 ---
 
-En tant que développeur freelance, je peux vous aider à concrétiser votre projet. Vous trouverez ci-dessous quelques exemples
+En tant que développeur Freelance, je peux vous aider à concrétiser votre projet. Vous trouverez ci-dessous quelques exemples
 de mes travaux.
 
-Dans tous les cas, n'hésitez pas à me contacter si vous cherchez quelqu'un pour:
+Je suis Ingénieur C/C++ indépendant possédant deux expertises majeures :
 
-**Volet développement logiciel**
-  * Développer du logiciel embarqué sur cible microcontrôleur (ARM, AVR...) avec ou sans RTOS
-  * Concevoir un outil PC, par exemple un outil de test automatisé (j'utilise généralement du Qt/C++ avec ou sans Lua/Javascript)
+# Expertise embarquée
 
-**Volet communautaire/rédactionnel**
-  * Participer à la mise en place d'une campagne de financement participatif
-  * Gérer une communauté (mailing, forum, blog)
-  * Écrire des articles techniques ou un manuel utilisateur
+  * Plateforme type microcontrôleur (ARM, Atmel , DSP...). Je suis à l'aise avec tous les outils libres et propriétaires (IAR/Keil/GNU GCC)
+  * Expert C/C++ embarqué optimisé sur RTOS
+  * 15 ans d'expérience industrielle en R&D (voir mon portfolio)
+  * Je possède un bon réseau de partenaires industriels (conception mécanique / électronique / production)
+
+# Expertise Qt/QML, développement d'outils PC
+
+  * Très bonne connaissance du framework Qt
+  * Expertise programmation système Linux et Windows (API Win32)
+  * Je peux réaliser vos outils PC très rapidement (tests automatisés, reporting, analyse de données, scripting embarqué, bases de données SQLite)
+
+Créateur du projet TarotClub ♣, jeu de Tarot (https://www.tarotclub.fr)
+Créateur du projet Tanca, logiciel de gestion de club et de concours de Pétanque (https://www.tanca.fr)
+
+Je suis membre Premium de la FEDae (https://www.federation-auto-entrepreneur.fr/), vous pouvez avoir confiance.
+
+![portfolio]({{ site.url }}/assets/portfolio/fed-ae.png)
 
 ## CV
 
   * [Curriculum Vitae complet (FR) - PDF](http://rabine.fr/cv/CV.pdf)
-  * [Curriculum Vitae simple (EN) - PDF](http://rabine.fr/cv/resume.pdf)
-  * [Curriculum Vitae simple (FR) - HTML](http://rabine.fr/cv)
+  * [Curriculum Vitae simple (English) - HTML](http://rabine.fr/cv)
 
 ## GitHub
 
