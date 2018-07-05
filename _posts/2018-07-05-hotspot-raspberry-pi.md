@@ -10,7 +10,7 @@ category:
 ---
 
 > Certes, il est plus facile d'acheter un hotspot tout fait, mais j'en ai vraiment marre des produits dont le support finit toujours par
-terminer sans plus aucune mise à jour de la part du fabricant. Je préfère donc opter pour un système plus souble et OpenSource. Mon usage de ce hotspot 4G : ligne internet pro de secours, hotspot multimédia pendant le week-end.
+terminer sans plus aucune mise à jour de la part du fabricant. Je préfère donc opter pour un système plus souple et OpenSource. Mon usage de ce hotspot 4G : ligne internet pro de secours, hotspot multimédia pendant le week-end.
 
 # Matériel
 
@@ -21,7 +21,7 @@ Pour ce projet, il faut rassembler :
   * cable liaison série/USB FTDI ou clavier/écran ou en SSH (paramétrage initial)
   * Dongle 4G Huawei e3372
 
-![hotspot]({{ site.url }}/assets/articles/hotspot-rpi/ftdi.png)
+![hotspot]({{ site.url }}/assets/articles/hotspot-rpi/ftdi.jpg)
 
 J'aime bien utiliser un câble FTDI pour me brancher sur le PI, ce qui permet d'avoir la console Linux même sans réseau. Et c'est plus pratique que de jongler avec un clavier/écran supplémentaire.
 
@@ -31,7 +31,7 @@ Pour le branchement du câble série FTDI, il faut brancher le Tx du Pi sur le R
 
 Concernant le dongle, le Huawei est très bien et a l'avantage de fonctionner sans aucune manipulation sous Linux. J'ai acheté une version directement sur AliExpress avec une antenne amplificatrice intérieure.
 
-![hotspot]({{ site.url }}/assets/articles/hotspot-rpi/Huawei-E3372.png)
+![hotspot]({{ site.url }}/assets/articles/hotspot-rpi/Huawei-E3372.jpg)
 
 # Logiciel
 
