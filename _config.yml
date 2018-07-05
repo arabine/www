@@ -12,10 +12,10 @@ favicon: /favicon.png
 # Social Accounts
 social_networks:
 -  { name: facebook, url: '' }
--  { name: twitter, url: '' }
+-  { name: twitter, url: 'https://twitter.com/AnthonyRabine' }
 -  { name: instagram, url: '' }
 -  { name: google-plus, url: '' }
--  { name: linkedin, url: 'https://www.linkedin.com/in/anthony-rabine-3470b8100/' }
+-  { name: linkedin, url: 'https://www.linkedin.com/in/anthony-rabine/' }
 -  { name: skype, url: 'arabine' }
 -  { name: github, url: 'http://github.com/arabine' }
 -  { name: codepen, url: '' }
