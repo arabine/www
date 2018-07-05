@@ -44,7 +44,9 @@ show_comments: 0
 show_menu: 1
 fixed_sidebar: 1
 
-plugins: [jekyll-seo-tag]
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Defaults
 defaults:
