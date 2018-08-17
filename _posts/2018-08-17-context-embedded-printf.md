@@ -20,9 +20,11 @@ En outre, il est souvent pratique de sortir du printf() vers de multiples périp
 
 A noter que je n'ai pas implémenté en lui-même le traitement du formattage, vous trouverez beaucoup d'implémentations différentes. Vous pouvez à loisir le changer, en essayant de choisir une implémentation sans buffer tampon.
 
+# Le code
+
 Le code est disponible là :
 
-![github](https://github.com/brasserie/sys_printf)
+[github](https://github.com/brasserie/sys_printf)
 
 Voici un exemple d'usage :
 
