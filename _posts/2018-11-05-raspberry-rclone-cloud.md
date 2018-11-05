@@ -39,7 +39,7 @@ On va donc modifier le fichier /etc/fstab :
 # 192.168.1.30/WiFiDisk1_Volume1_Share /media/nas cifs username=guest,password=bidon,iocharset=utf8,sec=ntlm,auto 0 0
 10.0.0.1/nas /media/nas cifs vers=3.0,user,guest,sec=ntlmssp,auto,rw,uid=pi,gid=pi,iocharset=utf8  0  0
 
-tmpfs /media/ramdisk tmpfs defaults,size=20M 0 0
+tmpfs /media/ramdisk tmpfs defaults,size=200M 0 0
 ```
 
 À noter que la configuration du montage d'un disque Samba est toujours un peu laborieux et dépendera de votre serveur. J'ai mis deux configurations différentes. J'ai dû installer les paquets Samba et redémarrer le PI (et oui!) pour que ça fonctionne.
@@ -48,7 +48,7 @@ tmpfs /media/ramdisk tmpfs defaults,size=20M 0 0
 sudo apt-get install cifs-utils samba samba-client
 ```
 
-J'ai également créé un disque virtuel en RAM de façon à ce que les logs générés par rclone n'entament pas trop vite la vie de la SD Card.
+J'ai également créé un disque virtuel en RAM de façon à ce que les logs générés par rclone n'entament pas trop vite la vie de la SD Card. Ici, il fait 200Mo.
 
 Les répertoires de montage dans /media doivent exister (mkdir /media/nas) et les droites d'accès donnés à l'utilisateur 'pi' (sudo chown -R pi:pi /media/nas).
 
@@ -80,5 +80,25 @@ sudo crontab -u pi -e
 
 Autre particularité, on protège notre lancement de script contre les exécutions multiples avec la commande flock. En effet, une grosse sauvegarde peut durer plusieurs jours avec une connexion de campagne !
 
+Voici donc le script 'sync.sh', à rendre exécutable (chmod +x sync.sh) :
 
+```shell
+#!/bin/bash
+LOG_FILE="/media/ramdisk/rclone.log" RCLONE_CMD="rclone --log-file=$LOG_FILE sync"
 
+rm $LOG_FILE
+
+# echo "Launching rsync USB disk to PCloud" >> $LOG_FILE rsync -arzPh --exclude=/shared /media/nas/ /media/usbdisk $
+
+echo "Launching rclone remote:Videos" >> $LOG_FILE $RCLONE_CMD /media/nas/Videos remote:Videos
+
+echo "Launching rclone remote:Music" >> $LOG_FILE $RCLONE_CMD /media/nas/Music remote:Music
+
+echo "Launching rclone remote:Pictures" >> $LOG_FILE $RCLONE_CMD /media/nas/Pictures remote:Pictures
+```
+
+Le log vous aidera à comprendre ce qu'il se passe au cas où la synchronisation plante, ou pour véifier que les fichiers ont été vraiment copiés.
+
+La ligne en commentaire permet de synchroniser deux disques avec rsync, je ne l'utilise pas encore dans cette configuration.
+
+Voilà, on n'a plus qu'à quitter le shell du PI et à attendre le lendemain pour vérifier la sauvegarde.
