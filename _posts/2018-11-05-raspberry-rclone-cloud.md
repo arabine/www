@@ -84,17 +84,22 @@ Voici donc le script 'sync.sh', à rendre exécutable (chmod +x sync.sh) :
 
 ```shell
 #!/bin/bash
-LOG_FILE="/media/ramdisk/rclone.log" RCLONE_CMD="rclone --log-file=$LOG_FILE sync"
+LOG_FILE="/media/ramdisk/rclone.log" 
+RCLONE_CMD="rclone -v --log-file=$LOG_FILE sync"
 
-rm $LOG_FILE
+# Redirect to null device and -f will avoid any problems in case of file does not exist or impossible to delete
+rm -f $LOG_FILE 2> /dev/null
 
 # echo "Launching rsync USB disk to PCloud" >> $LOG_FILE rsync -arzPh --exclude=/shared /media/nas/ /media/usbdisk $
 
-echo "Launching rclone remote:Videos" >> $LOG_FILE $RCLONE_CMD /media/nas/Videos remote:Videos
+echo "Launching rclone remote:Videos" >> $LOG_FILE 
+$RCLONE_CMD /media/nas/Videos remote:Videos
 
-echo "Launching rclone remote:Music" >> $LOG_FILE $RCLONE_CMD /media/nas/Music remote:Music
+echo "Launching rclone remote:Music" >> $LOG_FILE
+$RCLONE_CMD /media/nas/Music remote:Music
 
-echo "Launching rclone remote:Pictures" >> $LOG_FILE $RCLONE_CMD /media/nas/Pictures remote:Pictures
+echo "Launching rclone remote:Pictures" >> $LOG_FILE
+$RCLONE_CMD /media/nas/Pictures remote:Pictures
 ```
 
 Le log vous aidera à comprendre ce qu'il se passe au cas où la synchronisation plante, ou pour véifier que les fichiers ont été vraiment copiés.
