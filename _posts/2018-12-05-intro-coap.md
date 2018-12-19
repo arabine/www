@@ -14,16 +14,16 @@ category:
 
 Je ne vais pas copier-coller Internet, cela ne sert à rien, car nous allons découvrir le protocole de façon pratique, par contre je mets quelques références sur le protocole en lui-même :
 
-  * https://fr.wikipedia.org/wiki/CoAP
-  * http://coap.technology/
-  * https://www.bortzmeyer.org/7252.html
-  * https://tools.ietf.org/html/rfc7252
+  * Tradition oblige, Wikipedia : https://fr.wikipedia.org/wiki/CoAP
+  * Le portail du protocole : http://coap.technology/
+  * Une explication sympa : https://www.bortzmeyer.org/7252.html
+  * LA bible : https://tools.ietf.org/html/rfc7252
 
 la RFC 7252 est la spécification "de base" du protocole. À celle-là s'ajoute une tripotée de spécifications additionnelles, les deux premières sont optionnelles, la troisième nous servira lors de nos essais :
 
   * Block-wise transfers : https://tools.ietf.org/html/rfc7959
   * Observing resources : https://tools.ietf.org/html/rfc7641
-  * https://tools.ietf.org/html/rfc6690 (discovery protocol)
+  * Discovery protocol : https://tools.ietf.org/html/rfc6690
 
 
 La première option vous permettra de transférer des "gros" paquets segmentés, la deuxième vous permettra de faire l'équivalent d'un "push" : une donnée asynchrone est envoyée du serveur au client.
@@ -155,7 +155,7 @@ you put here: Coucou
 --------------------------------------------------------------------------------
 ```
 
-Dernier détail rigolo du protocole, l'URI est découpée en options. Exit les slash, chaque "répertoire" à la REST est envoyé sous forme d'option. Cela facilite le travail du serveur et on comprend bien l'orientation très REST du protocole.
+Dernier détail rigolo du protocole, l'URI est découpée en options. Exit les slash, chaque "répertoire" à la REST est envoyé sous forme d'option. Cela facilite le travail du serveur et on comprend bien l'orientation très REST du protocole. Par exemple ici nous avons réalisé un GET /seg1/seg2/seg3 :
 
 ![coap]({{ site.url }}/assets/articles/coap-intro/get_uri_split.png)
 
