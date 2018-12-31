@@ -5,7 +5,7 @@ date: 2018-01-01 18:43:00 -0700
 comments: false
 published: false
 category:
-- Embedded
+- embedded
 ---
 
 > Linux n'est pas forcément la plateforme idéale pour le développement embarqué, non pas à cause de Linux lui-même mais surtout du non support au niveau outillage et pilotes de périphériques de la part des fondeurs. Les choses changent cependant peu à peu et nous allons vous présenter pas à pas comment paramétrer votre environnement pour du développement embarqué sur ARM Cortex-M4.
