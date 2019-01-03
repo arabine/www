@@ -32,7 +32,7 @@ De part mon expérience, on peut classer dans trois catégories les éléments i
   * Puis, il faut s'occuper de l'architecture statique, on visera ici à limiter les dépendances entre les composants
   * Enfin, il faudra travailler sur la partie dynamique (dialogue entre composants et contextes d'exécutions)
 
-Le fil rouge sera de toujours limiter au maximum les interactions dépendantes qui font qu'un composant A nécessite un composant B. Pour cela, on utilisera des techniques de messagerie, d'événements et de liaisons dynamiques (listeners). En prenant en compte tout ceci, la base de notre code sera saine et portable à souhait. Bien entendu, rien n'est parfait, et il y a toujours une tonne de particularité liée à une plateforme.
+Le fil rouge sera de toujours limiter au maximum les interactions dépendantes qui font qu'un composant A nécessite un composant B. Pour cela, on utilisera des techniques de messagerie, d'événements et de liaisons dynamiques (listeners). En prenant en compte tout ceci, la base de notre code sera saine et portable à souhait. Bien entendu, rien n'est parfait, et il y a toujours une tonne de particularités liée à une plateforme.
 
 Dans tous les cas, pensez générique : en général, essayez d'utiliser les particularités d'une spécification tordue (issue d'un service marketing ou d'un client) pour rendre cette fonction générique et commune au reste de votre code.
 
@@ -51,7 +51,7 @@ Dans les faits, cette architecture génère deux gros problèmes :
 
 Le code de Tetris d'origine que nous utiliserons pour illustrer notre architecture provient d'un easter egg caché au sein d'un produit industriel doté d'un écran graphique monochrome. Il s'agit d'une centrale de mesure disposant de deux boutons, le bouton de gauche permettant de valider et le bouton de droite disposant des quatre directions de navigation. Pour lancer le jeu, aller dans l'écran de la date-heure, appuyez trois fois sur "OK" puis "OK + gauche".
 
-![image]({{ site.url }}/assets/articles/arch-tetris/enerium-tetris.png)
+![image]({{ site.url }}/assets/articles/arch-tetris/tetris-enerium.png)
 
 Nous voyons déjà ce que nous aurons à abstraire : l'affichage et les contrôles. Un équipement électronique embarqué sara totalement différent par rapport à un portage Web, PC ou mobile.
 
@@ -68,7 +68,7 @@ Alors nous allons nous amuser un peu en variant les contraintes, et dans le dés
 
 # Travail préparatoire
 
-Ok, attaquons la chose. Dans un premier temps, nous allons nous extraire le code source du programme d'origine. Pas de problème légal, c'est moi qui l'ai programmé et c'est une fonction cachée, donc aucun soucis là dessus (en espérant que mes anciens collègues aient retiré le code en production ;D). Le code a été écrit en langage C sur cible DSP (un Texas TMS320C5502). Heureusement, je l'avais déjà bien isolé car j'avais bien fait les choses à l'époque. Néanmoins, j'ai dû réaliser les tâches de nettoyages suivantes :
+Ok, attaquons la chose. Dans un premier temps, nous allons nous extraire le code source du programme d'origine. Pas de problème légal, c'est moi qui l'ai programmé et c'est une fonction cachée, donc aucun soucis là dessus (en espérant que mes anciens collègues aient retiré le code en production ;D). Le code a été écrit en langage C sur cible DSP (un Texas TMS320C5502). Heureusement, le code est assez indépendant du reste de l'application, j'avais bien fait les choses à l'époque. Néanmoins, j'ai dû réaliser les tâches de nettoyage suivantes :
 
   * Passer tous les types propriétaires en types standards (uint32_t, uint8_t, bool) à l'aide des en-têtes stdint.h et stdbool.h
   * Retirer les inclusions d'en-têtes spécifiques à la plateforme (C5502.h)
@@ -115,6 +115,9 @@ width : 96 height : 80
 bits utilises : 96 padding : 0 octets ajoutes.
 Taille du tableau : 960
 ```
+
+L'opération a donc transformé une image vers un tableau d'octets.
+
 ![image]({{ site.url }}/assets/articles/arch-tetris/bitmaptoc.png)
 
 
