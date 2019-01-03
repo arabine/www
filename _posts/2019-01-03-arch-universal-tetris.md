@@ -47,4 +47,83 @@ Dans les faits, cette architecture génère deux gros problèmes :
   * La dépendances entre les composants, nous verrons comment s'en sortir avec quelques principes logiciels
   * L'architecture dynamique difficile à contrôler (phases de démarrage, d'arrêts, synchronisation inter-composants et événements temps réels)
 
-# Présentation du code d'origine
+# Présentation du code Tetris d'origine
+
+Le code de Tetris d'origine que nous utiliserons pour illustrer notre architecture provient d'un easter egg caché au sein d'un produit industriel doté d'un écran graphique monochrome. Il s'agit d'une centrale de mesure disposant de deux boutons, le bouton de gauche permettant de valider et le bouton de droite disposant des quatre directions de navigation. Pour lancer le jeu, aller dans l'écran de la date-heure, appuyez trois fois sur "OK" puis "OK + gauche".
+
+![image]({{ site.url }}/assets/articles/arch-tetris/enerium-tetris.png)
+
+Nous voyons déjà ce que nous aurons à abstraire : l'affichage et les contrôles. Un équipement électronique embarqué sara totalement différent par rapport à un portage Web, PC ou mobile.
+
+Notre but sera d'abstraire au maximum pour isoler le moteur Tetris proprement dit et ainsi permettre de réutiliser le code au maximum.
+
+# Vers quelles plateformes cibles ?
+
+Alors nous allons nous amuser un peu en variant les contraintes, et dans le désordre :
+
+  * Un portage natif sur PC, avec mettons un affichage graphique en utilisant la librairie Qt
+  * Un portage en mode console
+  * Un portage vers le Web, eh oui, en utilisant le WebAssembly
+  * Un portage embarqué sur plateforme RISC-V et un écran LCD
+
+# Travail préparatoire
+
+Ok, attaquons la chose. Dans un premier temps, nous allons nous extraire le code source du programme d'origine. Pas de problème légal, c'est moi qui l'ai programmé et c'est une fonction cachée, donc aucun soucis là dessus (en espérant que mes anciens collègues aient retiré le code en production ;D). Le code a été écrit en langage C sur cible DSP (un Texas TMS320C5502). Heureusement, je l'avais déjà bien isolé car j'avais bien fait les choses à l'époque. Néanmoins, j'ai dû réaliser les tâches de nettoyages suivantes :
+
+  * Passer tous les types propriétaires en types standards (uint32_t, uint8_t, bool) à l'aide des en-têtes stdint.h et stdbool.h
+  * Retirer les inclusions d'en-têtes spécifiques à la plateforme (C5502.h)
+  * Déménager quelques définitions externes et une variable globale : la mémoire graphique virtuelle
+
+Ce dernier point nécessite une petite explication et un schéma présentant l'architecture. Afin de maximiser le code en commun sur toutes les plateformes et minimiser les couches d'abstractions, le choix avait été fait à l'époque (et quel bon choix !) de dessiner ce que l'on voit à l'écran dans un buffer virtuel.
+
+Ce buffer est ensuite envoyé vers le contrôleur graphique. Il s'agit, en gros, de dessiner sur un fichier, cela génère une image que l'on peut envoyer n'importe où. Le code de notre Tetris repose donc sur une petite librairie graphique permettant de dessiner des primitives : cercle, rectangle, segments, caractères et quasiment le plus important : afficher une image.
+
+![image]({{ site.url }}/assets/articles/arch-tetris/arch-enerium.png)
+
+A noter que le fait de travailler dans un buffer permet de réaliser des fonctions bien pratiques :
+
+  * Nous avions développé à l'époque un double buffer (image N et N-1) permettant de détecter les lignes modifiées entre deux appels : ainsi, nous soulagions le rafraichissement du LCD afin de limiter le clignottement qui était assez visible par l'utilisateur.
+  * Une capture d'écran : sur une requête, on copie le buffer en cours dans un autre coin en RAM, puis on télécharge cette image et on génère un fichier Bitmap.
+
+# Génération d'images
+
+Nous avons à disposition un écran graphique de résolution 160x128 pixels monochromes. Il est intéressant de pouvoir afficher des images tirées d'un fichier image généré avec un logiciel de dessin type Gimp (ou piqué sur Internet). Or, le format d'une image est un peu trop lourd à décoder par un processeur embarqué et on ne dispose pas, généralement, d'un système de fichier asez gros pour stocker les images brutes. Nous allons donc générer, en dur dans le code, un extrait de ces images, un tableau d'octets brut de ce dessin. Ainsi, c'est de la Flash code qui sera utilisée (et non de la data).
+
+Le format source choisi est le BMP car il permet d'encoder l'image avec un bit par pixel, c'est à dire en monochrome, parfaitement optimisé pour nous. Notez que tous les logiciels ne permettent pas cet encodage sauf ...  Paint, de Microsoft, qui le gère très bien depuis le début, ce qui est assez rigolo pour le noter.
+
+Pour cela, j'avais développé à l'époque un utilitaire pour générer un tableau d'octets en C à partir d'une image monochrome BMP. Vous trouverez cet utilitaire dans le répertoire 'tools' du dépôt du projet.
+
+Dans un premier temps on compile l'utilitaire :
+
+```shell
+gcc bmp2c.c -o bmp2c
+```
+Une petite aide en ligne permet de voir le format d'appel et les options :
+
+```shell
+C:\git\unitris\tools>bmp2c.exe
+Usage: bmp2c.exe input.bmp output.c [-six_pixels] [-16bits_array] [-32bits_array]
+```
+On lance la conversion, aucune erreur, tout s'est bien passé !
+
+```shell
+C:\git\unitris\tools>bmp2c.exe ..\assets\tetris.bmp output.c  -16bits_array
+
+Option enabled : 16bits array.
+
+width : 96 height : 80
+bits utilises : 96 padding : 0 octets ajoutes.
+Taille du tableau : 960
+```
+![image]({{ site.url }}/assets/articles/arch-tetris/bitmaptoc.png)
+
+
+# Conclusion et suite
+
+Nous venons d'expliquer un peu notre projet, notre but et surtout notre vision concernant l'architecture. Nous avons également fait un petit tour d'horizon sur l'architecture dynamique du code d'origine.
+
+Dans le prochain article, nous porterons le code en console, dans une première version permettant de générer une image Bitmap puis avec Qt !
+
+Vous trouverez le dépôt de ce projet sur github https://github.com/arabine/unitris ainsi que le code source en cours d'écriture.
+
+
