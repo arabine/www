@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Architecture par composant - Tétris générique (1)"
+title: "Architecture par composant - Tetris générique (1)"
 date: 2019-01-03 8:55:00 -0120
 comments: false
 published: true
@@ -10,13 +10,13 @@ category:
 - games
 ---
 
-> Le code source embarqué (ou non) d'un logiciel termine toujours par un tas de code difficilement maintenable. Il existe néanmoins quelques solutions simples pour éviter le pire et permettre d'avoir, dès le début d'un projet, une base de code évolutive et flexible. Nous verrons cela dans une série d'article en mettant en oeuvre le jeu de Tétris dans une architecture par composant.
+> Le code source embarqué (ou non) d'un logiciel termine toujours par un tas de code difficilement maintenable. Il existe néanmoins quelques solutions simples pour éviter le pire et permettre d'avoir, dès le début d'un projet, une base de code évolutive et flexible. Nous verrons cela dans une série d'article en mettant en œuvre le jeu de Tetris dans une architecture par composant.
 
 # But de notre travail
 
-Le but sera de porter le jeu Tétris sur plusieurs plateformes. Votre projet ne vise qu'une seule plateforme ? Insérez une deuxième cible dès le début du projet, ceci pour plusieurs raisons :
+Le but sera de porter le jeu Tetris sur plusieurs plateformes. Votre projet ne vise qu'une seule plateforme ? Insérez une deuxième cible dès le début du projet, ceci pour plusieurs raisons :
 
-  * Cela vous forcera à créer des couches d'abstrations
+  * Cela vous forcera à créer des couches d'abstractions
   * Cela vous forcera à avoir un système de construction générique
   * Utiliser un système différent, et si possible un compilateur différent, permet de tester un peu le code à moindre coût
 
@@ -36,11 +36,11 @@ Le fil rouge sera de toujours limiter au maximum les interactions dépendantes q
 
 Dans tous les cas, pensez générique : en général, essayez d'utiliser les particularités d'une spécification tordue (issue d'un service marketing ou d'un client) pour rendre cette fonction générique et commune au reste de votre code.
 
-Au niveau du code prorement dit, nous éviterons les #ifdef le plus possible, cela ne rend pas le code facile à porter.
+Au niveau du code proprement dit, nous éviterons les #ifdef le plus possible, cela ne rend pas le code facile à porter.
 
-# Architecture par composant
+# Architecture par composants
 
-Une architecture par composant va nous permettre de bien organiser le code source au niveau répertoire et au niveau des API : un composant fournit une interface (fonctions, méthodes virtuelles), son implémentation est cachée. Demain, vous pouvez tout à fait ré-écrire l'implémentation sans bouger une ligne de code dans le reste du projet.
+Une architecture par composant va nous permettre de bien organiser le code source au niveau répertoire et au niveau des API : un composant fournit une interface (fonctions), son implémentation est cachée. Demain, vous pouvez tout à fait ré-écrire l'implémentation sans bouger une ligne de code dans le reste du projet.
 
 Dans les faits, cette architecture génère deux gros problèmes :
 
@@ -82,12 +82,12 @@ Ce buffer est ensuite envoyé vers le contrôleur graphique. Il s'agit, en gros,
 
 A noter que le fait de travailler dans un buffer permet de réaliser des fonctions bien pratiques :
 
-  * Nous avions développé à l'époque un double buffer (image N et N-1) permettant de détecter les lignes modifiées entre deux appels : ainsi, nous soulagions le rafraichissement du LCD afin de limiter le clignottement qui était assez visible par l'utilisateur.
+  * Nous avions développé à l'époque un double buffer (image N et N-1) permettant de détecter les lignes modifiées entre deux appels : ainsi, nous soulagions le rafraîchissement du LCD afin de limiter le clignotement qui était assez visible par l'utilisateur.
   * Une capture d'écran : sur une requête, on copie le buffer en cours dans un autre coin en RAM, puis on télécharge cette image et on génère un fichier Bitmap.
 
 # Génération d'images
 
-Nous avons à disposition un écran graphique de résolution 160x128 pixels monochromes. Il est intéressant de pouvoir afficher des images tirées d'un fichier image généré avec un logiciel de dessin type Gimp (ou piqué sur Internet). Or, le format d'une image est un peu trop lourd à décoder par un processeur embarqué et on ne dispose pas, généralement, d'un système de fichier asez gros pour stocker les images brutes. Nous allons donc générer, en dur dans le code, un extrait de ces images, un tableau d'octets brut de ce dessin. Ainsi, c'est de la Flash code qui sera utilisée (et non de la data).
+Nous avons à disposition un écran graphique de résolution 160x128 pixels monochromes. Il est intéressant de pouvoir afficher des images tirées d'un fichier image généré avec un logiciel de dessin type Gimp (ou piqué sur Internet). Or, le format d'une image est un peu trop lourd à décoder par un processeur embarqué et on ne dispose pas, généralement, d'un système de fichier assez gros pour stocker les images brutes. Nous allons donc générer, en dur dans le code, un extrait de ces images, un tableau d'octets brut de ce dessin. Ainsi, c'est de la Flash code qui sera utilisée (et non de la data).
 
 Le format source choisi est le BMP car il permet d'encoder l'image avec un bit par pixel, c'est à dire en monochrome, parfaitement optimisé pour nous. Notez que tous les logiciels ne permettent pas cet encodage sauf ...  Paint, de Microsoft, qui le gère très bien depuis le début, ce qui est assez rigolo pour le noter.
 
