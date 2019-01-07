@@ -3,7 +3,7 @@ layout: post
 title: "Architecture par composant - Tetris générique (2)"
 date: 2019-01-15 8:55:00 -0120
 comments: false
-published: true
+published: false
 category:
 - architecture
 - embedded
