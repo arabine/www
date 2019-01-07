@@ -24,6 +24,18 @@ Dans le cas d'une cible principale embarquée, il est par exemple intéressant d
 
 ![image]({{ site.url }}/assets/articles/arch-tetris/tetris-js.png)
 
+# Technologies utilisées (et limitations imposées)
+
+Le code principal sera en langage C. Déjà parce que le code source d'origine est en C et qu'il est facile de porter du code C à peu près partout. Ce langage est également facilement intégrable à des langages de plus hauts niveaux (langages de scripts) via des appels natifs ou des librairies pré-compilées.
+
+Ce ne sera pas notre unique langage : selon les plateformes cibles, notre code de base sera enrobé de différentes couches en C++ ou en Javascript... nous verrons cela par la suite.
+
+En ce qui concerne le langage C proprement dit, nous allons le limiter au maximum, toujours dans l'optique de la portabilité :
+
+  * Faible dépendance sur la librairie standard C : on limitera les en-têtes au script minimum
+  * PAS d'allocation dynamique : et oui, on garde à l'esprit les cibles embarquées
+  * PAS de C99, on va essayer, c'est dommage mais par exemple à l'heure d'écriture de cet article Visual C++ ne supporte toujours pas cette norme. La honte. (alors que la plupart des compilateurs embarqués sont ok là dessus comme IAR ou Keil).
+
 # Trois notions importantes et complémentaires
 
 De part mon expérience, on peut classer dans trois catégories les éléments importants qui vont nous permettre d'avoir une architecture correcte.
