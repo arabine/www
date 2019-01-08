@@ -26,9 +26,6 @@ Voici ce que l'on peut dire sur ces nommages :
 
 Notre Tetris sera porté sur plusieurs plateformes ; dès lors, nous aurons à créer un système différent à chaque fois, avec ses propres contraintes, ses spécificités. Ce système créera des entités en ré-utilisant nos modules (composants) logiciels génériques.
 
->> TOTO: diagramme d'entité, composant, data ....
-
-
 # Bonnes pratiques en C
 
 Il existe quelques règles simples pour avoir un code le plus modulaire possible en langage C. On peut par exemple copier un peu le modèle objet : un design pattern que j'utilise fréquemment est de développer un module logiciel de la façon suivante :
