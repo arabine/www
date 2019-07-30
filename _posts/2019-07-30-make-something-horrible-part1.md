@@ -37,7 +37,7 @@ Concernant l'application Android, j'en ai trouvé une géniale, il s'agit d'Auto
   3. Désactivez la couche "background", l'arrière-plan est maintenant transparent
   4. Sur une nouvelle couche dédiée, suivez les contours de l'image, changez le type de crayon en fonction du besoin
 
-Voilà ! AU niveau logiciels PC : Paint.net pour les retouches, Visual Studio Code pour l'éditeur, Qt pour le C++ et le back-end et enfin Inkscape pour le SVG.
+Voilà ! Au niveau logiciels PC : Paint.net pour les retouches, Visual Studio Code pour l'éditeur, Qt pour le C++ et le back-end et enfin Inkscape pour le SVG.
 
 Python peut être utile, notamment au début lorsque le back-end n'existe pas : un petit :
 
