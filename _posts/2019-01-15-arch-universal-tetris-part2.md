@@ -33,6 +33,11 @@ Il existe quelques règles simples pour avoir un code le plus modulaire possible
   * On regroupe ces variables dans une structure de contexte. Cette structure sera passée par référence (pointeur) à toutes les fonctions du module qui en auront besoin
   * C'est le code appelant qui aura la charge d'instancier cette structure de contexte et de la passer aux fonctions du module pour traitement
 
+Et pour bien ranger votre code :
+  * Toutes les définitions propres au modules sont dans les .c, un header n'a pas à stocker forcément toutes les structures de la terre. N'oubliez pas, un en-tête est une *interface* pour l'extérieur. Rangez votre code.
+  * Utilisez le mot clé static dans vos fichiers C pour les fonctions privées
+  * Evitez le mot clé extern comme la peste, de toute façon si votre code est bien rangé à l'aide de 'static' impossible à un gugusse extérieur à votre composant de faire appel à une de vos fonctions privées.
+
 # Contours d'un composant
 
 Autant la définition d'un composant, au sens UML, est claire, autant sa mise en œuvre est plus compliquée. Déjà, première question : quel est le contour du composant ? Quelles sont ses limites ? Quelles fonctions mettre dedans ?

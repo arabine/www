@@ -129,6 +129,10 @@ Après avoir modifié les routines d'affichage d'image, voici ce que donne notre
 
 Parfait, nous sommes capable d'afficher une image à n'importe quel endroit de l'écran.
 
+# Dynamique : faisons descendre la pièce
+
+Là c'est facile, on traverse les couches une à une : le callback du Timer QML fait appel à une méthode de UnitrisWrapper (tick) qui elle même fait appel au "Tick" de l'entité du rendu graphique. En retour, on a la l'image BMP de l'état en cours de l'écran. Celui-ci est donc rafraichi toutes les 50ms, soit à 20Hz.
+
 # Gestion des touches
 
 

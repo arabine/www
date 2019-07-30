@@ -59,6 +59,36 @@ Dans les faits, cette architecture génère deux gros problèmes :
   * La dépendances entre les composants, nous verrons comment s'en sortir avec quelques principes logiciels
   * L'architecture dynamique difficile à contrôler (phases de démarrage, d'arrêts, synchronisation inter-composants et événements temps réels)
 
+Voici ce que donne un code qui est soit disant portable sur plein d'architecture. Voici ce que l'on ne *veut pas*. Franchement, le jour où vous avez à porter le code sur une nouvelle architecture, bon courage. 
+
+```c
+#if ENC28J60_USE_SPILIB
+   #if defined(ARDUINO)
+     #if defined(STM32F2)
+       #include <SPI.h>
+     #elif !defined(STM32F3) && !defined(__STM32F4__)
+       #include <SPI.h>
+       extern SPIClass SPI;
+     //#elif defined(ARDUINO_ARCH_AMEBA)
+       //SPIClass SPI((void *)(&spi_obj), 11, 12, 13, 10);
+       //SPI _spi(SPI_MOSI,SPI_MISO,SPI_SCK,ENC28J60_CONTROL_CS);
+     #else
+       #include "HardwareSPI.h"
+       extern HardwareSPI SPI(1);
+     #endif
+   #endif
+   #if defined(__MBED__)
+     SPI _spi(SPI_MOSI,SPI_MISO,SPI_SCK);
+     DigitalOut _cs(ENC28J60_CONTROL_CS);
+     Serial LogObject(SERIAL_TX,SERIAL_RX);
+   #endif
+#endif
+```
+
+Dans cet exemple, il faudrait refactoriser le code en composants. Chaque plateforme cible aura son implémentation de SPI, et implémentera une même interface. Maintenant, comment un composant peut faire appel à une fonction définie ailleur ?
+
+Plusieurs méthodes. L'une que je préfère est d'utiliser des callbacks, à définir dans votre interface de composant et à initialiser au démarrage de votre application. Sinon en désesespoir de cause un bon vieux extern, et c'est au moment du link qu'il faudra régler les problèmes.
+
 # Présentation du code Tetris d'origine
 
 Le code de Tetris d'origine que nous utiliserons pour illustrer notre architecture provient d'un easter egg caché au sein d'un produit industriel doté d'un écran graphique monochrome. Il s'agit d'une centrale de mesure disposant de deux boutons, le bouton de gauche permettant de valider et le bouton de droite disposant des quatre directions de navigation. Pour lancer le jeu, aller dans l'écran de la date-heure, appuyez trois fois sur "OK" puis "OK + gauche".
