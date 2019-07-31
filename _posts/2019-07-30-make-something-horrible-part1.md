@@ -55,6 +55,8 @@ Maintenant, il faut choisir le style du jeu. Vu les technologies que je me suis 
 
 ![image]({{ site.url }}/assets/articles/make-something-horrible-part1/beauf.jpg)
 
+Je vais situer mon jeu dans un Camping, parce que c'est l'été et il y a plein d'objets ou de situations faciles à créer.
+
 # Game design
 
 Nous allons faire un truc simple ; 4 écrans de jeu découpés ainsi :
