@@ -42,7 +42,7 @@ Pour simplifier encore, et réutiliser le glisser déposé, j'imagine deux autre
 
 On résume :
 
-* Tout fonctionne par drag and drop, avec une librairie comme Draggable.js ça peut être super simple
+* Tout fonctionne par drag and drop, avec une librairie comme Draggable.js ou même D3.js ça peut être super simple
 * Plusieurs types de cartes :
    - Des cartes "Bibine" pour recharger
    - Des cartes "Emplacement" à poser sur une case et restent en place le temps qu'il faut
@@ -64,5 +64,110 @@ Maintenant que nous savons à peu près où nous allons, ajoutons quelques élé
 * Une jauge de Bibine, avec le portrait et le nom de nos héros du jour (le joueur humain et l'ordinateur)
 * La poubelle (défausse)
 
+La jauge de Bibine sera un verre de Pastis bien connu qui se remplira au fur et à mesure de certaines cartes jouées. Aux choix du joueur : soit il remplit sa jauge pour espérer arriver à 100% et déclancher son pouvoir spécial, soit il joue sa carte ailleurs (défausse, sur le camping, même sur l'adversaire pourquoi pas ?).
 
+Pour cela, j'ai besoin d'une image SVG dont je remplierai le contenant par du fameux contenu jaune anis. Je prends une photo sur Internet que je détoure avec deux mains gauches :
 
+![image]({{ site.url }}/assets/articles/make-something-horrible-part2/numerisation_pastis.png)
+
+Ok, passons maintenant un peu au code parce que c'est marrant. On va créer un nouveau composant, appelé PlayerIcon.js. Ce composant graphique contienra :
+
+* L'image d'un verre de Pastis, une fois rempli il déclenchera le pouvoir spécial
+* Le portrait du joueur et son nom
+
+Les éléments graphiques sont tous du SVG. Concernant le verre de Pastis, je donne un nom au chemin représentant l'intérieur du verre et lui associe un clipping :
+
+```xml
+<!-- En faisant varier y de 100 (verre vide) à 0 (verre plein), on monte le niveau de lique en faisant monter le cliping -->
+<clipPath id="pastisClip">
+   <rect x="0" :y="pastisLevel" width="100" height="158" style="fill: white; stroke-width: 0"/>
+</clipPath>
+```
+
+L'explication est donnée, y'a plus qu'à faire varier la variable du composant Vue.js pour faire bouger le niveau de pasis.
+
+J'instantie deux fois ce composant, bleu étant la couleur du joueur humain, rouge étant la couleur de l'adversaire :
+
+```xml
+  <PlayerIcon 
+    x="100" 
+    y="800"
+    color="blue">
+  </PlayerIcon>
+
+  <PlayerIcon 
+    x="1400" 
+    y="800"
+    color="red">
+  </PlayerIcon>
+```
+
+Et voici le résultat. Je ferai évoluer plus tard le composant pour y ajouter le portrait du joueur et son nom, plus certains effets graphiques. Pour le moment, j'ai le minimum pour prototyper la deuxième phase du game play : les cartes.
+
+![image]({{ site.url }}/assets/articles/make-something-horrible-part2/gameview_part1.png)
+
+# Modélisation des cartes
+
+L'atout (!) principal du jeu n'est pas encore modélisé : les cartes ! Voyez-vous, je ne suis pas un expert et j'ai probablement fait une erreur de débutant en tant que développeur de jeu vidéo. J'ai commencé par le menu principal alors que je pense que dans un studio réel, c'est le genre de partie qui est effectuée que bien plus tard.
+
+Reste que développer le menu m'a permis de tester certaines technologies (SVG, l'intégration avec Vue.js, le son  ...). Bref, développer seul change un peu la stratégie de développement.
+
+Bon, une fois de plus, sortons Inkscape. Je ne sais pas encore quelle sera la taille d'une carte, mais j'imagine que le joueur aura en gros 5 cartes en main en permanence. On peut par exemple avoir la séquence de jeu suivante :
+
+1. Le joueur tire une carte de son deck (ah je viens de penser que l'on ne voit pas de deck sur le plateau ... c'est pas grave, on n'a pas le temps, la carte apparaîtra magiquement)
+2. Il *doit* jouer une carte à destination :
+   * du terrain de camping
+   * de la poubelle
+   * de lui
+   * de l'adversaire
+
+Donc, 5 cartes sur une largeur de ... 1920 moins deux blocs HUD de 400 de large plus les marges de chaque côté cela nous laisse environ 800 de large pour toutes les cartes soit 160 pixels pour une carte, si on ne les chevauche pas. Au niveau des proportions, on copie la proportion des cartes existantes, 65mm x 100mm.
+
+On copie-colle le code SVG dans le template Vue.js, et on instancie 5 cartes en bas de l'écran.
+
+```xml
+   <Card x="550" y="800"></Card>
+   <Card x="700" y="800"></Card>
+   <Card x="850" y="800"></Card>
+   <Card x="1000" y="800"></Card>
+   <Card x="1150" y="800"></Card>
+```
+
+![image]({{ site.url }}/assets/articles/make-something-horrible-part2/gameview_part2.png)
+
+Hou ! Les belles cartes !
+
+# Le drag & drop
+
+Bon, je gameplay central de notre jeu se base sur le drag et le drop des cartes. On va tester cela, pas besoin de nouvelle librairie, D3.js sait tout faire !
+
+Je prends le code à partir d'un petit tutorial sur Internet, a priori il n'y a pas grand chose à faire. J'autorise tous les tags qui ont la class 'card' à être draggable.
+
+```javascript
+    let deltaX, deltaY;
+    let dragHandler = d3.drag()
+    .on("start", function () {
+      let current = d3.select(this);
+      deltaX = current.attr("x") - d3.event.x;
+      deltaY = current.attr("y") - d3.event.y;
+    })
+    .on("drag", function () {
+        d3.select(this)
+            .attr("x", d3.event.x + deltaX)
+            .attr("y", d3.event.y + deltaY);
+    });
+
+    dragHandler(d3.selectAll(".card"));
+```
+
+Trop simple, je peux maintenant bouger toutes les cartes sur le plateau de jeu :
+
+![image]({{ site.url }}/assets/articles/make-something-horrible-part2/gameview_part3.png)
+
+Et le 'drop' ? Nous verrons cela au prochain numéro !
+
+# Conclusion
+
+Voilà nous avons terminé pour cette partie. Evidemment, rien n'est totalement finalisé, mais nous avons tous les objets de base au niveau graphisme pour avancer dans le jeu de la carte proprement dit. Pour faire bien BD, nous ajouterons à la fin des bulles pour faire parler nos personnages et leur faire dire des bêtises. On laisse tout le rafinement pour la fin, ne pas oublier qu'un mois c'est court pour faire un jeu complet.
+
+Au prochain numéro, nous nous attaquerons au code qui ne se voit pas : le moteur de jeu.  On fera donc du C++, du réseau, bref c'est la rigolade.
