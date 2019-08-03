@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Make Something Horrible (2)"
-date: 2019-08-15 8:55:00 -0120
+date: 2019-08-03 8:55:00 -0120
 comments: false
-published: false
+published: true
 category:
 - jam
 - games
