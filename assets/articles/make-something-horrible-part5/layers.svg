@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="313.36978mm"
+   height="159.31181mm"
+   viewBox="0 0 313.36978 159.31181"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="layers.svg"
+   inkscape:export-filename="C:\git\arabine.github.io\assets\articles\make-something-horrible-part5\layers.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="1202.4883"
+     inkscape:cy="-153.82452"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(390.3518,51.17789)">
+    <g
+       id="g880">
+      <rect
+         y="-7.6010928"
+         x="-342.39871"
+         height="94.398613"
+         width="155.63075"
+         id="rect815"
+         style="opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:1.095433;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <rect
+         y="13.1876"
+         x="-318.20825"
+         height="94.398613"
+         width="155.63077"
+         id="rect815-0"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.095433;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path832"
+         d="M -332.61905,5.2023808 -374.95239,-37.130952"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path834"
+         d="m -177.64881,42.244047 62.61102,-16.776572"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,46.869048,9.0714286)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         id="flowRoot836"
+         xml:space="preserve"><flowRegion
+           id="flowRegion838"><rect
+             y="-234.62317"
+             x="-1654.2858"
+             height="80"
+             width="342.85715"
+             id="rect840" /></flowRegion><flowPara
+           id="flowPara842">SVG</flowPara></flowRoot>      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,327.57417,81.189388)"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         id="flowRoot836-9"
+         xml:space="preserve"><flowRegion
+           id="flowRegion838-3"><rect
+             y="-234.62317"
+             x="-1654.2858"
+             height="80"
+             width="342.85715"
+             id="rect840-9" /></flowRegion><flowPara
+           id="flowPara842-0">canvas</flowPara></flowRoot>    </g>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Make Something Horrible (3)"
+title: "Make Something Horrible (4)"
 date: 2019-08-23 8:55:00 -0120
 comments: false
 published: true
@@ -27,7 +27,7 @@ Attaquons nous maintenant aux cartes. Côté serveur, je dispose d'un fichier JS
     "category": "defense",
     "picture": "tent",
     "text": "Planter sa tente marque le territoire du Campeur. You shall not pass, comme dirait l'autre.",
-    "value": "1"
+    "value": 1
 }
 ```
 
@@ -269,7 +269,6 @@ Ce qu'il reste à faire d'ici une semaine :
 * Ajouter du du son (son du coup spécial, musique d'ambiance, son poubelle)
 * Ajouter les portrait des joueurs
 * Faire quelques cartes supplémentaires
-* Ajouter le menu d'aide avec l'explication des cartes
 
 S'il me reste du temps :
 
