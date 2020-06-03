@@ -11,7 +11,7 @@ category:
 - embedded
 ---
 
-> Une révolution, tout simplement. Depuis que je travaille dans le domaine embarqué, j'ai connu quelques changements intéressants avec notamment l'arrivée de l'architecture Cortex-M, mais là, c'est un cran au dessus. Une architecture de microcontrôleur Open Source, j'en ai rêvé, maintenant elle existe. Voyons voir cela de plus près, surtout ce cela dépasse le cadre même du monde embarqué.
+> Une révolution, tout simplement. Depuis que je travaille dans le domaine embarqué, j'ai connu quelques changements intéressants avec notamment l'arrivée de l'architecture Cortex-M, mais là, c'est un cran au dessus. Une architecture de microcontrôleur Open Source, j'en ai rêvé, maintenant elle existe. 
 
 # Rappel sur les microcontrôleurs
 
@@ -27,10 +27,7 @@ En pratique, on obtient un composant électronique avec plus ou moins de pattes 
 
 **_Exemple de carte de développement_**
 
-
-# Historique RISC-V
-
-Commençons par un panorama non exhaustif des architectures existantes. Il en existe plein, mais les plus populaires sont :
+Continuons par un panorama non exhaustif des architectures existantes. Il en existe plein, mais les plus populaires sont :
 
 * La gamme Microchip, PIC12, PIC16, PIC24 sont très populaires, notamment grâce à leur bonne intégration dans l'outil MPLAB du fondeur. Je les trouve régulièrement chez mes clients car les outils (sondes JTAG comprises) sont peu chers. Ces architectures ne sont pas licenciées à des tiers.
 * La grande famille Cortex-M3 : tous les fondeurs ont créé leur gamme à partir de cette IP appartenant à ARM qui vie grêces aux licences et royalties sur chaque composant vendu
@@ -39,6 +36,8 @@ Commençons par un panorama non exhaustif des architectures existantes. Il en ex
 * Les fondeurs Japonais : Hitachi/Renesas/NEC/Mitsubishi ont créé des architectures plutôt intéressantes, j'ai eu l'occasion de travailler sur des NEC à la mémoire Flash incroyablement performante
 
 Depuis 15 ans maintenant, ce petit monde se côtoyait ; l'architecture ARM est devenue populaire pour avoir rapidement misé sur la faible consommation sans détériorer les performances. C'est vraiment l'architecture qui a fait passer les architectures embarqués vers le tout 32-bits. Elle est devenue au fil des ans un standard de fait et en choisissant un microcontrôleur ARM on s'assurait d'une disponibilité très grande d'applications tierces compatibles (notamment les RTOS), d'un éco-système large et d'un savoir faire largement répendu (livres). Par exemple, on avait ENFIN le choix de ses outils de développements comme la sonde JTAG, le compilateur et l'éditeur/débogueur.
+
+# Historique RISC-V
 
 Revenons au RISC-V.
 
@@ -50,17 +49,17 @@ C'est en l'an 2010 que l'architecture RISC-V est née au sein l'Université de C
 
 Écrire une spécification, c'est bien ; l'étape suivante, c'est d'avoir une implémentation réelle, un composant facilement accessible au commun des mortels. Paradoxalement, ce sont des nouveaux venus (pour moi) sur le marché qui ont sorti les premiers composants. Le site riscv.org liste les fondeurs et les fournisseurs de matériel (cartes électroniques). Dans un premier temps, ce sont surtout des implémentations non libres qui sont sorties (HiFive, Andes ...) mais des projets libres sont montés (https://www.lowrisc.org/).
 
-Voilà, allez voir la page Wikipedia pour en apprendre plus ainsi que le site riscv.org.
+Voilà, allez voir la page Wikipedia pour en apprendre plus ainsi que le site de la Fondation : riscv.org.
 
 # Le SoC Freedom E310
 
 Intéressons-nous au SoC (System on Chip) Freedom E310 créé par la société SiFive. Elle va nous permettre de tester facilement le composant en proposant une carte de forme compatible à Arduino, la HiFive version 1 qui existe en deux modèle : l'originale et la version B.
 
-![image]({{ site.url }}/assets/articles/getting-started-riscv/board_hifive1.png)
+![image]({{ site.url }}/assets/articles/getting-started-riscv/board_hifive1.jpg)
 
 **_Première version_**
 
-![image]({{ site.url }}/assets/articles/getting-started-riscv/board_hifive1_revb.png)
+![image]({{ site.url }}/assets/articles/getting-started-riscv/board_hifive1_revb.jpg)
 
 **_HiFive RevB_**
 
@@ -133,5 +132,9 @@ SiFive n'est pas le seul à fournir des outils de développement. Outre GCC et L
 
 Nous voyons donc que l'industrie s'intéresse à cette plateforme et les grands éditeurs sont au rendez-vous. On attend maintenant les fondeurs !
 
+# Conclusion
 
+La carte HiFive est vraiment sympa ; compatible Arduino, elle vous permettra d'utiliser bon nombre de cartes d'extensions existante. Tout a fonctionné du premier coup, cette première approche de l'architecture RISC-V est un succès.
+
+Notez que l'architecture RISC-V est large : la société SiFive fournit également une carte disposant d'un processur plus puissant capable de faire fonctionner Linux dessus. Le futur s'annonce captivant.
 
