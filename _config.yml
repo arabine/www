@@ -3,7 +3,7 @@
 # Site Settings
 title: Anthony Rabine Resume
 url: 'http://www.rabine.fr'
-baseurl: '/arabine.github.com' #change it according to your repository name
+baseurl: '' #change it according to your repository name
 description: CV d'Anthony Rabine
 # Style will be applied only after restarting the build or serve. Just choose one of the options.
 theme_skin: ceramic # blue turquoise green berry orange ceramic
