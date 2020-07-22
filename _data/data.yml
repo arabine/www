@@ -51,142 +51,108 @@ career-profile:
       Je suis développement embarqué C/C++ depuis 2004 et en Freelance depuis 2018. Passionné 
       de code et d'informatique en général, je m'intéresse à tous les secteurs du code informatique.
       
-      Durant mon glorieux passé de salarié, j'ai développé du code à tous les étages ; 
-      du bas niveau, de la librairie, du serveur back/front-end ... mon atout est ma culture technique en général et mon large panel de 
-      savoir faire. Ceci me permet de créer des ponts entre les différents mondes de la programmation et prendre les bonnes idées d'architecture 
-      logicielle là où elles sont.
+      Durant mon glorieux passé de salarié, j'ai développé du code à tous les étages : 
+      du bas niveau, de la librairie, des logiciels PC/Linux/Mac/Android, du serveur back/front-end ... mes atouts sont ma culture technique en général et mon large panel de 
+      savoir faire. Ceci me permet de créer des ponts entre les différents mondes de la programmation et prendre les bonnes idées d'architectures 
+      logicielles là où elles sont.
+      
       Je peux travailler pour vous !
-education:
-    - degree: MSc in Computer Science
-      university: University of London
-      time: 2011 - 2012
-      details: |
-        Describe your study here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-        sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-        pretium quis, sem.
-          - Bullet point
-          - Bullet point
-    - degree: BSc in Applied Mathematics
-      university: Bristol University
-      time: 2007 - 2011
-      details: |
-        Describe your study here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-        sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-        pretium quis, sem.
-          - Bullet point
-          - Bullet point
+#education:
+    #- degree: MSc in Computer Science
+      #university: University of London
+      #time: 2011 - 2012
+      #details: |
+        #Describe your study here lorem ipsum dolor sit amet, consectetuer
+        #adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+        #sociis natoque penatibus et magnis dis parturient montes, nascetur
+        #ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+        #pretium quis, sem.
+          #- Bullet point
+          #- Bullet point
+    #- degree: BSc in Applied Mathematics
+      #university: Bristol University
+      #time: 2007 - 2011
+      #details: |
+        #Describe your study here lorem ipsum dolor sit amet, consectetuer
+        #adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+        #sociis natoque penatibus et magnis dis parturient montes, nascetur
+        #ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+        #pretium quis, sem.
+          #- Bullet point
+          #- Bullet point
+
 experiences:
-    - role: Lead Developer
-      time: 2015 - Present
-      company: Startup Hubs, San Francisco
+    - role: Freelance developer
+      time: 2018 - Present
+      company: D8S EURL, Limalonges, France
       details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem. Nulla consequat massa quis
-        enim. Donec pede justo. Sed ut perspiciatis unde omnis iste natus
-        error sit voluptatem accusantium doloremque laudantium, totam rem
-        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-        architecto beatae vitae dicta sunt explicabo.
+        Development of multiple Qt tools and software using QML or QWidgets. Helped start-ups to release their IoT device by producing good firmware.
           - Bullet point
           - Bullet point
-    - role: Senior Software Engineer
-      time: 2014 - 2015
-      company: Google, London
+    - role: Firmware leader
+      time: 2010-2017
+      company: Itron, Poitiers
       details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem.
-          - Bullet point
-          - Bullet point
-    - role: UI Developer
-      time: 2012 - 2014
-      company: Amazon, London
+        Development of several meters based on DLMS/Cosem protocol. Firmware design (UML/C++) on microcontroller (ARM Cortex-M) 
+        and management of a team of developers. Experienced in system use cases and certification processes (MID, Cosem Test Tool, utility test tools)
+    - role: Firmware developer
+      time: 2004-2009
+      company: Enerdis - Chauvin-Arnoux Group, Paris
       details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem.
-          - Bullet point
-          - Bullet point
+        Development of power monitors, data loggers and process transducers. Very good knowledge of network topologies and metrology computing.
+          - Métrologie
+          - DSP
+
 projects:
     title: Projects
     intro: >
-      You can list your side projects or open source libraries in this
-      section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
+      J'ai créé les projets suivants, tous Open Source et libres. Vous pouvez regarder mon code !
     assignments:
-      - title: Velocity
-        link: "#hook"
-        tagline: "A responsive website template designed to help startups promote, market and sell their products."
+      - title: ICL - Independant C++ library
+        link: "https://github.com/brasserie/icl"
+        tagline: "Une collection de classes utilitaires en C++ que je promène dans tous les projets professionnels."
 
-      - title: DevStudio
-        link: "#"
-        tagline: "A responsive website template designed to help web developers/designers market their services."
 
-      - title: Tempo
-        link: "#"
-        tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
+#publications:
+    #title: Publications
+    #intro: |
+      #You can list your publications in this section. Lorem ipsum dolor sit
+      #amet, consectetur adipiscing elit. Vestibulum et ligula in nunc
+      #bibendum fringilla a eu lectus.
+    #papers:
+      #- title: The Art of Computer Programming
+        #link: "#"
+        #authors: Donald E. Knuth
+        #conference: Addison-Wesley, 1968
 
-      - title: Atom
-        link: "#"
-        tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
+      #- title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
+        #link: "#"
+        #authors: Koza, J.R., Andre, D., Bennett, F.H., Keane, M.A.
+        #conference: "Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edn. (1999)"
 
-      - title: Delta
-        link: "#"
-        tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
-
-publications:
-    title: Publications
-    intro: |
-      You can list your publications in this section. Lorem ipsum dolor sit
-      amet, consectetur adipiscing elit. Vestibulum et ligula in nunc
-      bibendum fringilla a eu lectus.
-    papers:
-      - title: The Art of Computer Programming
-        link: "#"
-        authors: Donald E. Knuth
-        conference: Addison-Wesley, 1968
-
-      - title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
-        link: "#"
-        authors: Koza, J.R., Andre, D., Bennett, F.H., Keane, M.A.
-        conference: "Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edn. (1999)"
-
-      - title: A syntax directed compiler for Algol 60
-        link: "#"
-        authors: Edgar T. Irons
-        conference: "Comm. ACM 4 (1961), 51–55"
+      #- title: A syntax directed compiler for Algol 60
+        #link: "#"
+        #authors: Edgar T. Irons
+        #conference: "Comm. ACM 4 (1961), 51–55"
 
 skills:
-    title: Skills &amp; Proficiency
+    title: Compétences &amp; Savoirs
 
     toolset:
-      - name: Python & Django
-        level: 98%
+      - name: C/C++/Qt/QML
+        level: 90%
 
-      - name: Javascript & jQuery
-        level: 98%
+      - name: Embarqué/RTOS/ARM/Cortex-M3/RISC-V/AVR/Arduino/Raspberry
+        level: 90%
+        
+      - name: Programmation système Linux / drivers / Buildroot
+        level: 80%
+        
+      - name: Javascript/Vue.js/Node.js/CSS
+        level: 75%
 
-      - name: Angular
-        level: 98%
-
-      - name: HTML5 & CSS
-        level: 95%
-
-      - name: Ruby on Rails
-        level: 85%
-
-      - name: Sketch & Photoshop
+      - name: Électronique numérique/analogique
         level: 60%
 
 footer: >
-    Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a>
+    N'oubliez pas d'aller voir mon site corpo :  <a href="https://www.d8s.eu" target="_blank" rel="nofollow">D8S EURL</a>
